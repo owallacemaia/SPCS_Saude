@@ -64,11 +64,11 @@ namespace SPCS.Saude.API.Controllers
         {
             var usuario = await _usuarioRepository.ObterPorCpf(cpf);
 
-            //if (usuario == null || usuario.Cpf != cpf)
-            //{
-            //    AdicionarErroProcessamento("Usuário não encontrado! Confirme o ID informado.");
-            //    return CustomResponse();
-            //}
+            if (usuario == null || usuario.Cpf != cpf)
+            {
+                AdicionarErroProcessamento("Usuário não encontrado! Confirme o ID informado.");
+                return CustomResponse();
+            }
 
             return CustomResponse(_mapper.Map<UsuarioViewModel>(usuario));
         }

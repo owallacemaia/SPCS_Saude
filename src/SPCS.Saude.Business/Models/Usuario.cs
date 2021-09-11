@@ -2,7 +2,6 @@
 using FluentValidation.Results;
 using NetDevPack.Domain;
 using System;
-using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace SPCS.Saude.Business.Models
@@ -13,6 +12,7 @@ namespace SPCS.Saude.Business.Models
         public string Email { get; private set; }
         public string Cpf { get; private set; }
         public string Imagem { get; private set; }
+        public Sexo Sexo { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
         public Endereco Endereco { get; set; }
 
@@ -57,5 +57,11 @@ namespace SPCS.Saude.Business.Models
                 .NotEmpty().WithMessage("O campo {PropertyName} não pode estar vázio!")
                 .Matches(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})").WithMessage("O campo {PropertyName} esta invalido!");
         }
+    }
+
+    public enum Sexo
+    {
+        M,
+        F
     }
 }

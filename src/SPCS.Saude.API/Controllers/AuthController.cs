@@ -5,7 +5,6 @@ using SPCS.Saude.API.ViewModels;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using System;
-using System.Collections;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
@@ -40,7 +39,7 @@ namespace SPCS.Saude.API.Controllers
             if (result.Succeeded)
             {
                 var novoUsuario = new Usuario(Guid.Parse(user.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf, usuarioRegistro.TipoUsuarioId);
-                var registrarUsuario =  await _usuarioService.Adicionar(novoUsuario);
+                var registrarUsuario = await _usuarioService.Adicionar(novoUsuario);
 
                 if (!registrarUsuario.IsValid)
                 {
