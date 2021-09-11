@@ -12,7 +12,7 @@ namespace SPCS.Saude.Business.Models
         public string Email { get; private set; }
         public string Cpf { get; private set; }
         public string Imagem { get; private set; }
-        public Sexo Sexo { get; set; }
+        //public Sexo Sexo { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
         public Endereco Endereco { get; set; }
 
@@ -59,9 +59,9 @@ namespace SPCS.Saude.Business.Models
         }
     }
 
-    public enum Sexo
-    {
-        M,
-        F
-    }
+    //public enum Sexo
+    //{
+    //    M,
+    //    F
+    //}
 }

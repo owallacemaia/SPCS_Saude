@@ -74,31 +74,36 @@ namespace SPCS.Saude.API.Controllers
         }
 
         [HttpPost("novo/paciente")]
-        public async Task<ActionResult<UsuarioViewModel>> Cadastrar(PacienteViewModel model)
+        public async Task<IActionResult> Cadastrar(PacienteViewModel model)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(model);
 
-            var usuarioRegistrado = await Registrar(model);
+            var usuario = new Usuario(Guid.NewGuid(), model.Nome, model.Email, model.Cpf, model.TipoUsuario.Id);
 
-            if (!OperacaoValida())
+            var addUsuario = await _usuarioService.Adicionar(usuario);
+
+            if (!addUsuario.IsValid)
+            {
+                AdicionarErroProcessamento("Houve um erro ao tentar cadastrar o paciente");
                 return CustomResponse();
-
-            var paciente = new Paciente(Guid.Parse(usuarioRegistrado.Id));
+            }
+                
+            var paciente = new Paciente(usuario.Id);
 
             var addPaciente = await _pacienteService.Adicionar(paciente);
-            
+
             if(!addPaciente.IsValid)
             {
-                await UserManager.DeleteAsync(usuarioRegistrado);
-                _usuarioRepository.Remover(Guid.Parse(usuarioRegistrado.Id));
+                AdicionarErroProcessamento("Houve um erro ao tentar cadastrar o paciente!");
+                return CustomResponse();
             }
 
             return CustomResponse("Usuario cadastrado");
         }
 
         [HttpPost("novo/medico")]
-        public async Task<ActionResult<UsuarioViewModel>> Cadastrar(MedicoViewModel model)
+        public async Task<IActionResult> Cadastrar(MedicoViewModel model)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(model);
@@ -122,7 +127,7 @@ namespace SPCS.Saude.API.Controllers
         }
 
         [HttpPost("novo/enfermeiro")]
-        public async Task<ActionResult<UsuarioViewModel>> Cadastrar(EnfermeiroViewModel model)
+        public async Task<IActionResult> Cadastrar(EnfermeiroViewModel model)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(model);
