@@ -12,9 +12,10 @@ namespace SPCS.Saude.Business.Models
         public string Email { get; private set; }
         public string Cpf { get; private set; }
         public string Imagem { get; private set; }
-        //public Sexo Sexo { get; set; }
-        public TipoUsuario TipoUsuario { get; set; }
-        public Endereco Endereco { get; set; }
+        public char Sexo { get; private set; }
+        public DateTime DataNascimento { get; private set; }
+        public string Escolaridade { get; set; }
+        public TipoUsuario TipoUsuario { get; private set; }
 
         [JsonIgnore]
         public ValidationResult ValidationResult { get; set; }
@@ -58,10 +59,4 @@ namespace SPCS.Saude.Business.Models
                 .Matches(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})").WithMessage("O campo {PropertyName} esta invalido!");
         }
     }
-
-    //public enum Sexo
-    //{
-    //    M,
-    //    F
-    //}
 }

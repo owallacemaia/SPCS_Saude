@@ -27,9 +27,6 @@ namespace SPCS.Saude.Infra.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(14)");
 
-            builder.HasOne(a => a.Endereco)
-                .WithOne(a => a.Usuario);
-
             builder.ToTable("Usuarios");
         }
     }

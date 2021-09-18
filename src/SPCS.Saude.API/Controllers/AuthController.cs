@@ -64,10 +64,10 @@ namespace SPCS.Saude.API.Controllers
             if (!ModelState.IsValid)
                 return CustomResponse();
 
-            if (await accessManager.ValidateCredentials(usuarioLogin))
-            {
-                return await accessManager.GerarToken(usuarioLogin.Email);
-            }
+            //if (await accessManager.ValidateCredentials(usuarioLogin))
+            //{
+            //    return await accessManager.GerarToken(usuarioLogin.Email);
+            //}
 
             return BadRequest();
         }

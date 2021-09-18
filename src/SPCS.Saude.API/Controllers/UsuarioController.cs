@@ -73,6 +73,7 @@ namespace SPCS.Saude.API.Controllers
             return CustomResponse(_mapper.Map<UsuarioViewModel>(usuario));
         }
 
+        //TODO: Ao criar o usuario adicionar as claims do usuario.
         [HttpPost("novo/paciente")]
         public async Task<IActionResult> Cadastrar(PacienteViewModel model)
         {

@@ -39,40 +39,41 @@ namespace SPCS.Saude.API.Services
             _usuarioService = usuarioService;
         }
 
-        public async Task<bool> ValidateCredentials(UsuarioLogin credenciais)
-        {
-            bool credenciaisValidas = false;
-            if (credenciais != null && !String.IsNullOrWhiteSpace(credenciais.Email))
-            {
-                if (credenciais.GrantType == "password")
-                {
-                    var userIdentity = UserManager.FindByNameAsync(credenciais.Email).Result;
-                    if (userIdentity != null)
-                    {
-                        var resultadoLogin = SignInManager
-                            .PasswordSignInAsync(userIdentity, credenciais.Senha, false, true)
-                            .Result;
+        //TODO: MODIFICAR PARA NAO PRECISAR DE PASSAR O TIPO DE LOGIN E REF TOKEN
+        //public async Task<bool> ValidateCredentials(UsuarioLogin credenciais)
+        //{
+        //    bool credenciaisValidas = false;
+        //    if (credenciais != null && !String.IsNullOrWhiteSpace(credenciais.Email))
+        //    {
+        //        if (credenciais.GrantType == "password")
+        //        {
+        //            var userIdentity = UserManager.FindByNameAsync(credenciais.Email).Result;
+        //            if (userIdentity != null)
+        //            {
+        //                var resultadoLogin = SignInManager
+        //                    .PasswordSignInAsync(userIdentity, credenciais.Senha, false, true)
+        //                    .Result;
 
-                        if (resultadoLogin.Succeeded)
-                            credenciaisValidas = true;
-                    }
-                }
-                else if (credenciais.GrantType == "refresh_token")
-                {
-                    if (!String.IsNullOrWhiteSpace(credenciais.RefreshToken))
-                    {
-                        RefreshTokenData refreshTokenBase = await _usuarioRepository.ObterTokenUsuario(credenciais.Email);
+        //                if (resultadoLogin.Succeeded)
+        //                    credenciaisValidas = true;
+        //            }
+        //        }
+        //        else if (credenciais.GrantType == "refresh_token")
+        //        {
+        //            if (!String.IsNullOrWhiteSpace(credenciais.RefreshToken))
+        //            {
+        //                RefreshTokenData refreshTokenBase = await _usuarioRepository.ObterTokenUsuario(credenciais.Email);
 
 
-                        credenciaisValidas = (refreshTokenBase != null &&
-                            credenciais.Email == refreshTokenBase.Email &&
-                            credenciais.RefreshToken == refreshTokenBase.RefreshToken && refreshTokenBase.Expires < DateTime.UtcNow);
-                    }
-                }
-            }
+        //                credenciaisValidas = (refreshTokenBase != null &&
+        //                    credenciais.Email == refreshTokenBase.Email &&
+        //                    credenciais.RefreshToken == refreshTokenBase.RefreshToken && refreshTokenBase.Expires < DateTime.UtcNow);
+        //            }
+        //        }
+        //    }
 
-            return credenciaisValidas;
-        }
+        //    return credenciaisValidas;
+        //}
 
         public async Task<UsuarioRespostaLogin> GerarToken(string email)
         {

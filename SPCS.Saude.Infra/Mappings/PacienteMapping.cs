@@ -10,6 +10,14 @@ namespace SPCS.Saude.Infra.Mappings
         {
             builder.HasKey(a => a.Id);
 
+            builder.HasOne(a => a.Endereco)
+                .WithOne(a => a.Paciente)
+                .HasForeignKey<Endereco>(a => a.PacienteId);
+
+            builder.HasMany(a => a.Fichas)
+                .WithOne(a => a.Paciente)
+                .HasForeignKey(a => a.PacienteId);
+
             builder.ToTable("Pacientes");
         }
     }
