@@ -89,8 +89,9 @@ namespace SPCS.Saude.API.Controllers
                 AdicionarErroProcessamento("Houve um erro ao tentar cadastrar o paciente");
                 return CustomResponse();
             }
-                
-            var paciente = new Paciente(usuario.Id);
+
+            var endereco = _mapper.Map<Endereco>(model.Endereco);
+            var paciente = new Paciente(usuario.Id, endereco);
 
             var addPaciente = await _pacienteService.Adicionar(paciente);
 
