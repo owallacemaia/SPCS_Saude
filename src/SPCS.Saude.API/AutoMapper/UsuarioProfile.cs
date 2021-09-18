@@ -13,6 +13,7 @@ namespace SPCS.Saude.API.AutoMapper
         public UsuarioProfile()
         {
             CreateMap<UsuarioViewModel, Usuario>().ReverseMap();
+            CreateMap<EnderecoViewModel, Endereco>().ReverseMap();
         }
     }
 }
