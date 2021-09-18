@@ -115,8 +115,8 @@ namespace SPCS.Saude.Business.Models
 
         public Paciente Paciente { get; private set; }
 
-        public Ficha(Guid pacienteId, string municipioTrabalho, bool gestante, bool tabagismo, bool? tabagismoAtual, 
-                     bool? tabagismoAnterior, bool etilismo, bool? etilismoAtual, bool? etilismoAnterior, bool ingestaoCafe, 
+        public Ficha(Guid pacienteId, string municipioTrabalho, bool gestante, bool tabagismo, bool tabagismoAtual, 
+                     bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, bool ingestaoCafe, 
                      double cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, bool contatoPraguicida, string tempoContatoPraguicida, 
                      string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string formaAplicacao, string viaExposicao, bool adoeceu, 
                      string qtdVezesAdoeceu, bool internado, string qtdVezesInternado, string quandoInterndo, string tipoContato,
