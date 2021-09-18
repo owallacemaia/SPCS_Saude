@@ -11,15 +11,14 @@ namespace SPCS.Saude.Business.Models
         public string Complemento { get; private set; }
         public string Bairro { get; private set; }
         public string Cep { get; private set; }
-        public string MunicipioResidencia { get; private set; }
-        public string MunicipioTrabalho { get; private set; }
+        public string Cidade { get; private set; }
         public string Estado { get; private set; }
         public Paciente Paciente { get; private set; }
 
         protected Endereco() { }
 
-        public Endereco(Guid pacienteId, string logradouro, string numero, string complemento, string bairro, string cep, 
-                        string municipioResidencia, string municipioTrabalho, string estado)
+        public Endereco(Guid pacienteId, string logradouro, string numero, string complemento, 
+                    string bairro, string cep, string cidade, string estado, Paciente paciente)
         {
             PacienteId = pacienteId;
             Logradouro = logradouro;
@@ -27,9 +26,9 @@ namespace SPCS.Saude.Business.Models
             Complemento = complemento;
             Bairro = bairro;
             Cep = cep;
-            MunicipioResidencia = municipioResidencia;
-            MunicipioTrabalho = municipioTrabalho;
+            Cidade = cidade;
             Estado = estado;
+            Paciente = paciente;
         }
     }
 }

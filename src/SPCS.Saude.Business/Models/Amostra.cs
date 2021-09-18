@@ -1,13 +1,17 @@
-﻿using NetDevPack.Domain;
-using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SPCS.Saude.Business.Models
 {
-    public class Ficha : Entity, IAggregateRoot
+    class Amostra
     {
-        public Guid PacienteId { get; private set; }
-        public string MunicipioTrabalho { get; private set; }
+        public Guid AmostraId { get; set; }
+        public Guid PacienteId { get; set; }
+        public string IdadeDiscretizado { get; set; }
+        public char Sexo { get; set; }
         public bool Gestante { get; set; }
         public bool Tabagismo { get; set; }
         public bool TabagismoAtual { get; set; }
@@ -16,20 +20,23 @@ namespace SPCS.Saude.Business.Models
         public bool EtilismoAtual { get; set; }
         public bool EtilismoAnterior { get; set; }
         public bool IngestaoCafe { get; set; }
-        public double CafeMlDia { get; set; }
+        public string CafeMldiaDiscretizado { get; set; }
         public string RelacaoTrabalho { get; set; }
         public string FuncaoTrabalho { get; set; }
         public bool ContatoPraguicida { get; set; }
         public string TempoContatoPraguicida { get; set; }
-        public string FrequenciaContatoPraguicida { get; set; }  
+        public string FrequenciaContatoPraguicida { get; set; }
         public string UltimoContatoPraguicida { get; set; }
+        public string ClasseProduto1 { get; set; }
+        public string ClasseProduto2 { get; set; }
+        public string ClasseProduto3 { get; set; }
         public string FormaAplicacao { get; set; }
         public string ViaExposicao { get; set; }
-        public bool Adoeceu { get; set; }
-        public string QtdVezesAdoeceu { get; set; }
+        public string Adoeceu { get; set; }
+        public string NVezesAdoeceu { get; set; }
         public bool Internado { get; set; }
-        public string QtdVezesInternado { get; set; }
-        public string QuandoInterndo { get; set; }
+        public string NvezesInternado { get; set; }
+        public string QuandoInternado { get; set; }
         public string TipoContato { get; set; }
         public bool EquipamentoProtecao { get; set; }
         public bool RoupaProtecao { get; set; }
@@ -92,51 +99,49 @@ namespace SPCS.Saude.Business.Models
         public bool GlandularCancerfamilia { get; set; }
         public bool PeleOssoSangueCancerfamilia { get; set; }
         public bool EdaRegiao { get; set; }
-        public double Ch_t { get; set; }
-        public double Ch_e { get; set; }
-        public double Ch_p { get; set; }
-        public double Ast { get; set; }
-        public double Alt { get; set; }
-        public double Y_gt { get; set; }
-        public double Creatinina { get; set; }
-        public String Ambulatorio { get; set; }
-        public double HabitoAlimentar { get; set; }
-        public double Imc { get; set; }
-        public int CircunferenciaAbdominal { get; set; }
+        public string Ch_t_discretizado { get; set; }
+        public string Ch_e_discretizado { get; set; }
+        public string Ch_p_discretizado { get; set; }
+        public string Ast_discretizado { get; set; }
+        public string Alt_discretizado { get; set; }
+        public string Y_gt_discretizado { get; set; }
+        public string CreatininaDiscretizado { get; set; }
+        public string Ambulatorio { get; set; }
+        public string HabitoAlimentarDiscretizado { get; set; }
+        public string ImcDiscretizado { get; set; }
+        public string CircunferenciaAbdominalDiscretizado { get; set; }
         public bool DificuldadeEngravidar { get; set; }
         public bool AbortoEspontaneo { get; set; }
         public bool TemFilhos { get; set; }
         public bool FilhoMaFormacao { get; set; }
-        public bool MedicamentoContinuo { get; set; }
-        public string Medicamento { get; set; }
-        public bool RemedioMicose { get; set; }
+        public string MedicamentoContinuo { get; set; }
+        public string RemedioMicose { get; set; }
+        public string SiglaDiagnostico { get; set; }
 
-        public string NomeRemedio { get; set; }
-
-        public Paciente Paciente { get; private set; }
-
-        public Ficha(Guid pacienteId, string municipioTrabalho, bool gestante, bool tabagismo, bool? tabagismoAtual, 
-                     bool? tabagismoAnterior, bool etilismo, bool? etilismoAtual, bool? etilismoAnterior, bool ingestaoCafe, 
-                     double cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, bool contatoPraguicida, string tempoContatoPraguicida, 
-                     string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string formaAplicacao, string viaExposicao, bool adoeceu, 
-                     string qtdVezesAdoeceu, bool internado, string qtdVezesInternado, string quandoInterndo, string tipoContato,
-                     bool equipamentoProtecao, bool roupaProtecao, bool botaProtecao, bool luvasProtecao, bool mascaraProtecao, bool oculosProtecao,
-                     bool protetorAuricular, bool doencaCardioVascular, bool hipertensaoArterial, bool hipotensaoArterial, bool arritmia,
-                     bool alteracaoSNervoso, bool dorCabeca, bool fraquezaMuscular, bool tremedeira, bool tremorMuscular, bool visãoTurvaEmbacada,
-                     bool agitacaoIrritabilidade, bool vertigensTonturas, bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio, 
-                     bool colicasDorBarriga, bool dorEstomago, bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia, 
-                     bool aparelhoRespiratorio, bool faltaDeAr, bool irritaçaoNasal, bool catarroEscarro, bool tosse, bool aparelhoAuditivo, 
-                     bool diminuicaoAudicao, bool zumbido, bool peleMucosa, bool dcSensibilizante, bool dcIrritativa, bool irritacaoOcular,
-                     bool aparelhoUrinario, bool diminuicaoUrina, bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao, 
-                     bool teveCancer, bool sncCancer, bool digestorioCcancer, bool respiratorioCancer, bool reprodutorCancer, bool glandularCancer, 
-                     bool peleOssoSangueCancer, bool familiaCancer, bool sNCCancerFamilia, bool digestorioCancerfamilia, bool respiratorioCancerfamilia, 
-                     bool reprodutorCancerfamilia, bool glandularCancerfamilia, bool peleOssoSangueCancerfamilia, bool edaRegiao, double ch_t, 
-                     double ch_e, double ch_p, double ast, double alt, double y_gt, double creatinina, string ambulatorio, double habitoAlimentar,
-                     double imc, int circunferenciaAbdominal, bool dificuldadeEngravidar, bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao,
-                     bool medicamentoContinuo, string medicamento, bool remedioMicose, string nomeRemedio, Paciente paciente)
+        public Amostra(Guid amostraId, Guid pacienteId, string idadeDiscretizado, char sexo, bool gestante, bool tabagismo, bool tabagismoAtual, 
+            bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, bool ingestaoCafe, string cafeMldiaDiscretizado, 
+            string relacaoTrabalho, string funcaoTrabalho, bool contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, 
+            string ultimoContatoPraguicida, string classeProduto1, string classeProduto2, string classeProduto3, string formaAplicacao,
+            string viaExposicao, string adoeceu, string nVezesAdoeceu, bool internado, string nvezesInternado, string quandoInternado, 
+            string tipoContato, bool equipamentoProtecao, bool roupaProtecao, bool botaProtecao, bool luvasProtecao, bool mascaraProtecao, 
+            bool oculosProtecao, bool protetorAuricular, bool doencaCardioVascular, bool hipertensaoArterial, bool hipotensaoArterial, bool arritmia, 
+            bool alteracaoSNervoso, bool dorCabeca, bool fraquezaMuscular, bool tremedeira, bool tremorMuscular, bool visãoTurvaEmbacada, 
+            bool agitacaoIrritabilidade, bool vertigensTonturas, bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio, 
+            bool colicasDorBarriga, bool dorEstomago, bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia, bool aparelhoRespiratorio,
+            bool faltaDeAr, bool irritaçaoNasal, bool catarroEscarro, bool tosse, bool aparelhoAuditivo, bool diminuicaoAudicao, bool zumbido,
+            bool peleMucosa, bool dcSensibilizante, bool dcIrritativa, bool irritacaoOcular, bool aparelhoUrinario, bool diminuicaoUrina, 
+            bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao, bool teveCancer, bool sncCancer, bool digestorioCcancer,
+            bool respiratorioCancer, bool reprodutorCancer, bool glandularCancer, bool peleOssoSangueCancer, bool familiaCancer, bool sNCCancerFamilia,
+            bool digestorioCancerfamilia, bool respiratorioCancerfamilia, bool reprodutorCancerfamilia, bool glandularCancerfamilia, 
+            bool peleOssoSangueCancerfamilia, bool edaRegiao, string ch_t_discretizado, string ch_e_discretizado, string ch_p_discretizado, 
+            string ast_discretizado, string alt_discretizado, string y_gt_discretizado, string creatininaDiscretizado, string ambulatorio, 
+            string habitoAlimentarDiscretizado, string imcDiscretizado, string circunferenciaAbdominalDiscretizado, bool dificuldadeEngravidar, 
+            bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao, string medicamentoContinuo, string remedioMicose, string siglaDiagnostico)
         {
+            AmostraId = amostraId;
             PacienteId = pacienteId;
-            MunicipioTrabalho = municipioTrabalho;
+            IdadeDiscretizado = idadeDiscretizado;
+            Sexo = sexo;
             Gestante = gestante;
             Tabagismo = tabagismo;
             TabagismoAtual = tabagismoAtual;
@@ -145,20 +150,23 @@ namespace SPCS.Saude.Business.Models
             EtilismoAtual = etilismoAtual;
             EtilismoAnterior = etilismoAnterior;
             IngestaoCafe = ingestaoCafe;
-            CafeMlDia = cafeMlDia;
+            CafeMldiaDiscretizado = cafeMldiaDiscretizado;
             RelacaoTrabalho = relacaoTrabalho;
             FuncaoTrabalho = funcaoTrabalho;
             ContatoPraguicida = contatoPraguicida;
             TempoContatoPraguicida = tempoContatoPraguicida;
             FrequenciaContatoPraguicida = frequenciaContatoPraguicida;
             UltimoContatoPraguicida = ultimoContatoPraguicida;
+            ClasseProduto1 = classeProduto1;
+            ClasseProduto2 = classeProduto2;
+            ClasseProduto3 = classeProduto3;
             FormaAplicacao = formaAplicacao;
             ViaExposicao = viaExposicao;
             Adoeceu = adoeceu;
-            QtdVezesAdoeceu = qtdVezesAdoeceu;
+            NVezesAdoeceu = nVezesAdoeceu;
             Internado = internado;
-            QtdVezesInternado = qtdVezesInternado;
-            QuandoInterndo = quandoInterndo;
+            NvezesInternado = nvezesInternado;
+            QuandoInternado = quandoInternado;
             TipoContato = tipoContato;
             EquipamentoProtecao = equipamentoProtecao;
             RoupaProtecao = roupaProtecao;
@@ -221,28 +229,24 @@ namespace SPCS.Saude.Business.Models
             GlandularCancerfamilia = glandularCancerfamilia;
             PeleOssoSangueCancerfamilia = peleOssoSangueCancerfamilia;
             EdaRegiao = edaRegiao;
-            Ch_t = ch_t;
-            Ch_e = ch_e;
-            Ch_p = ch_p;
-            Ast = ast;
-            Alt = alt;
-            Y_gt = y_gt;
-            Creatinina = creatinina;
+            Ch_t_discretizado = ch_t_discretizado;
+            Ch_e_discretizado = ch_e_discretizado;
+            Ch_p_discretizado = ch_p_discretizado;
+            Ast_discretizado = ast_discretizado;
+            Alt_discretizado = alt_discretizado;
+            Y_gt_discretizado = y_gt_discretizado;
+            CreatininaDiscretizado = creatininaDiscretizado;
             Ambulatorio = ambulatorio;
-            HabitoAlimentar = habitoAlimentar;
-            Imc = imc;
-            CircunferenciaAbdominal = circunferenciaAbdominal;
+            HabitoAlimentarDiscretizado = habitoAlimentarDiscretizado;
+            ImcDiscretizado = imcDiscretizado;
+            CircunferenciaAbdominalDiscretizado = circunferenciaAbdominalDiscretizado;
             DificuldadeEngravidar = dificuldadeEngravidar;
             AbortoEspontaneo = abortoEspontaneo;
             TemFilhos = temFilhos;
             FilhoMaFormacao = filhoMaFormacao;
             MedicamentoContinuo = medicamentoContinuo;
-            Medicamento = medicamento;
             RemedioMicose = remedioMicose;
-            NomeRemedio = nomeRemedio;
-            Paciente = paciente;
+            SiglaDiagnostico = siglaDiagnostico;
         }
     }
-
-
 }
