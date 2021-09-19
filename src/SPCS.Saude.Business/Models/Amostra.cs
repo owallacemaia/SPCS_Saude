@@ -8,135 +8,141 @@ namespace SPCS.Saude.Business.Models
 {
     class Amostra
     {
-        public Guid AmostraId { get; set; }
-        public Guid PacienteId { get; set; }
-        public string IdadeDiscretizado { get; set; }
-        public char Sexo { get; set; }
-        public bool Gestante { get; set; }
-        public bool Tabagismo { get; set; }
-        public bool TabagismoAtual { get; set; }
-        public bool TabagismoAnterior { get; set; }
-        public bool Etilismo { get; set; }
-        public bool EtilismoAtual { get; set; }
-        public bool EtilismoAnterior { get; set; }
-        public bool IngestaoCafe { get; set; }
-        public string CafeMldiaDiscretizado { get; set; }
-        public string RelacaoTrabalho { get; set; }
-        public string FuncaoTrabalho { get; set; }
-        public bool ContatoPraguicida { get; set; }
-        public string TempoContatoPraguicida { get; set; }
-        public string FrequenciaContatoPraguicida { get; set; }
-        public string UltimoContatoPraguicida { get; set; }
-        public string ClasseProduto1 { get; set; }
-        public string ClasseProduto2 { get; set; }
-        public string ClasseProduto3 { get; set; }
-        public string FormaAplicacao { get; set; }
-        public string ViaExposicao { get; set; }
-        public string Adoeceu { get; set; }
-        public string NVezesAdoeceu { get; set; }
-        public bool Internado { get; set; }
-        public string NvezesInternado { get; set; }
-        public string QuandoInternado { get; set; }
-        public string TipoContato { get; set; }
-        public bool EquipamentoProtecao { get; set; }
-        public bool RoupaProtecao { get; set; }
-        public bool BotaProtecao { get; set; }
-        public bool LuvasProtecao { get; set; }
-        public bool MascaraProtecao { get; set; }
-        public bool OculosProtecao { get; set; }
-        public bool ProtetorAuricular { get; set; }
-        public bool DoencaCardioVascular { get; set; }
-        public bool HipertensaoArterial { get; set; }
-        public bool HipotensaoArterial { get; set; }
-        public bool Arritmia { get; set; }
-        public bool AlteracaoSNervoso { get; set; }
-        public bool DorCabeca { get; set; }
-        public bool FraquezaMuscular { get; set; }
-        public bool Tremedeira { get; set; }
-        public bool TremorMuscular { get; set; }
-        public bool VisãoTurvaEmbacada { get; set; }
-        public bool AgitacaoIrritabilidade { get; set; }
-        public bool VertigensTonturas { get; set; }
-        public bool Formigamento { get; set; }
-        public bool IncoordenacaoMotora { get; set; }
-        public bool AparelhoDigestorio { get; set; }
-        public bool ColicasDorBarriga { get; set; }
-        public bool DorEstomago { get; set; }
-        public bool AziaQueimacao { get; set; }
-        public bool NauseasEnjoo { get; set; }
-        public bool Vomito { get; set; }
-        public bool Diarreia { get; set; }
-        public bool AparelhoRespiratorio { get; set; }
-        public bool FaltaDeAr { get; set; }
-        public bool IrritaçaoNasal { get; set; }
-        public bool CatarroEscarro { get; set; }
-        public bool Tosse { get; set; }
-        public bool AparelhoAuditivo { get; set; }
-        public bool DiminuicaoAudicao { get; set; }
-        public bool Zumbido { get; set; }
-        public bool PeleMucosa { get; set; }
-        public bool DcSensibilizante { get; set; }
-        public bool DcIrritativa { get; set; }
-        public bool IrritacaoOcular { get; set; }
-        public bool AparelhoUrinario { get; set; }
-        public bool DiminuicaoUrina { get; set; }
-        public bool UrinaescuraSangue { get; set; }
-        public bool Outro { get; set; }
-        public string ExposicaoRaiox { get; set; }
-        public int QuandodiasExposicao { get; set; }
-        public bool TeveCancer { get; set; }
-        public bool SncCancer { get; set; }
-        public bool DigestorioCcancer { get; set; }
-        public bool RespiratorioCancer { get; set; }
-        public bool ReprodutorCancer { get; set; }
-        public bool GlandularCancer { get; set; }
-        public bool PeleOssoSangueCancer { get; set; }
-        public bool FamiliaCancer { get; set; }
-        public bool SNCCancerFamilia { get; set; }
-        public bool DigestorioCancerfamilia { get; set; }
-        public bool RespiratorioCancerfamilia { get; set; }
-        public bool ReprodutorCancerfamilia { get; set; }
-        public bool GlandularCancerfamilia { get; set; }
-        public bool PeleOssoSangueCancerfamilia { get; set; }
-        public bool EdaRegiao { get; set; }
-        public string Ch_t_discretizado { get; set; }
-        public string Ch_e_discretizado { get; set; }
-        public string Ch_p_discretizado { get; set; }
-        public string Ast_discretizado { get; set; }
-        public string Alt_discretizado { get; set; }
-        public string Y_gt_discretizado { get; set; }
-        public string CreatininaDiscretizado { get; set; }
-        public string Ambulatorio { get; set; }
-        public string HabitoAlimentarDiscretizado { get; set; }
-        public string ImcDiscretizado { get; set; }
-        public string CircunferenciaAbdominalDiscretizado { get; set; }
-        public bool DificuldadeEngravidar { get; set; }
-        public bool AbortoEspontaneo { get; set; }
-        public bool TemFilhos { get; set; }
-        public bool FilhoMaFormacao { get; set; }
-        public string MedicamentoContinuo { get; set; }
-        public string RemedioMicose { get; set; }
-        public string SiglaDiagnostico { get; set; }
+        public Guid AmostraId { get; private set; }
+        public Guid PacienteId { get; private set; }
+        public string IdadeDiscretizado { get; private set; }
+        public char Sexo { get; private set; }
+        public bool Gestante { get; private set; }
+        public bool Tabagismo { get; private set; }
+        public bool TabagismoAtual { get; private set; }
+        public bool TabagismoAnterior { get; private set; }
+        public bool Etilismo { get; private set; }
+        public bool EtilismoAtual { get; private set; }
+        public bool EtilismoAnterior { get; private set; }
+        public bool IngestaoCafe { get; private set; }
+        public string CafeMldiaDiscretizado { get; private set; }
+        public string RelacaoTrabalho { get; private set; }
+        public string FuncaoTrabalho { get; private set; }
+        public bool ContatoPraguicida { get; private set; }
+        public string TempoContatoPraguicida { get; private set; }
+        public string FrequenciaContatoPraguicida { get; private set; }
+        public string UltimoContatoPraguicida { get; private set; }
+        public string ClasseProduto1 { get; private set; }
+        public string ClasseProduto2 { get; private set; }
+        public string ClasseProduto3 { get; private set; }
+        public string FormaAplicacao { get; private set; }
+        public string ViaExposicao { get; private set; }
+        public string Adoeceu { get; private set; }
+        public string NVezesAdoeceu { get; private set; }
+        public bool Internado { get; private set; }
+        public string NvezesInternado { get; private set; }
+        public string QuandoInternado { get; private set; }
+        public string TipoContato { get; private set; }
+        public bool EquipamentoProtecao { get; private set; }
+        public bool RoupaProtecao { get; private set; }
+        public bool BotaProtecao { get; private set; }
+        public bool LuvasProtecao { get; private set; }
+        public bool MascaraProtecao { get; private set; }
+        public bool OculosProtecao { get; private set; }
+        public bool ProtetorAuricular { get; private set; }
+        public bool DoencaCardioVascular { get; private set; }
+        public bool HipertensaoArterial { get; private set; }
+        public bool HipotensaoArterial { get; private set; }
+        public bool Arritmia { get; private set; }
+        public bool AlteracaoSNervoso { get; private set; }
+        public bool DorCabeca { get; private set; }
+        public bool FraquezaMuscular { get; private set; }
+        public bool Tremedeira { get; private set; }
+        public bool TremorMuscular { get; private set; }
+        public bool VisãoTurvaEmbacada { get; private set; }
+        public bool AgitacaoIrritabilidade { get; private set; }
+        public bool VertigensTonturas { get; private set; }
+        public bool Formigamento { get; private set; }
+        public bool IncoordenacaoMotora { get; private set; }
+        public bool AparelhoDigestorio { get; private set; }
+        public bool ColicasDorBarriga { get; private set; }
+        public bool DorEstomago { get; private set; }
+        public bool AziaQueimacao { get; private set; }
+        public bool NauseasEnjoo { get; private set; }
+        public bool Vomito { get; private set; }
+        public bool Diarreia { get; private set; }
+        public bool AparelhoRespiratorio { get; private set; }
+        public bool FaltaDeAr { get; private set; }
+        public bool IrritaçaoNasal { get; private set; }
+        public bool CatarroEscarro { get; private set; }
+        public bool Tosse { get; private set; }
+        public bool AparelhoAuditivo { get; private set; }
+        public bool DiminuicaoAudicao { get; private set; }
+        public bool Zumbido { get; private set; }
+        public bool PeleMucosa { get; private set; }
+        public bool DcSensibilizante { get; private set; }
+        public bool DcIrritativa { get; private set; }
+        public bool IrritacaoOcular { get; private set; }
+        public bool AparelhoUrinario { get; private set; }
+        public bool DiminuicaoUrina { get; private set; }
+        public bool UrinaescuraSangue { get; private set; }
+        public bool Outro { get; private set; }
+        public string ExposicaoRaiox { get; private set; }
+        public int QuandodiasExposicao { get; private set; }
+        public bool TeveCancer { get; private set; }
+        public bool SncCancer { get; private set; }
+        public bool DigestorioCcancer { get; private set; }
+        public bool RespiratorioCancer { get; private set; }
+        public bool ReprodutorCancer { get; private set; }
+        public bool GlandularCancer { get; private set; }
+        public bool PeleOssoSangueCancer { get; private set; }
+        public bool FamiliaCancer { get; private set; }
+        public bool SNCCancerFamilia { get; private set; }
+        public bool DigestorioCancerfamilia { get; private set; }
+        public bool RespiratorioCancerfamilia { get; private set; }
+        public bool ReprodutorCancerfamilia { get; private set; }
+        public bool GlandularCancerfamilia { get; private set; }
+        public bool PeleOssoSangueCancerfamilia { get; private set; }
+        public bool EdaRegiao { get; private set; }
+        public string Ch_t_discretizado { get; private set; }
+        public string Ch_e_discretizado { get; private set; }
+        public string Ch_p_discretizado { get; private set; }
+        public string Ast_discretizado { get; private set; }
+        public string Alt_discretizado { get; private set; }
+        public string Y_gt_discretizado { get; private set; }
+        public string CreatininaDiscretizado { get; private set; }
+        public string Ambulatorio { get; private set; }
+        public string HabitoAlimentarDiscretizado { get; private set; }
+        public string ImcDiscretizado { get; private set; }
+        public string CircunferenciaAbdominalDiscretizado { get; private set; }
+        public bool DificuldadeEngravidar { get; private set; }
+        public bool AbortoEspontaneo { get; private set; }
+        public bool TemFilhos { get; private set; }
+        public bool FilhoMaFormacao { get; private set; }
+        public string MedicamentoContinuo { get; private set; }
+        public string RemedioMicose { get; private set; }
+        public string SiglaDiagnostico { get; private set; }
 
-        public Amostra(Guid amostraId, Guid pacienteId, string idadeDiscretizado, char sexo, bool gestante, bool tabagismo, bool tabagismoAtual, 
-            bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, bool ingestaoCafe, string cafeMldiaDiscretizado, 
-            string relacaoTrabalho, string funcaoTrabalho, bool contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, 
-            string ultimoContatoPraguicida, string classeProduto1, string classeProduto2, string classeProduto3, string formaAplicacao,
-            string viaExposicao, string adoeceu, string nVezesAdoeceu, bool internado, string nvezesInternado, string quandoInternado, 
-            string tipoContato, bool equipamentoProtecao, bool roupaProtecao, bool botaProtecao, bool luvasProtecao, bool mascaraProtecao, 
-            bool oculosProtecao, bool protetorAuricular, bool doencaCardioVascular, bool hipertensaoArterial, bool hipotensaoArterial, bool arritmia, 
-            bool alteracaoSNervoso, bool dorCabeca, bool fraquezaMuscular, bool tremedeira, bool tremorMuscular, bool visãoTurvaEmbacada, 
-            bool agitacaoIrritabilidade, bool vertigensTonturas, bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio, 
-            bool colicasDorBarriga, bool dorEstomago, bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia, bool aparelhoRespiratorio,
-            bool faltaDeAr, bool irritaçaoNasal, bool catarroEscarro, bool tosse, bool aparelhoAuditivo, bool diminuicaoAudicao, bool zumbido,
-            bool peleMucosa, bool dcSensibilizante, bool dcIrritativa, bool irritacaoOcular, bool aparelhoUrinario, bool diminuicaoUrina, 
-            bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao, bool teveCancer, bool sncCancer, bool digestorioCcancer,
-            bool respiratorioCancer, bool reprodutorCancer, bool glandularCancer, bool peleOssoSangueCancer, bool familiaCancer, bool sNCCancerFamilia,
-            bool digestorioCancerfamilia, bool respiratorioCancerfamilia, bool reprodutorCancerfamilia, bool glandularCancerfamilia, 
-            bool peleOssoSangueCancerfamilia, bool edaRegiao, string ch_t_discretizado, string ch_e_discretizado, string ch_p_discretizado, 
-            string ast_discretizado, string alt_discretizado, string y_gt_discretizado, string creatininaDiscretizado, string ambulatorio, 
-            string habitoAlimentarDiscretizado, string imcDiscretizado, string circunferenciaAbdominalDiscretizado, bool dificuldadeEngravidar, 
-            bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao, string medicamentoContinuo, string remedioMicose, string siglaDiagnostico)
+        public Amostra(Guid amostraId, Guid pacienteId, string idadeDiscretizado, char sexo, bool gestante, bool tabagismo,
+            bool tabagismoAtual, bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, 
+            bool ingestaoCafe, string cafeMldiaDiscretizado, string relacaoTrabalho, string funcaoTrabalho, 
+            bool contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, 
+            string ultimoContatoPraguicida, string classeProduto1, string classeProduto2, string classeProduto3, 
+            string formaAplicacao, string viaExposicao, string adoeceu, string nVezesAdoeceu, bool internado, 
+            string nvezesInternado, string quandoInternado, string tipoContato, bool equipamentoProtecao, 
+            bool roupaProtecao, bool botaProtecao, bool luvasProtecao, bool mascaraProtecao, bool oculosProtecao, 
+            bool protetorAuricular, bool doencaCardioVascular, bool hipertensaoArterial, bool hipotensaoArterial, 
+            bool arritmia, bool alteracaoSNervoso, bool dorCabeca, bool fraquezaMuscular, bool tremedeira, 
+            bool tremorMuscular, bool visãoTurvaEmbacada, bool agitacaoIrritabilidade, bool vertigensTonturas, 
+            bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio, bool colicasDorBarriga, bool dorEstomago, 
+            bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia, bool aparelhoRespiratorio, bool faltaDeAr, 
+            bool irritaçaoNasal, bool catarroEscarro, bool tosse, bool aparelhoAuditivo, bool diminuicaoAudicao, bool zumbido,
+            bool peleMucosa, bool dcSensibilizante, bool dcIrritativa, bool irritacaoOcular, bool aparelhoUrinario, 
+            bool diminuicaoUrina, bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao, 
+            bool teveCancer, bool sncCancer, bool digestorioCcancer, bool respiratorioCancer, bool reprodutorCancer, 
+            bool glandularCancer, bool peleOssoSangueCancer, bool familiaCancer, bool sNCCancerFamilia,
+            bool digestorioCancerfamilia, bool respiratorioCancerfamilia, bool reprodutorCancerfamilia, 
+            bool glandularCancerfamilia, bool peleOssoSangueCancerfamilia, bool edaRegiao, string ch_t_discretizado, 
+            string ch_e_discretizado, string ch_p_discretizado, string ast_discretizado, string alt_discretizado, 
+            string y_gt_discretizado, string creatininaDiscretizado, string ambulatorio, string habitoAlimentarDiscretizado, 
+            string imcDiscretizado, string circunferenciaAbdominalDiscretizado, bool dificuldadeEngravidar, 
+            bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao, string medicamentoContinuo, string remedioMicose, 
+            string siglaDiagnostico)
         {
             AmostraId = amostraId;
             PacienteId = pacienteId;
