@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NetDevPack.Domain;
+using System;
 
 namespace SPCS.Saude.Business.Models
 {
-    class Amostra
+    public class Amostra : Entity, IAggregateRoot
     {
-        public Guid AmostraId { get; private set; }
         public Guid PacienteId { get; private set; }
         public string IdadeDiscretizado { get; private set; }
         public char Sexo { get; private set; }
@@ -54,7 +50,7 @@ namespace SPCS.Saude.Business.Models
         public bool FraquezaMuscular { get; private set; }
         public bool Tremedeira { get; private set; }
         public bool TremorMuscular { get; private set; }
-        public bool VisãoTurvaEmbacada { get; private set; }
+        public bool VisaoTurvaEmbacada { get; private set; }
         public bool AgitacaoIrritabilidade { get; private set; }
         public bool VertigensTonturas { get; private set; }
         public bool Formigamento { get; private set; }
@@ -118,33 +114,34 @@ namespace SPCS.Saude.Business.Models
         public string RemedioMicose { get; private set; }
         public string SiglaDiagnostico { get; private set; }
 
-        public Amostra(Guid amostraId, Guid pacienteId, string idadeDiscretizado, char sexo, bool gestante, bool tabagismo,
-            bool tabagismoAtual, bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, 
-            bool ingestaoCafe, string cafeMldiaDiscretizado, string relacaoTrabalho, string funcaoTrabalho, 
-            bool contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, 
-            string ultimoContatoPraguicida, string classeProduto1, string classeProduto2, string classeProduto3, 
-            string formaAplicacao, string viaExposicao, string adoeceu, string nVezesAdoeceu, bool internado, 
-            string nvezesInternado, string quandoInternado, string tipoContato, bool equipamentoProtecao, 
-            bool roupaProtecao, bool botaProtecao, bool luvasProtecao, bool mascaraProtecao, bool oculosProtecao, 
-            bool protetorAuricular, bool doencaCardioVascular, bool hipertensaoArterial, bool hipotensaoArterial, 
-            bool arritmia, bool alteracaoSNervoso, bool dorCabeca, bool fraquezaMuscular, bool tremedeira, 
-            bool tremorMuscular, bool visãoTurvaEmbacada, bool agitacaoIrritabilidade, bool vertigensTonturas, 
-            bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio, bool colicasDorBarriga, bool dorEstomago, 
-            bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia, bool aparelhoRespiratorio, bool faltaDeAr, 
+        protected Amostra() { }
+
+        public Amostra(Guid pacienteId, string idadeDiscretizado, char sexo, bool gestante, bool tabagismo,
+            bool tabagismoAtual, bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior,
+            bool ingestaoCafe, string cafeMldiaDiscretizado, string relacaoTrabalho, string funcaoTrabalho,
+            bool contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida,
+            string ultimoContatoPraguicida, string classeProduto1, string classeProduto2, string classeProduto3,
+            string formaAplicacao, string viaExposicao, string adoeceu, string nVezesAdoeceu, bool internado,
+            string nvezesInternado, string quandoInternado, string tipoContato, bool equipamentoProtecao,
+            bool roupaProtecao, bool botaProtecao, bool luvasProtecao, bool mascaraProtecao, bool oculosProtecao,
+            bool protetorAuricular, bool doencaCardioVascular, bool hipertensaoArterial, bool hipotensaoArterial,
+            bool arritmia, bool alteracaoSNervoso, bool dorCabeca, bool fraquezaMuscular, bool tremedeira,
+            bool tremorMuscular, bool visãoTurvaEmbacada, bool agitacaoIrritabilidade, bool vertigensTonturas,
+            bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio, bool colicasDorBarriga, bool dorEstomago,
+            bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia, bool aparelhoRespiratorio, bool faltaDeAr,
             bool irritaçaoNasal, bool catarroEscarro, bool tosse, bool aparelhoAuditivo, bool diminuicaoAudicao, bool zumbido,
-            bool peleMucosa, bool dcSensibilizante, bool dcIrritativa, bool irritacaoOcular, bool aparelhoUrinario, 
-            bool diminuicaoUrina, bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao, 
-            bool teveCancer, bool sncCancer, bool digestorioCcancer, bool respiratorioCancer, bool reprodutorCancer, 
+            bool peleMucosa, bool dcSensibilizante, bool dcIrritativa, bool irritacaoOcular, bool aparelhoUrinario,
+            bool diminuicaoUrina, bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao,
+            bool teveCancer, bool sncCancer, bool digestorioCcancer, bool respiratorioCancer, bool reprodutorCancer,
             bool glandularCancer, bool peleOssoSangueCancer, bool familiaCancer, bool sNCCancerFamilia,
-            bool digestorioCancerfamilia, bool respiratorioCancerfamilia, bool reprodutorCancerfamilia, 
-            bool glandularCancerfamilia, bool peleOssoSangueCancerfamilia, bool edaRegiao, string ch_t_discretizado, 
-            string ch_e_discretizado, string ch_p_discretizado, string ast_discretizado, string alt_discretizado, 
-            string y_gt_discretizado, string creatininaDiscretizado, string ambulatorio, string habitoAlimentarDiscretizado, 
-            string imcDiscretizado, string circunferenciaAbdominalDiscretizado, bool dificuldadeEngravidar, 
-            bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao, string medicamentoContinuo, string remedioMicose, 
+            bool digestorioCancerfamilia, bool respiratorioCancerfamilia, bool reprodutorCancerfamilia,
+            bool glandularCancerfamilia, bool peleOssoSangueCancerfamilia, bool edaRegiao, string ch_t_discretizado,
+            string ch_e_discretizado, string ch_p_discretizado, string ast_discretizado, string alt_discretizado,
+            string y_gt_discretizado, string creatininaDiscretizado, string ambulatorio, string habitoAlimentarDiscretizado,
+            string imcDiscretizado, string circunferenciaAbdominalDiscretizado, bool dificuldadeEngravidar,
+            bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao, string medicamentoContinuo, string remedioMicose,
             string siglaDiagnostico)
         {
-            AmostraId = amostraId;
             PacienteId = pacienteId;
             IdadeDiscretizado = idadeDiscretizado;
             Sexo = sexo;
@@ -190,7 +187,7 @@ namespace SPCS.Saude.Business.Models
             FraquezaMuscular = fraquezaMuscular;
             Tremedeira = tremedeira;
             TremorMuscular = tremorMuscular;
-            VisãoTurvaEmbacada = visãoTurvaEmbacada;
+            VisaoTurvaEmbacada = visãoTurvaEmbacada;
             AgitacaoIrritabilidade = agitacaoIrritabilidade;
             VertigensTonturas = vertigensTonturas;
             Formigamento = formigamento;

@@ -29,11 +29,7 @@ namespace SPCS.Saude.Infra.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(100)");
 
-            builder.Property(c => c.MunicipioResidencia)
-                .IsRequired()
-                .HasColumnType("varchar(100)");
-
-            builder.Property(c => c.MunicipioTrabalho)
+            builder.Property(c => c.Cidade)
                 .IsRequired()
                 .HasColumnType("varchar(100)");
 

@@ -115,6 +115,8 @@ namespace SPCS.Saude.Business.Models
 
         public Paciente Paciente { get; private set; }
 
+        protected Ficha() { }
+
         public Ficha(Guid pacienteId, string municipioTrabalho, bool gestante, bool tabagismo, bool tabagismoAtual, 
                      bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, bool ingestaoCafe, 
                      double cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, bool contatoPraguicida, string tempoContatoPraguicida, 
@@ -243,6 +245,4 @@ namespace SPCS.Saude.Business.Models
             Paciente = paciente;
         }
     }
-
-
 }

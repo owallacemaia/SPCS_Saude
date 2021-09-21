@@ -31,6 +31,10 @@ namespace SPCS.Saude.API.Configuration
             //Enfermeiro
             services.AddScoped<IEnfermeiroRepository, EnfermeiroRepository>();
             services.AddScoped<IEnfermeiroService, EnfermeiroService>();
+
+            //Ficha
+            services.AddScoped<IFichaRepository, FichaRepository>();
+            services.AddScoped<IFichaService, FichaService>();
         }
     }
 }
