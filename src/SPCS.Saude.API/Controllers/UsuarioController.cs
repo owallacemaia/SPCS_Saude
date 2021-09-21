@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SPCS.Saude.API.Data;
 using SPCS.Saude.API.ViewModels;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
-using SPCS.Saude.Core.Identidade;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,11 +20,14 @@ namespace SPCS.Saude.API.Controllers
         private readonly IEnfermeiroService _enfermeiroService;
         public readonly SignInManager<IdentityUser> SignInManager;
         public readonly UserManager<IdentityUser> UserManager;
+        public readonly ApplicationDbContext _context;
 
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IMapper _mapper;
 
-        public UsuarioController(IPacienteService pacienteService, IUsuarioService usuarioService, IMedicoService medicoService, IEnfermeiroService enfermeiroService, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IUsuarioRepository usuarioRepository, IMapper mapper)
+        public UsuarioController(IPacienteService pacienteService, IUsuarioService usuarioService, IMedicoService medicoService, IEnfermeiroService enfermeiroService,
+                                 SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, ApplicationDbContext context, IUsuarioRepository usuarioRepository,
+                                 IMapper mapper)
         {
             _pacienteService = pacienteService;
             _usuarioService = usuarioService;
@@ -33,6 +35,7 @@ namespace SPCS.Saude.API.Controllers
             _enfermeiroService = enfermeiroService;
             SignInManager = signInManager;
             UserManager = userManager;
+            _context = context;
             _usuarioRepository = usuarioRepository;
             _mapper = mapper;
         }
@@ -50,7 +53,7 @@ namespace SPCS.Saude.API.Controllers
         {
             var usuario = await _usuarioRepository.ObterPorId(id);
 
-            if(usuario == null && usuario.Id !=  id)
+            if (usuario == null && usuario.Id != id)
             {
                 AdicionarErroProcessamento("Usuário não encontrado! Confirme o ID informado.");
                 return CustomResponse();
@@ -95,7 +98,7 @@ namespace SPCS.Saude.API.Controllers
 
             var addPaciente = await _pacienteService.Adicionar(paciente);
 
-            if(!addPaciente.IsValid)
+            if (!addPaciente.IsValid)
             {
                 AdicionarErroProcessamento("Houve um erro ao tentar cadastrar o paciente!");
                 return CustomResponse();
@@ -125,6 +128,8 @@ namespace SPCS.Saude.API.Controllers
                 _usuarioRepository.Remover(Guid.Parse(usuarioRegistrado.Id));
             }
 
+            await AdicionarPermissoes(usuarioRegistrado, model.TipoUsuario);
+
             return CustomResponse("Usuario Cadastrado");
         }
 
@@ -136,7 +141,7 @@ namespace SPCS.Saude.API.Controllers
 
             var usuarioRegistrado = await Registrar(model);
 
-            if (!OperacaoValida())
+            if (!OperacaoValida() || usuarioRegistrado == null)
                 return CustomResponse();
 
             var enfermeiro = new Enfermeiro(Guid.Parse(usuarioRegistrado.Id), model.Coren);
@@ -148,6 +153,8 @@ namespace SPCS.Saude.API.Controllers
                 await UserManager.DeleteAsync(usuarioRegistrado);
                 _usuarioRepository.Remover(Guid.Parse(usuarioRegistrado.Id));
             }
+
+            await AdicionarPermissoes(usuarioRegistrado, model.TipoUsuario);
 
             return CustomResponse("Usuario Cadastrado");
         }
@@ -173,7 +180,7 @@ namespace SPCS.Saude.API.Controllers
                 else
                     return user;
             }
-            
+
             foreach (var error in result.Errors)
             {
                 AdicionarErroProcessamento(error.Description);
@@ -182,5 +189,32 @@ namespace SPCS.Saude.API.Controllers
             return null;
         }
 
+
+        private async Task AdicionarPermissoes(IdentityUser user, TipoUsuario tipoUsuario)
+        {
+            string permissoes = null;
+            switch (tipoUsuario.Descricao)
+            {
+                case "Medico":
+                    {
+                        permissoes = "Criar, Visualizar, Alterar, Excluir";
+                        break;
+                    }
+                case "Enfermeiro":
+                    {
+                        permissoes = "Criar, Visualizar, Alterar";
+                        break;
+                    }
+            }
+
+            var claim = new IdentityUserClaim<string>
+            {
+                ClaimType = tipoUsuario.Descricao,
+                ClaimValue = permissoes,
+                UserId = user.Id
+            };
+
+            await _context.UserClaims.AddAsync(claim);
+        }
     }
 }
