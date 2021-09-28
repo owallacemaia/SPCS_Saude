@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SPCS.Saude.Infra\SPCS.Saude.Infra.csproj" />
     <ProjectReference Include="..\SPCS.Saude.Business\SPCS.Saude.Business.csproj" />
     <ProjectReference Include="..\SPCS.Saude.Core\SPCS.Saude.Core.csproj" />
+    <ProjectReference Include="..\SPCS.Saude.Infra\SPCS.Saude.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>
