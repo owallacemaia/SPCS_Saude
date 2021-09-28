@@ -1,5 +1,6 @@
 ﻿using SPCS.Saude.Core.DomainObjects;
 using System;
+using System.Collections.Generic;
 
 namespace SPCS.Saude.Business.Models
 {
@@ -109,8 +110,8 @@ namespace SPCS.Saude.Business.Models
         public bool MedicamentoContinuo { get; private set; }
         public string Medicamento { get; private set; }
         public bool RemedioMicose { get; private set; }
-
         public string NomeRemedio { get; private set; }
+        public virtual IEnumerable<FichaAgro> Agrotoxicos { get; set; }
 
         public Paciente Paciente { get; private set; }
 

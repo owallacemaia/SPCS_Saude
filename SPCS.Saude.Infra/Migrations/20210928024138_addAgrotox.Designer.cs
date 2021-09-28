@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SPCS.Saude.Infra.Context;
 
 namespace SPCS.Saude.Infra.Migrations
 {
     [DbContext(typeof(PrincipalDbContext))]
-    partial class PrincipalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210928024138_addAgrotox")]
+    partial class addAgrotox
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -432,24 +434,6 @@ namespace SPCS.Saude.Infra.Migrations
                     b.ToTable("Fichas");
                 });
 
-            modelBuilder.Entity("SPCS.Saude.Business.Models.FichaAgro", b =>
-                {
-                    b.Property<Guid>("FichaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AgrotoxicoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("FichaId", "AgrotoxicoId");
-
-                    b.HasIndex("AgrotoxicoId");
-
-                    b.ToTable("FichaAgro");
-                });
-
             modelBuilder.Entity("SPCS.Saude.Business.Models.Medico", b =>
                 {
                     b.Property<Guid>("Id")
@@ -581,23 +565,6 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Navigation("Paciente");
                 });
 
-            modelBuilder.Entity("SPCS.Saude.Business.Models.FichaAgro", b =>
-                {
-                    b.HasOne("SPCS.Saude.Business.Models.Agrotoxico", "Agrotoxico")
-                        .WithMany("Fichas")
-                        .HasForeignKey("AgrotoxicoId")
-                        .IsRequired();
-
-                    b.HasOne("SPCS.Saude.Business.Models.Ficha", "Ficha")
-                        .WithMany("Agrotoxicos")
-                        .HasForeignKey("FichaId")
-                        .IsRequired();
-
-                    b.Navigation("Agrotoxico");
-
-                    b.Navigation("Ficha");
-                });
-
             modelBuilder.Entity("SPCS.Saude.Business.Models.Usuario", b =>
                 {
                     b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
@@ -605,16 +572,6 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasForeignKey("TipoUsuarioId");
 
                     b.Navigation("TipoUsuario");
-                });
-
-            modelBuilder.Entity("SPCS.Saude.Business.Models.Agrotoxico", b =>
-                {
-                    b.Navigation("Fichas");
-                });
-
-            modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>
-                {
-                    b.Navigation("Agrotoxicos");
                 });
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Paciente", b =>

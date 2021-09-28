@@ -31,6 +31,10 @@ namespace SPCS.Saude.API.Configuration
             //Ficha
             services.AddScoped<IFichaRepository, FichaRepository>();
             services.AddScoped<IFichaService, FichaService>();
+
+            //Agrotoxico
+            services.AddScoped<IAgrotoxicoRepository, AgrotoxicoRepository>();
+            services.AddScoped<IAgrotoxicoService, AgrotoxicoService>();
         }
     }
 }
