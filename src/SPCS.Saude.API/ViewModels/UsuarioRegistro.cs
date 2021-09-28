@@ -25,7 +25,7 @@ namespace SPCS.Saude.API.ViewModels
         public string SenhaConfirmacao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public TipoUsuario TipoUsuario { get; set; }
+        public Guid TipoUsuarioId { get; set; }
     }
 
     public class UsuarioLogin
