@@ -58,7 +58,7 @@ namespace SPCS.Saude.API.Configuration
             app.UseCors("Total");
 
             app.UseAuthConfiguration();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -19,7 +19,7 @@ namespace SPCS.Saude.API.Configuration
         public static void UseSwaggerConfig(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            { 
+            {
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SPCS.Saude.API v1"));
             }

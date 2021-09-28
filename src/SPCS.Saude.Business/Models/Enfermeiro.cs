@@ -1,4 +1,4 @@
-﻿using NetDevPack.Domain;
+﻿using SPCS.Saude.Core.DomainObjects;
 using System;
 
 namespace SPCS.Saude.Business.Models
@@ -14,6 +14,11 @@ namespace SPCS.Saude.Business.Models
         {
             UsuarioId = usuarioId;
             Coren = coren;
+        }
+
+        internal bool IsValid()
+        {
+            return true;
         }
     }
 }

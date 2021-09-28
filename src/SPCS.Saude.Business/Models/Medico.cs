@@ -1,9 +1,5 @@
-﻿using NetDevPack.Domain;
+﻿using SPCS.Saude.Core.DomainObjects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPCS.Saude.Business.Models
 {
@@ -19,6 +15,11 @@ namespace SPCS.Saude.Business.Models
         {
             UsuarioId = usuarioId;
             Crm = crm;
+        }
+
+        internal bool IsValid()
+        {
+            return true;
         }
     }
 }

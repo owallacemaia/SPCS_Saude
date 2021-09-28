@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using NetDevPack.Data;
+﻿using eShop.Core.Data;
+using Microsoft.EntityFrameworkCore;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using SPCS.Saude.Infra.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.Infra.Repository
@@ -21,7 +20,7 @@ namespace SPCS.Saude.Infra.Repository
         }
 
         public IUnitOfWork UnitOfWork => _context;
-        
+
         public void Adicionar(Usuario usuario)
         {
             _context.Attach(usuario.TipoUsuario);

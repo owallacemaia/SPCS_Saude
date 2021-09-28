@@ -17,6 +17,9 @@ namespace SPCS.Saude.Business.Services
 
         public async Task<ValidationResult> Adicionar(Paciente paciente)
         {
+            if (!paciente.IsValid())
+                return paciente.ValidationResult;
+
             _pacienteRepository.Adicionar(paciente);
             return await PersistirDados(_pacienteRepository.UnitOfWork);
         }

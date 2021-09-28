@@ -38,7 +38,7 @@ namespace SPCS.Saude.API.Controllers
 
             if (result.Succeeded)
             {
-                var novoUsuario = new Usuario(Guid.Parse(user.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf, usuarioRegistro.TipoUsuarioId);
+                var novoUsuario = new Usuario(Guid.Parse(user.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf, usuarioRegistro.TipoUsuario);
                 var registrarUsuario = await _usuarioService.Adicionar(novoUsuario);
 
                 if (!registrarUsuario.IsValid)
@@ -64,10 +64,10 @@ namespace SPCS.Saude.API.Controllers
             if (!ModelState.IsValid)
                 return CustomResponse();
 
-            //if (await accessManager.ValidateCredentials(usuarioLogin))
-            //{
-            //    return await accessManager.GerarToken(usuarioLogin.Email);
-            //}
+            if (await accessManager.ValidateCredentials(usuarioLogin))
+            {
+                return await accessManager.GerarToken(usuarioLogin.Email);
+            }
 
             return BadRequest();
         }

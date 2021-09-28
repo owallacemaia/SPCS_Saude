@@ -1,4 +1,4 @@
-﻿using NetDevPack.Domain;
+﻿using SPCS.Saude.Core.DomainObjects;
 using System;
 
 namespace SPCS.Saude.Business.Models
@@ -17,7 +17,7 @@ namespace SPCS.Saude.Business.Models
 
         protected Endereco() { }
 
-        public Endereco(Guid pacienteId, string logradouro, string numero, string complemento, 
+        public Endereco(Guid pacienteId, string logradouro, string numero, string complemento,
                     string bairro, string cep, string cidade, string estado, Paciente paciente)
         {
             PacienteId = pacienteId;
@@ -29,6 +29,10 @@ namespace SPCS.Saude.Business.Models
             Cidade = cidade;
             Estado = estado;
             Paciente = paciente;
+        }
+        internal bool IsValid()
+        {
+            return true;
         }
     }
 }

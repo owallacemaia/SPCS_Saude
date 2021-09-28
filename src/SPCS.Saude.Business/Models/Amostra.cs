@@ -1,4 +1,4 @@
-﻿using NetDevPack.Domain;
+﻿using SPCS.Saude.Core.DomainObjects;
 using System;
 
 namespace SPCS.Saude.Business.Models
@@ -250,6 +250,11 @@ namespace SPCS.Saude.Business.Models
             MedicamentoContinuo = medicamentoContinuo;
             RemedioMicose = remedioMicose;
             SiglaDiagnostico = siglaDiagnostico;
+        }
+
+        internal bool IsValid()
+        {
+            return true;
         }
     }
 }

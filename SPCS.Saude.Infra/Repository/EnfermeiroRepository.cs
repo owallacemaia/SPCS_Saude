@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using NetDevPack.Data;
+﻿using eShop.Core.Data;
+using Microsoft.EntityFrameworkCore;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using SPCS.Saude.Infra.Context;
@@ -7,7 +7,7 @@ using System;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.Infra.Repository
-{ 
+{
     public class EnfermeiroRepository : IEnfermeiroRepository
     {
         private readonly PrincipalDbContext _context;

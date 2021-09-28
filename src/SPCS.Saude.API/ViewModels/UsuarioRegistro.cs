@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SPCS.Saude.API.ViewModels
 {
-    public class UsuarioRegistro 
+    public class UsuarioRegistro
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Nome { get; set; }
@@ -25,7 +25,7 @@ namespace SPCS.Saude.API.ViewModels
         public string SenhaConfirmacao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public Guid TipoUsuarioId { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }
     }
 
     public class UsuarioLogin

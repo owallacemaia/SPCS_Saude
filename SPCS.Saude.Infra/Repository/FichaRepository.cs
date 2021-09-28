@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using NetDevPack.Data;
+﻿using eShop.Core.Data;
+using Microsoft.EntityFrameworkCore;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using SPCS.Saude.Infra.Context;

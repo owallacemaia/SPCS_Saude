@@ -17,6 +17,9 @@ namespace SPCS.Saude.Business.Services
 
         public async Task<ValidationResult> Adicionar(Ficha ficha)
         {
+            if (!ficha.IsValid())
+                return ficha.ValidationResult;
+
             _fichaRepository.Adicionar(ficha);
 
             return await PersistirDados(_fichaRepository.UnitOfWork);
@@ -24,7 +27,12 @@ namespace SPCS.Saude.Business.Services
 
         public async Task<ValidationResult> Atualizar(Ficha ficha)
         {
-            throw new NotImplementedException();
+            if (!ficha.IsValid())
+                return ficha.ValidationResult;
+
+            _fichaRepository.Atualizar(ficha);
+
+            return await PersistirDados(_fichaRepository.UnitOfWork);
         }
     }
 }

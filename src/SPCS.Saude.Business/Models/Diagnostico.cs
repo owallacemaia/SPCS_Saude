@@ -1,4 +1,4 @@
-﻿using NetDevPack.Domain;
+﻿using SPCS.Saude.Core.DomainObjects;
 
 namespace SPCS.Saude.Business.Models
 {
@@ -13,6 +13,11 @@ namespace SPCS.Saude.Business.Models
         {
             Sigla = sigla;
             Descricao = descricao;
+        }
+
+        internal bool IsValid()
+        {
+            return true;
         }
     }
 }

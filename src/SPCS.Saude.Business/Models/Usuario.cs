@@ -1,8 +1,6 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
-using NetDevPack.Domain;
+using SPCS.Saude.Core.DomainObjects;
 using System;
-using System.Text.Json.Serialization;
 
 namespace SPCS.Saude.Business.Models
 {
@@ -16,9 +14,6 @@ namespace SPCS.Saude.Business.Models
         public DateTime DataNascimento { get; private set; }
         public string Escolaridade { get; set; }
         public TipoUsuario TipoUsuario { get; private set; }
-
-        [JsonIgnore]
-        public ValidationResult ValidationResult { get; set; }
 
         //EF Constructor
         protected Usuario() { }

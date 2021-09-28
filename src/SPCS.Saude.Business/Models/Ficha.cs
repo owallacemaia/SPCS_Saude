@@ -1,5 +1,4 @@
-﻿using NetDevPack.Domain;
-using Newtonsoft.Json;
+﻿using SPCS.Saude.Core.DomainObjects;
 using System;
 
 namespace SPCS.Saude.Business.Models
@@ -21,7 +20,7 @@ namespace SPCS.Saude.Business.Models
         public string FuncaoTrabalho { get; private set; }
         public bool ContatoPraguicida { get; private set; }
         public string TempoContatoPraguicida { get; private set; }
-        public string FrequenciaContatoPraguicida { get; private set; }  
+        public string FrequenciaContatoPraguicida { get; private set; }
         public string UltimoContatoPraguicida { get; private set; }
         public string FormaAplicacao { get; private set; }
         public string ViaExposicao { get; private set; }
@@ -117,22 +116,22 @@ namespace SPCS.Saude.Business.Models
 
         protected Ficha() { }
 
-        public Ficha(Guid pacienteId, string municipioTrabalho, bool gestante, bool tabagismo, bool tabagismoAtual, 
-                     bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, bool ingestaoCafe, 
-                     double cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, bool contatoPraguicida, string tempoContatoPraguicida, 
-                     string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string formaAplicacao, string viaExposicao, bool adoeceu, 
+        public Ficha(Guid pacienteId, string municipioTrabalho, bool gestante, bool tabagismo, bool tabagismoAtual,
+                     bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, bool ingestaoCafe,
+                     double cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, bool contatoPraguicida, string tempoContatoPraguicida,
+                     string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string formaAplicacao, string viaExposicao, bool adoeceu,
                      string qtdVezesAdoeceu, bool internado, string qtdVezesInternado, string quandoInterndo, string tipoContato,
                      bool equipamentoProtecao, bool roupaProtecao, bool botaProtecao, bool luvasProtecao, bool mascaraProtecao, bool oculosProtecao,
                      bool protetorAuricular, bool doencaCardioVascular, bool hipertensaoArterial, bool hipotensaoArterial, bool arritmia,
                      bool alteracaoSNervoso, bool dorCabeca, bool fraquezaMuscular, bool tremedeira, bool tremorMuscular, bool visãoTurvaEmbacada,
-                     bool agitacaoIrritabilidade, bool vertigensTonturas, bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio, 
-                     bool colicasDorBarriga, bool dorEstomago, bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia, 
-                     bool aparelhoRespiratorio, bool faltaDeAr, bool irritaçaoNasal, bool catarroEscarro, bool tosse, bool aparelhoAuditivo, 
+                     bool agitacaoIrritabilidade, bool vertigensTonturas, bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio,
+                     bool colicasDorBarriga, bool dorEstomago, bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia,
+                     bool aparelhoRespiratorio, bool faltaDeAr, bool irritaçaoNasal, bool catarroEscarro, bool tosse, bool aparelhoAuditivo,
                      bool diminuicaoAudicao, bool zumbido, bool peleMucosa, bool dcSensibilizante, bool dcIrritativa, bool irritacaoOcular,
-                     bool aparelhoUrinario, bool diminuicaoUrina, bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao, 
-                     bool teveCancer, bool sncCancer, bool digestorioCcancer, bool respiratorioCancer, bool reprodutorCancer, bool glandularCancer, 
-                     bool peleOssoSangueCancer, bool familiaCancer, bool sNCCancerFamilia, bool digestorioCancerfamilia, bool respiratorioCancerfamilia, 
-                     bool reprodutorCancerfamilia, bool glandularCancerfamilia, bool peleOssoSangueCancerfamilia, bool edaRegiao, double ch_t, 
+                     bool aparelhoUrinario, bool diminuicaoUrina, bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao,
+                     bool teveCancer, bool sncCancer, bool digestorioCcancer, bool respiratorioCancer, bool reprodutorCancer, bool glandularCancer,
+                     bool peleOssoSangueCancer, bool familiaCancer, bool sNCCancerFamilia, bool digestorioCancerfamilia, bool respiratorioCancerfamilia,
+                     bool reprodutorCancerfamilia, bool glandularCancerfamilia, bool peleOssoSangueCancerfamilia, bool edaRegiao, double ch_t,
                      double ch_e, double ch_p, double ast, double alt, double y_gt, double creatinina, string ambulatorio, double habitoAlimentar,
                      double imc, int circunferenciaAbdominal, bool dificuldadeEngravidar, bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao,
                      bool medicamentoContinuo, string medicamento, bool remedioMicose, string nomeRemedio, Paciente paciente)
@@ -243,6 +242,10 @@ namespace SPCS.Saude.Business.Models
             RemedioMicose = remedioMicose;
             NomeRemedio = nomeRemedio;
             Paciente = paciente;
+        }
+        internal bool IsValid()
+        {
+            return true;
         }
     }
 }

@@ -1,11 +1,7 @@
 ﻿using FluentValidation.Results;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
-using SPCS.Saude.Core.Communication;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.Business.Services
@@ -49,7 +45,7 @@ namespace SPCS.Saude.Business.Services
 
         public async Task<ValidationResult> GravarToken(RefreshTokenData refreshToken)
         {
-            if(refreshToken.RefreshToken == null)
+            if (refreshToken.RefreshToken == null)
             {
                 AdicionarErro("O token está vazio");
             }

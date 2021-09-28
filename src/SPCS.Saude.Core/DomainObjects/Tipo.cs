@@ -1,6 +1,4 @@
-﻿using NetDevPack.Domain;
-
-namespace SPCS.Saude.Core.DomainObjects
+﻿namespace SPCS.Saude.Core.DomainObjects
 {
     public class Tipo<T> where T : struct
     {

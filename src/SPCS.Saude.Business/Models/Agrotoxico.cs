@@ -1,4 +1,4 @@
-﻿using NetDevPack.Domain;
+﻿using SPCS.Saude.Core.DomainObjects;
 
 namespace SPCS.Saude.Business.Models
 {
@@ -15,6 +15,11 @@ namespace SPCS.Saude.Business.Models
             Nome = nome;
             Tipo = tipo;
             PrincipioAtivo = principioAtivo;
+        }
+
+        internal bool IsValid()
+        {
+            return true;
         }
     }
 }

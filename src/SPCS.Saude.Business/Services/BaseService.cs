@@ -1,5 +1,5 @@
-﻿using FluentValidation.Results;
-using NetDevPack.Data;
+﻿using eShop.Core.Data;
+using FluentValidation.Results;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.Business.Services

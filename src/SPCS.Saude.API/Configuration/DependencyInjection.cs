@@ -3,10 +3,6 @@ using SPCS.Saude.API.Services;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Services;
 using SPCS.Saude.Infra.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Configuration
 {

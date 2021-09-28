@@ -1,4 +1,4 @@
-﻿using NetDevPack.Domain;
+﻿using SPCS.Saude.Core.DomainObjects;
 using System;
 
 namespace SPCS.Saude.Business.Models
@@ -19,6 +19,10 @@ namespace SPCS.Saude.Business.Models
             AgrotoxicoId = agrotoxicoId;
             Ficha = ficha;
             Agrotoxico = agrotoxico;
+        }
+        internal bool IsValid()
+        {
+            return true;
         }
     }
 }
