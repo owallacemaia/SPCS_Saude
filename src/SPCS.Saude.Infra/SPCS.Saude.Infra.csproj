@@ -20,8 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\SPCS.Saude.Business\SPCS.Saude.Business.csproj" />
-    <ProjectReference Include="..\src\SPCS.Saude.Core\SPCS.Saude.Core.csproj" />
+    <ProjectReference Include="..\SPCS.Saude.Business\SPCS.Saude.Business.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,17 +12,5 @@ namespace SPCS.Saude.Business.Models
         public Agrotoxico Agrotoxico { get; private set; }
 
         protected FichaAgro() { }
-
-        public FichaAgro(Guid fichaId, Guid agrotoxicoId, Ficha ficha, Agrotoxico agrotoxico)
-        {
-            FichaId = fichaId;
-            AgrotoxicoId = agrotoxicoId;
-            Ficha = ficha;
-            Agrotoxico = agrotoxico;
-        }
-        internal bool IsValid()
-        {
-            return true;
-        }
     }
 }
