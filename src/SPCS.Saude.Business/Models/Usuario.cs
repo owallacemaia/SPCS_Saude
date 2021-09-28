@@ -18,7 +18,7 @@ namespace SPCS.Saude.Business.Models
         //EF Constructor
         protected Usuario() { }
 
-        public Usuario(Guid id, string nome, string email, string cpf, TipoUsuario tipoUsuario)
+        public Usuario(Guid id, string nome, string email, string cpf, Guid tipoUsuario)
         {
             Id = id;
             Nome = nome;
