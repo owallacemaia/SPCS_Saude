@@ -28,6 +28,6 @@ namespace SPCS.Saude.API.ViewModels
 
         public string Imagem { get; set; }
 
-        public TipoUsuario TipoUsuario { get; set; }
+        public Guid TipoUsuarioId { get; set; }
     }
 }

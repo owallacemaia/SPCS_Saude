@@ -5,6 +5,7 @@ using SPCS.Saude.API.ViewModels;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
@@ -46,6 +47,8 @@ namespace SPCS.Saude.API.Controllers
                     await _accessManager.UserManager.DeleteAsync(user);
                     return CustomResponse(registrarUsuario);
                 }
+
+                await _accessManager.UserManager.AddClaimAsync(user, new Claim("Administrador", "Total"));
 
                 return CustomResponse(await _accessManager.GerarToken(user.Email));
             }

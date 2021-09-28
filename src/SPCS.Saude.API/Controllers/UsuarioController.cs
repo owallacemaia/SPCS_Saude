@@ -7,6 +7,7 @@ using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
@@ -83,7 +84,7 @@ namespace SPCS.Saude.API.Controllers
             if (!ModelState.IsValid)
                 return CustomResponse(model);
 
-            var usuario = new Usuario(Guid.NewGuid(), model.Nome, model.Email, model.Cpf, model.TipoUsuario.Id);
+            var usuario = new Usuario(Guid.NewGuid(), model.Nome, model.Email, model.Cpf, model.TipoUsuarioId);
 
             var addUsuario = await _usuarioService.Adicionar(usuario);
 
@@ -128,7 +129,7 @@ namespace SPCS.Saude.API.Controllers
                 _usuarioRepository.Remover(Guid.Parse(usuarioRegistrado.Id));
             }
 
-            await AdicionarPermissoes(usuarioRegistrado, model.TipoUsuario);
+            await AdicionarPermissoes(usuarioRegistrado, model.TipoUsuarioId);
 
             return CustomResponse("Usuario Cadastrado");
         }
@@ -154,7 +155,7 @@ namespace SPCS.Saude.API.Controllers
                 _usuarioRepository.Remover(Guid.Parse(usuarioRegistrado.Id));
             }
 
-            await AdicionarPermissoes(usuarioRegistrado, model.TipoUsuario);
+            await AdicionarPermissoes(usuarioRegistrado, model.TipoUsuarioId);
 
             return CustomResponse("Usuario Cadastrado");
         }
@@ -171,7 +172,7 @@ namespace SPCS.Saude.API.Controllers
             var result = await UserManager.CreateAsync(user, usuarioRegistro.Senha);
             if (result.Succeeded)
             {
-                var usuario = new Usuario(Guid.Parse(user.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf, usuarioRegistro.TipoUsuario.Id);
+                var usuario = new Usuario(Guid.Parse(user.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf, usuarioRegistro.TipoUsuarioId);
 
                 var addUsuario = await _usuarioService.Adicionar(usuario);
 
@@ -207,14 +208,7 @@ namespace SPCS.Saude.API.Controllers
                     }
             }
 
-            var claim = new IdentityUserClaim<string>
-            {
-                ClaimType = tipoUsuario.Descricao,
-                ClaimValue = permissoes,
-                UserId = user.Id
-            };
-
-            await _context.UserClaims.AddAsync(claim);
+            await UserManager.AddClaimAsync(user, new Claim(tipoUsuario.Descricao,permissoes));
         }
     }
 }
