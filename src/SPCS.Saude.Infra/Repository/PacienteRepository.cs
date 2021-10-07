@@ -4,6 +4,7 @@ using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using SPCS.Saude.Infra.Context;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.Infra.Repository
@@ -32,6 +33,18 @@ namespace SPCS.Saude.Infra.Repository
         public void Dispose()
         {
             _context?.Dispose();
+        }
+
+        public async Task<IEnumerable<Paciente>> ObterTodos()
+        {
+            return await _context.Pacientes.AsNoTracking()
+                .Include(a => a.Endereco)
+                .ToListAsync();
+        }
+
+        public Task<Paciente> ObterPorId(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -12,23 +12,34 @@ namespace SPCS.Saude.Business.Models
         public string Imagem { get; private set; }
         public char Sexo { get; private set; }
         public DateTime DataNascimento { get; private set; }
-        public string Escolaridade { get; set; }
+        public string Telefone { get; private set; }
+        public string Escolaridade { get; private set; }
         public TipoUsuario TipoUsuario { get; private set; }
 
         //EF Constructor
         protected Usuario() { }
 
-        public Usuario(Guid id, string nome, string email, string cpf, Guid tipoUsuario)
+
+
+        public Usuario(Guid id, string nome, string email, string cpf, string imagem, 
+                       char sexo, DateTime dataNascimento, string telefone, 
+                       string escolaridade, Guid tipoUsuarioId)
         {
             Id = id;
             Nome = nome;
             Email = email;
             Cpf = cpf;
-            TipoUsuario = tipoUsuario;
+            Imagem = imagem;
+            Sexo = sexo;
+            DataNascimento = dataNascimento;
+            Telefone = telefone;
+            Escolaridade = escolaridade;
+            TipoUsuario = tipoUsuarioId;
         }
 
-        public Usuario(string nome, string email, string cpf, TipoUsuario tipoUsuario)
+        public Usuario(Guid id, string nome, string email, string cpf, Guid tipoUsuario)
         {
+            Id = id;
             Nome = nome;
             Email = email;
             Cpf = cpf;

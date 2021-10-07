@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using SPCS.Saude.API.ViewModels;
+using SPCS.ApiModels.Usuario;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using SPCS.Saude.Core.Identidade;
@@ -39,7 +39,7 @@ namespace SPCS.Saude.API.Services
         }
 
         //TODO: MODIFICAR PARA NAO PRECISAR DE PASSAR O TIPO DE LOGIN E REF TOKEN
-        public async Task<bool> ValidateCredentials(UsuarioLogin credenciais)
+        public async Task<bool> ValidateCredentials(UsuarioLoginRequestApiModel credenciais)
         {
             bool credenciaisValidas = false;
             if (credenciais != null && !String.IsNullOrWhiteSpace(credenciais.Email))
@@ -74,7 +74,7 @@ namespace SPCS.Saude.API.Services
             return credenciaisValidas;
         }
 
-        public async Task<UsuarioRespostaLogin> GerarToken(string email)
+        public async Task<UsuarioLoginResponseApiModel> GerarToken(string email)
         {
             var user = await UserManager.FindByEmailAsync(email);
             var claims = await UserManager.GetClaimsAsync(user);
@@ -127,9 +127,9 @@ namespace SPCS.Saude.API.Services
             return token;
         }
 
-        private async Task<UsuarioRespostaLogin> ObterRespostaToken(IdentityUser credenciais, string token, ICollection<Claim> claims)
+        private async Task<UsuarioLoginResponseApiModel> ObterRespostaToken(IdentityUser credenciais, string token, ICollection<Claim> claims)
         {
-            var resposta = new UsuarioRespostaLogin
+            var resposta = new UsuarioLoginResponseApiModel
             {
                 AccessToken = token,
                 ExpiresIn = _tokenConfigurations.Minutes,
@@ -147,7 +147,7 @@ namespace SPCS.Saude.API.Services
             return resposta;
         }
 
-        private async Task GravarToken(UsuarioRespostaLogin usuario)
+        private async Task GravarToken(UsuarioLoginResponseApiModel usuario)
         {
             var finalExpiration = DateTime.UtcNow + TimeSpan.FromDays(_tokenConfigurations.FinalExpiration);
             var refreshTokenData = new RefreshTokenData(usuario.RefreshToken, usuario.UsuarioToken.Email, finalExpiration, DateTime.UtcNow);

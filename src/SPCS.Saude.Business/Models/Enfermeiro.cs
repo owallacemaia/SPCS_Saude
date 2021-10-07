@@ -5,7 +5,7 @@ namespace SPCS.Saude.Business.Models
 {
     public class Enfermeiro : Entity, IAggregateRoot
     {
-        public Guid UsuarioId { get; private set; }
+        public Guid UsuarioId { get; set; }
         public string Coren { get; private set; }
 
         protected Enfermeiro() { }

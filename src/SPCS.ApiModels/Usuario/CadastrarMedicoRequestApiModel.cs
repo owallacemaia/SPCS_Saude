@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SPCS.Saude.API.ViewModels
+namespace SPCS.ApiModels.Usuario
 {
-    public class MedicoViewModel : UsuarioViewModel
+    public class CadastrarMedicoRequestApiModel : CadastrarUsuarioRequestApiModel
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Crm { get; set; }

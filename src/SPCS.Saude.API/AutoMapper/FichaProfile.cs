@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SPCS.Saude.API.ViewModels;
+using SPCS.ApiModels.Ficha;
 using SPCS.Saude.Business.Models;
 
 namespace SPCS.Saude.API.AutoMapper
@@ -8,7 +8,8 @@ namespace SPCS.Saude.API.AutoMapper
     {
         public FichaProfile()
         {
-            CreateMap<Ficha, FichaViewModel>().ReverseMap();
+            CreateMap<CadastrarFichaRequestApiModel, Ficha>().ReverseMap();
+            CreateMap<FichaResponseApiModel, Ficha>().ReverseMap();
         }
     }
 }

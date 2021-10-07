@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SPCS.ApiModels.Usuario;
 using SPCS.Saude.API.Services;
-using SPCS.Saude.API.ViewModels;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using System;
@@ -23,7 +23,7 @@ namespace SPCS.Saude.API.Controllers
         }
 
         [HttpPost("nova-conta")]
-        public async Task<IActionResult> Registrar(UsuarioRegistro usuarioRegistro)
+        public async Task<IActionResult> Registrar(CadastrarAdminRequestApiModel usuarioRegistro)
         {
             if (!ModelState.IsValid)
                 return CustomResponse();
@@ -62,7 +62,7 @@ namespace SPCS.Saude.API.Controllers
         }
 
         [HttpPost("autenticar")]
-        public async Task<ActionResult<UsuarioRespostaLogin>> Login(UsuarioLogin usuarioLogin, [FromServices] AccessManager accessManager)
+        public async Task<ActionResult<UsuarioLoginResponseApiModel>> Login(UsuarioLoginRequestApiModel usuarioLogin, [FromServices] AccessManager accessManager)
         {
             if (!ModelState.IsValid)
                 return CustomResponse();

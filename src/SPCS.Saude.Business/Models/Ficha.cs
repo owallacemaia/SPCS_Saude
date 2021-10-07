@@ -7,6 +7,7 @@ namespace SPCS.Saude.Business.Models
     public class Ficha : Entity, IAggregateRoot
     {
         public Guid PacienteId { get; private set; }
+        public DateTime DataCadastro { get; private set; }
         public string MunicipioTrabalho { get; private set; }
         public bool Gestante { get; private set; }
         public bool Tabagismo { get; private set; }
@@ -117,7 +118,7 @@ namespace SPCS.Saude.Business.Models
 
         protected Ficha() { }
 
-        public Ficha(Guid pacienteId, string municipioTrabalho, bool gestante, bool tabagismo, bool tabagismoAtual,
+        public Ficha(Guid pacienteId, DateTime dataCadastro, string municipioTrabalho, bool gestante, bool tabagismo, bool tabagismoAtual,
                      bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior, bool ingestaoCafe,
                      double cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, bool contatoPraguicida, string tempoContatoPraguicida,
                      string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string formaAplicacao, string viaExposicao, bool adoeceu,
@@ -135,9 +136,10 @@ namespace SPCS.Saude.Business.Models
                      bool reprodutorCancerfamilia, bool glandularCancerfamilia, bool peleOssoSangueCancerfamilia, bool edaRegiao, double ch_t,
                      double ch_e, double ch_p, double ast, double alt, double y_gt, double creatinina, string ambulatorio, double habitoAlimentar,
                      double imc, int circunferenciaAbdominal, bool dificuldadeEngravidar, bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao,
-                     bool medicamentoContinuo, string medicamento, bool remedioMicose, string nomeRemedio, Paciente paciente)
+                     bool medicamentoContinuo, string medicamento, bool remedioMicose, string nomeRemedio)
         {
             PacienteId = pacienteId;
+            DataCadastro = dataCadastro;
             MunicipioTrabalho = municipioTrabalho;
             Gestante = gestante;
             Tabagismo = tabagismo;
@@ -242,7 +244,6 @@ namespace SPCS.Saude.Business.Models
             Medicamento = medicamento;
             RemedioMicose = remedioMicose;
             NomeRemedio = nomeRemedio;
-            Paciente = paciente;
         }
         internal bool IsValid()
         {

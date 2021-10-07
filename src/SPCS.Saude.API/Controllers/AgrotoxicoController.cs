@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using SPCS.Saude.API.ViewModels;
+using SPCS.ApiModels.Agrotoxico;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
@@ -24,22 +23,44 @@ namespace SPCS.Saude.API.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("listar")]
+        public async Task<IEnumerable<AgrotoxicoResponseApiModel>> ListarTodos()
+        {
+            return (_mapper.Map<IEnumerable<AgrotoxicoResponseApiModel>>(await _agrotoxicoRepository.ObterTodos()));
+        }
+
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<AgrotoxicoResponseApiModel>> BuscarPorId(Guid id)
+        {
+            var agrotoxico = await _agrotoxicoRepository.ObterPorId(id);
+
+            if (agrotoxico == null)
+            {
+                AdicionarErroProcessamento("Não foi encontrado o agrotoxico com o ID informado!");
+                return CustomResponse();
+            }
+
+            return CustomResponse(_mapper.Map<AgrotoxicoResponseApiModel>(agrotoxico));
+        }
+
         [HttpPost("cadastrar")]
-        public async Task<ActionResult<AgrotoxicoViewModel>> Cadastrar([FromBody]AgrotoxicoViewModel model)
+        public async Task<ActionResult<AgrotoxicoResponseApiModel>> Cadastrar(CadastrarAgrotoxicoRequestApiModel model)
         {
             if (!ModelState.IsValid)
                 return CustomResponse();
 
-            await _agrotoxicoService.Adicionar(_mapper.Map<Agrotoxico>(model));
+            var agrotoxico = _mapper.Map<Agrotoxico>(model);
+
+            await _agrotoxicoService.Adicionar(agrotoxico);
 
             if (!OperacaoValida())
                 return CustomResponse();
 
-            return CustomResponse(model);
+            return CustomResponse(_mapper.Map<AgrotoxicoResponseApiModel>(agrotoxico));
         }
 
         [HttpPut("atualizar")]
-        public async Task<ActionResult<AgrotoxicoViewModel>> Atualizar(AgrotoxicoViewModel model)
+        public async Task<ActionResult<AgrotoxicoResponseApiModel>> Atualizar(AtualizarAgrotoxicoRequestApiModel model)
         {
             if (!ModelState.IsValid)
                 return CustomResponse();
@@ -51,13 +72,13 @@ namespace SPCS.Saude.API.Controllers
                 AdicionarErroProcessamento("Não foi encontrado nenhum agrotoxico com o ID informado!");
                 return CustomResponse(model);
             }
-            
+
             await _agrotoxicoService.Atualizar(_mapper.Map<Agrotoxico>(model));
 
             if (!OperacaoValida())
                 return CustomResponse();
 
-            return CustomResponse(model);
+            return CustomResponse(_mapper.Map<AgrotoxicoResponseApiModel>(model));
         }
     }
 }

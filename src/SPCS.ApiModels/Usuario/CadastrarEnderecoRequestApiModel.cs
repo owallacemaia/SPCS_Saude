@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SPCS.Saude.API.ViewModels
+namespace SPCS.ApiModels.Usuario
 {
-    public class EnderecoViewModel
+    public class CadastrarEnderecoRequestApiModel
     {
         [Key]
         public Guid Id { get; set; }

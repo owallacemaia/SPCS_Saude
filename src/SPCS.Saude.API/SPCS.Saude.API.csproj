@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SPCS.ApiModels\SPCS.ApiModels.csproj" />
     <ProjectReference Include="..\SPCS.Saude.Business\SPCS.Saude.Business.csproj" />
     <ProjectReference Include="..\SPCS.Saude.Core\SPCS.Saude.Core.csproj" />
     <ProjectReference Include="..\SPCS.Saude.Infra\SPCS.Saude.Infra.csproj" />
@@ -34,6 +35,10 @@
     <Content Update="appsettings - Copy.Production.json">
       <DependentUpon>appsettings.Production.json</DependentUpon>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SPCS.Saude.API.ViewModels
+namespace SPCS.ApiModels.Ficha
 {
-    public class FichaViewModel
+    public class CadastrarFichaRequestApiModel
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public Guid PacienteId { get; private set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public DateTime DataCadastro { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string MunicipioTrabalho { get; private set; }
