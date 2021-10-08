@@ -42,9 +42,9 @@ namespace SPCS.Saude.Infra.Repository
                 .ToListAsync();
         }
 
-        public Task<Paciente> ObterPorId(Guid id)
+        public async Task<Paciente> ObterPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.Pacientes.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
         }
     }
 }

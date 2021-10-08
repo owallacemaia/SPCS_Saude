@@ -59,13 +59,34 @@ namespace SPCS.Saude.API.Controllers
         {
             var usuario = await _usuarioRepository.ObterPorId(id);
 
-            if (usuario == null && usuario.Id != id)
+            if (usuario == null || usuario.Id != id)
             {
                 AdicionarErroProcessamento("Usuário não encontrado! Confirme o ID informado.");
                 return CustomResponse();
             }
 
-            return CustomResponse(_mapper.Map<UsuarioResponseApiModel>(usuario));
+            dynamic response = null;
+
+            if(usuario.TipoUsuario.Id == TipoUsuario.Enfermeiro.Id)
+            {
+                var enfermeiro = await _enfermeiroRepository.ObterPorId(usuario.Id);
+                response = _mapper.Map<EnfermeiroResponseApiModel>(usuario);
+                _mapper.Map(enfermeiro, response);
+            }
+            else if(usuario.TipoUsuario.Id == TipoUsuario.Medico.Id)
+            {
+                var medico = await _medicoRepository.ObterPorId(usuario.Id);
+                response = _mapper.Map<MedicoResponseApiModel>(usuario);
+                _mapper.Map(medico, response);
+            }
+            else if (usuario.TipoUsuario.Id == TipoUsuario.Paciente.Id)
+            {
+                var paciente = await _pacienteRepository.ObterPorId(usuario.Id);
+                response = _mapper.Map<PacienteResponseApiModel>(usuario);
+                _mapper.Map(paciente, response);
+            }
+
+            return CustomResponse(response);
         }
 
         [HttpGet("listar/pacientes")]
@@ -84,7 +105,6 @@ namespace SPCS.Saude.API.Controllers
 
             return (response);
         }
-
 
         [HttpGet("buscar/{cpf}")]
         public async Task<ActionResult<UsuarioResponseApiModel>> ObterPorCpf(string cpf)

@@ -4,6 +4,7 @@ using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
 using SPCS.Saude.Infra.Context;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.Infra.Repository
@@ -22,6 +23,16 @@ namespace SPCS.Saude.Infra.Repository
         public void Adicionar(Enfermeiro enfermeiro)
         {
             _context.Enfermeiros.Add(enfermeiro);
+        }
+
+        public async Task<Enfermeiro> ObterPorId(Guid id)
+        {
+            return await _context.Enfermeiros.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
+        }
+
+        public async Task<IEnumerable<Enfermeiro>> ObterTodos()
+        {
+            return await _context.Enfermeiros.AsNoTracking().ToListAsync();
         }
 
         public async Task<Enfermeiro> ObterInformacoesPorUsuarioId(Guid id)
