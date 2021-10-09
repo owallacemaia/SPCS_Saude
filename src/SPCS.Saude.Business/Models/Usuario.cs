@@ -22,7 +22,7 @@ namespace SPCS.Saude.Business.Models
 
 
         public Usuario(Guid id, string nome, string email, string cpf, string imagem, 
-                       char sexo, DateTime dataNascimento, string telefone, 
+                       string sexo, DateTime dataNascimento, string telefone, 
                        string escolaridade, Guid tipoUsuarioId)
         {
             Id = id;
