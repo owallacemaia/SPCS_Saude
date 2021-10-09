@@ -14,7 +14,6 @@ namespace SPCS.ApiModels.Usuario
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Numero { get; set; }
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Complemento { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
