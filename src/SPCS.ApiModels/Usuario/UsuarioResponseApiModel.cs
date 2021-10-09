@@ -11,7 +11,7 @@ namespace SPCS.ApiModels.Usuario
         public string Cpf { get; set; }
         public string Imagem { get; set; }
         public string Telefone { get; set; }
-        public char Sexo { get; set; }
+        public string Sexo { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Escolaridade { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
