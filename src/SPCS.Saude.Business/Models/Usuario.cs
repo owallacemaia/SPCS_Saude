@@ -10,7 +10,7 @@ namespace SPCS.Saude.Business.Models
         public string Email { get; private set; }
         public string Cpf { get; private set; }
         public string Imagem { get; private set; }
-        public char Sexo { get; private set; }
+        public string Sexo { get; private set; }
         public DateTime DataNascimento { get; private set; }
         public string Telefone { get; private set; }
         public string Escolaridade { get; private set; }

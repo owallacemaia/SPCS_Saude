@@ -19,7 +19,7 @@ namespace SPCS.ApiModels.Usuario
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public char Sexo { get; set; }
+        public string Sexo { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [DataType(DataType.Date)]
