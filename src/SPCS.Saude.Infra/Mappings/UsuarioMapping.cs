@@ -15,7 +15,6 @@ namespace SPCS.Saude.Infra.Mappings
                 .HasColumnType("varchar(250)");
 
             builder.Property(a => a.Email)
-                .IsRequired()
                 .HasColumnType("varchar(250)");
 
             builder.Property(a => a.Cpf)
