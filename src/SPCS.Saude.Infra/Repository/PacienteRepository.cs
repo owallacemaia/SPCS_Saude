@@ -22,29 +22,42 @@ namespace SPCS.Saude.Infra.Repository
 
         public void Adicionar(Paciente paciente)
         {
+            _context.Attach(paciente.TipoUsuario);
             _context.Pacientes.Add(paciente);
         }
 
-        public async Task<Paciente> ObterInformacoesPorUsuarioId(Guid id)
+        public void Atualizar(Paciente paciente)
         {
-            return await _context.Pacientes.AsNoTracking().FirstOrDefaultAsync(a => a.UsuarioId == id);
+            _context.Pacientes.Update(paciente);
         }
 
-        public void Dispose()
+        public async Task<Paciente> ObterPorCpf(string cpf)
         {
-            _context?.Dispose();
+            return await _context.Pacientes.AsNoTracking()
+                .Include(a => a.TipoUsuario)
+                .Include(a => a.Endereco)
+                .FirstOrDefaultAsync(p => p.Cpf == cpf);
+        }
+
+        public async Task<Paciente> ObterPorId(Guid id)
+        {
+            return await _context.Pacientes.AsNoTracking()
+                .Include(a => a.TipoUsuario)
+                .Include(a => a.Endereco)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Paciente>> ObterTodos()
         {
             return await _context.Pacientes.AsNoTracking()
+                .Include(a => a.TipoUsuario)
                 .Include(a => a.Endereco)
                 .ToListAsync();
         }
 
-        public async Task<Paciente> ObterPorId(Guid id)
+        public void Dispose()
         {
-            return await _context.Pacientes.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
+            _context?.Dispose();
         }
     }
 }

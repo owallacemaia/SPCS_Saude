@@ -7,19 +7,19 @@ namespace SPCS.Saude.Business.Models
     {
         public Guid PacienteId { get; private set; }
         public string IdadeDiscretizado { get; private set; }
-        public char Sexo { get; private set; }
-        public bool Gestante { get; private set; }
-        public bool Tabagismo { get; private set; }
-        public bool TabagismoAtual { get; private set; }
-        public bool TabagismoAnterior { get; private set; }
-        public bool Etilismo { get; private set; }
-        public bool EtilismoAtual { get; private set; }
-        public bool EtilismoAnterior { get; private set; }
-        public bool IngestaoCafe { get; private set; }
+        public string Sexo { get; private set; }
+        public string Gestante { get; private set; }
+        public string Tabagismo { get; private set; }
+        public string TabagismoAtual { get; private set; }
+        public string TabagismoAnterior { get; private set; }
+        public string Etilismo { get; private set; }
+        public string EtilismoAtual { get; private set; }
+        public string EtilismoAnterior { get; private set; }
+        public string IngestaoCafe { get; private set; }
         public string CafeMldiaDiscretizado { get; private set; }
         public string RelacaoTrabalho { get; private set; }
         public string FuncaoTrabalho { get; private set; }
-        public bool ContatoPraguicida { get; private set; }
+        public string ContatoPraguicida { get; private set; }
         public string TempoContatoPraguicida { get; private set; }
         public string FrequenciaContatoPraguicida { get; private set; }
         public string UltimoContatoPraguicida { get; private set; }
@@ -30,71 +30,71 @@ namespace SPCS.Saude.Business.Models
         public string ViaExposicao { get; private set; }
         public string Adoeceu { get; private set; }
         public string NVezesAdoeceu { get; private set; }
-        public bool Internado { get; private set; }
+        public string Internado { get; private set; }
         public string NvezesInternado { get; private set; }
         public string QuandoInternado { get; private set; }
         public string TipoContato { get; private set; }
-        public bool EquipamentoProtecao { get; private set; }
-        public bool RoupaProtecao { get; private set; }
-        public bool BotaProtecao { get; private set; }
-        public bool LuvasProtecao { get; private set; }
-        public bool MascaraProtecao { get; private set; }
-        public bool OculosProtecao { get; private set; }
-        public bool ProtetorAuricular { get; private set; }
-        public bool DoencaCardioVascular { get; private set; }
-        public bool HipertensaoArterial { get; private set; }
-        public bool HipotensaoArterial { get; private set; }
-        public bool Arritmia { get; private set; }
-        public bool AlteracaoSNervoso { get; private set; }
-        public bool DorCabeca { get; private set; }
-        public bool FraquezaMuscular { get; private set; }
-        public bool Tremedeira { get; private set; }
-        public bool TremorMuscular { get; private set; }
-        public bool VisaoTurvaEmbacada { get; private set; }
-        public bool AgitacaoIrritabilidade { get; private set; }
-        public bool VertigensTonturas { get; private set; }
-        public bool Formigamento { get; private set; }
-        public bool IncoordenacaoMotora { get; private set; }
-        public bool AparelhoDigestorio { get; private set; }
-        public bool ColicasDorBarriga { get; private set; }
-        public bool DorEstomago { get; private set; }
-        public bool AziaQueimacao { get; private set; }
-        public bool NauseasEnjoo { get; private set; }
-        public bool Vomito { get; private set; }
-        public bool Diarreia { get; private set; }
-        public bool AparelhoRespiratorio { get; private set; }
-        public bool FaltaDeAr { get; private set; }
-        public bool IrritaçaoNasal { get; private set; }
-        public bool CatarroEscarro { get; private set; }
-        public bool Tosse { get; private set; }
-        public bool AparelhoAuditivo { get; private set; }
-        public bool DiminuicaoAudicao { get; private set; }
-        public bool Zumbido { get; private set; }
-        public bool PeleMucosa { get; private set; }
-        public bool DcSensibilizante { get; private set; }
-        public bool DcIrritativa { get; private set; }
-        public bool IrritacaoOcular { get; private set; }
-        public bool AparelhoUrinario { get; private set; }
-        public bool DiminuicaoUrina { get; private set; }
-        public bool UrinaescuraSangue { get; private set; }
-        public bool Outro { get; private set; }
+        public string EquipamentoProtecao { get; private set; }
+        public string RoupaProtecao { get; private set; }
+        public string BotaProtecao { get; private set; }
+        public string LuvasProtecao { get; private set; }
+        public string MascaraProtecao { get; private set; }
+        public string OculosProtecao { get; private set; }
+        public string ProtetorAuricular { get; private set; }
+        public string DoencaCardioVascular { get; private set; }
+        public string HipertensaoArterial { get; private set; }
+        public string HipotensaoArterial { get; private set; }
+        public string Arritmia { get; private set; }
+        public string AlteracaoSNervoso { get; private set; }
+        public string DorCabeca { get; private set; }
+        public string FraquezaMuscular { get; private set; }
+        public string Tremedeira { get; private set; }
+        public string TremorMuscular { get; private set; }
+        public string VisaoTurvaEmbacada { get; private set; }
+        public string AgitacaoIrritabilidade { get; private set; }
+        public string VertigensTonturas { get; private set; }
+        public string Formigamento { get; private set; }
+        public string IncoordenacaoMotora { get; private set; }
+        public string AparelhoDigestorio { get; private set; }
+        public string ColicasDorBarriga { get; private set; }
+        public string DorEstomago { get; private set; }
+        public string AziaQueimacao { get; private set; }
+        public string NauseasEnjoo { get; private set; }
+        public string Vomito { get; private set; }
+        public string Diarreia { get; private set; }
+        public string AparelhoRespiratorio { get; private set; }
+        public string FaltaDeAr { get; private set; }
+        public string IrritaçaoNasal { get; private set; }
+        public string CatarroEscarro { get; private set; }
+        public string Tosse { get; private set; }
+        public string AparelhoAuditivo { get; private set; }
+        public string DiminuicaoAudicao { get; private set; }
+        public string Zumbido { get; private set; }
+        public string PeleMucosa { get; private set; }
+        public string DcSensibilizante { get; private set; }
+        public string DcIrritativa { get; private set; }
+        public string IrritacaoOcular { get; private set; }
+        public string AparelhoUrinario { get; private set; }
+        public string DiminuicaoUrina { get; private set; }
+        public string UrinaescuraSangue { get; private set; }
+        public string Outro { get; private set; }
         public string ExposicaoRaiox { get; private set; }
-        public int QuandodiasExposicao { get; private set; }
-        public bool TeveCancer { get; private set; }
-        public bool SncCancer { get; private set; }
-        public bool DigestorioCcancer { get; private set; }
-        public bool RespiratorioCancer { get; private set; }
-        public bool ReprodutorCancer { get; private set; }
-        public bool GlandularCancer { get; private set; }
-        public bool PeleOssoSangueCancer { get; private set; }
-        public bool FamiliaCancer { get; private set; }
-        public bool SNCCancerFamilia { get; private set; }
-        public bool DigestorioCancerfamilia { get; private set; }
-        public bool RespiratorioCancerfamilia { get; private set; }
-        public bool ReprodutorCancerfamilia { get; private set; }
-        public bool GlandularCancerfamilia { get; private set; }
-        public bool PeleOssoSangueCancerfamilia { get; private set; }
-        public bool EdaRegiao { get; private set; }
+        public string QuandodiasExposicao { get; private set; }
+        public string TeveCancer { get; private set; }
+        public string SncCancer { get; private set; }
+        public string DigestorioCcancer { get; private set; }
+        public string RespiratorioCancer { get; private set; }
+        public string ReprodutorCancer { get; private set; }
+        public string GlandularCancer { get; private set; }
+        public string PeleOssoSangueCancer { get; private set; }
+        public string FamiliaCancer { get; private set; }
+        public string SNCCancerFamilia { get; private set; }
+        public string DigestorioCancerfamilia { get; private set; }
+        public string RespiratorioCancerfamilia { get; private set; }
+        public string ReprodutorCancerfamilia { get; private set; }
+        public string GlandularCancerfamilia { get; private set; }
+        public string PeleOssoSangueCancerfamilia { get; private set; }
+        public string EdaRegiao { get; private set; }
         public string Ch_t_discretizado { get; private set; }
         public string Ch_e_discretizado { get; private set; }
         public string Ch_p_discretizado { get; private set; }
@@ -106,41 +106,33 @@ namespace SPCS.Saude.Business.Models
         public string HabitoAlimentarDiscretizado { get; private set; }
         public string ImcDiscretizado { get; private set; }
         public string CircunferenciaAbdominalDiscretizado { get; private set; }
-        public bool DificuldadeEngravidar { get; private set; }
-        public bool AbortoEspontaneo { get; private set; }
-        public bool TemFilhos { get; private set; }
-        public bool FilhoMaFormacao { get; private set; }
+        public string DificuldadeEngravidar { get; private set; }
+        public string AbortoEspontaneo { get; private set; }
+        public string TemFilhos { get; private set; }
+        public string FilhoMaFormacao { get; private set; }
         public string MedicamentoContinuo { get; private set; }
         public string RemedioMicose { get; private set; }
         public string SiglaDiagnostico { get; private set; }
 
         protected Amostra() { }
 
-        public Amostra(Guid pacienteId, string idadeDiscretizado, char sexo, bool gestante, bool tabagismo,
-            bool tabagismoAtual, bool tabagismoAnterior, bool etilismo, bool etilismoAtual, bool etilismoAnterior,
-            bool ingestaoCafe, string cafeMldiaDiscretizado, string relacaoTrabalho, string funcaoTrabalho,
-            bool contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida,
-            string ultimoContatoPraguicida, string classeProduto1, string classeProduto2, string classeProduto3,
-            string formaAplicacao, string viaExposicao, string adoeceu, string nVezesAdoeceu, bool internado,
-            string nvezesInternado, string quandoInternado, string tipoContato, bool equipamentoProtecao,
-            bool roupaProtecao, bool botaProtecao, bool luvasProtecao, bool mascaraProtecao, bool oculosProtecao,
-            bool protetorAuricular, bool doencaCardioVascular, bool hipertensaoArterial, bool hipotensaoArterial,
-            bool arritmia, bool alteracaoSNervoso, bool dorCabeca, bool fraquezaMuscular, bool tremedeira,
-            bool tremorMuscular, bool visãoTurvaEmbacada, bool agitacaoIrritabilidade, bool vertigensTonturas,
-            bool formigamento, bool incoordenacaoMotora, bool aparelhoDigestorio, bool colicasDorBarriga, bool dorEstomago,
-            bool aziaQueimacao, bool nauseasEnjoo, bool vomito, bool diarreia, bool aparelhoRespiratorio, bool faltaDeAr,
-            bool irritaçaoNasal, bool catarroEscarro, bool tosse, bool aparelhoAuditivo, bool diminuicaoAudicao, bool zumbido,
-            bool peleMucosa, bool dcSensibilizante, bool dcIrritativa, bool irritacaoOcular, bool aparelhoUrinario,
-            bool diminuicaoUrina, bool urinaescuraSangue, bool outro, string exposicaoRaiox, int quandodiasExposicao,
-            bool teveCancer, bool sncCancer, bool digestorioCcancer, bool respiratorioCancer, bool reprodutorCancer,
-            bool glandularCancer, bool peleOssoSangueCancer, bool familiaCancer, bool sNCCancerFamilia,
-            bool digestorioCancerfamilia, bool respiratorioCancerfamilia, bool reprodutorCancerfamilia,
-            bool glandularCancerfamilia, bool peleOssoSangueCancerfamilia, bool edaRegiao, string ch_t_discretizado,
-            string ch_e_discretizado, string ch_p_discretizado, string ast_discretizado, string alt_discretizado,
-            string y_gt_discretizado, string creatininaDiscretizado, string ambulatorio, string habitoAlimentarDiscretizado,
-            string imcDiscretizado, string circunferenciaAbdominalDiscretizado, bool dificuldadeEngravidar,
-            bool abortoEspontaneo, bool temFilhos, bool filhoMaFormacao, string medicamentoContinuo, string remedioMicose,
-            string siglaDiagnostico)
+        public Amostra(Guid pacienteId, string idadeDiscretizado, string sexo, string gestante, string tabagismo, string tabagismoAtual, 
+                       string tabagismoAnterior, string etilismo, string etilismoAtual, string etilismoAnterior, string ingestaoCafe, 
+                       string cafeMldiaDiscretizado, string relacaoTrabalho, string funcaoTrabalho, string contatoPraguicida, string tempoContatoPraguicida, 
+                       string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string classeProduto1, string classeProduto2, string classeProduto3, 
+                       string formaAplicacao, string viaExposicao, string adoeceu, string nVezesAdoeceu, string internado, string nvezesInternado, 
+                       string quandoInternado, string tipoContato, string equipamentoProtecao, string roupaProtecao, string botaProtecao, string luvasProtecao, 
+                       string mascaraProtecao, string oculosProtecao, string protetorAuricular, string doencaCardioVascular, string hipertensaoArterial, string hipotensaoArterial, 
+                       string arritmia, string alteracaoSNervoso, string dorCabeca, string fraquezaMuscular, string tremedeira, string tremorMuscular, string visaoTurvaEmbacada, 
+                       string agitacaoIrritabilidade, string vertigensTonturas, string formigamento, string incoordenacaoMotora, string aparelhoDigestorio, string colicasDorBarriga, 
+                       string dorEstomago, string aziaQueimacao, string nauseasEnjoo, string vomito, string diarreia, string aparelhoRespiratorio, string faltaDeAr, string irritaçaoNasal, 
+                       string catarroEscarro, string tosse, string aparelhoAuditivo, string diminuicaoAudicao, string zumbido, string peleMucosa, string dcSensibilizante, 
+                       string dcIrritativa, string irritacaoOcular, string aparelhoUrinario, string diminuicaoUrina, string urinaescuraSangue, string outro, string exposicaoRaiox, 
+                       string quandodiasExposicao, string teveCancer, string sncCancer, string digestorioCcancer, string respiratorioCancer, string reprodutorCancer, 
+                       string glandularCancer, string peleOssoSangueCancer, string familiaCancer, string sNCCancerFamilia, string digestorioCancerfamilia, string respiratorioCancerfamilia, 
+                       string reprodutorCancerfamilia, string glandularCancerfamilia, string peleOssoSangueCancerfamilia, string edaRegiao, string ch_t_discretizado, string ch_e_discretizado,
+                       string ch_p_discretizado, string ast_discretizado, string alt_discretizado, string y_gt_discretizado, string creatininaDiscretizado, string ambulatorio, 
+                       string habitoAlimentarDiscretizado, string imcDiscretizado, string circunferenciaAbdominalDiscretizado, string dificuldadeEngravidar, string abortoEspontaneo, string temFilhos, string filhoMaFormacao, string medicamentoContinuo, string remedioMicose, string siglaDiagnostico)
         {
             PacienteId = pacienteId;
             IdadeDiscretizado = idadeDiscretizado;
@@ -187,7 +179,7 @@ namespace SPCS.Saude.Business.Models
             FraquezaMuscular = fraquezaMuscular;
             Tremedeira = tremedeira;
             TremorMuscular = tremorMuscular;
-            VisaoTurvaEmbacada = visãoTurvaEmbacada;
+            VisaoTurvaEmbacada = visaoTurvaEmbacada;
             AgitacaoIrritabilidade = agitacaoIrritabilidade;
             VertigensTonturas = vertigensTonturas;
             Formigamento = formigamento;

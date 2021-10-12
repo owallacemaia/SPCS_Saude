@@ -3,7 +3,7 @@ using System;
 
 namespace SPCS.ApiModels.Usuario
 {
-    public class MedicoResponseApiModel 
+    public class EnfermeiroResponseApiModel
     {
         public Guid Id { get; set; }
         public string Nome { get; set; }
@@ -13,7 +13,7 @@ namespace SPCS.ApiModels.Usuario
         public string Telefone { get; set; }
         public string Sexo { get; set; }
         public DateTime DataNascimento { get; set; }
-        public string Crm { get; set; }
-        public TipoUsuario TipoUsuario { get; set; }
+        public string Coren { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }  
     }
 }

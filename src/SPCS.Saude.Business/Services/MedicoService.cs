@@ -20,7 +20,16 @@ namespace SPCS.Saude.Business.Services
             if (!medico.IsValid())
                 return medico.ValidationResult;
 
+            var medicoExistente = await _medicoRepository.MedicoFiltro(crm: medico.Crm, cpf: medico.Cpf);
+
+            if(medicoExistente != null)
+            {
+                AdicionarErro("O CPF ou CRM informado já esta cadastrado na nossa base de dados");
+                return ValidationResult;
+            }
+
             _medicoRepository.Adicionar(medico);
+
             return await PersistirDados(_medicoRepository.UnitOfWork);
         }
 

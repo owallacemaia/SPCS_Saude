@@ -22,27 +22,37 @@ namespace SPCS.Saude.Infra.Repository
 
         public void Adicionar(Medico medico)
         {
+            _context.Attach(medico.TipoUsuario);
             _context.Medicos.Add(medico);
         }
 
-        public async Task<Medico> ObterInformacoesPorUsuarioId(Guid id)
+        public void Atualizar(Medico medico)
         {
-            return await _context.Medicos.AsNoTracking().FirstOrDefaultAsync(a => a.UsuarioId == id);
+            _context.Medicos.Update(medico);
+        }
+
+        public async Task<Medico> MedicoFiltro(string crm = null, string cpf = null)
+        {
+            return await _context.Medicos.AsNoTracking().FirstOrDefaultAsync(m => m.Cpf == cpf || m.Crm == crm);
+        }
+
+        public async Task<Medico> ObterPorId(Guid id)
+        {
+            return await _context.Medicos.AsNoTracking()
+                .Include(m => m.TipoUsuario)
+                .FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public async Task<IEnumerable<Medico>> ObterTodos()
+        {
+            return await _context.Medicos.AsNoTracking()
+                .Include(m => m.TipoUsuario)
+                .ToListAsync();
         }
 
         public void Dispose()
         {
             _context?.Dispose();
-        }
-
-        public async Task<Medico> ObterPorId(Guid id)
-        {
-            return await _context.Medicos.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
-        }
-
-        public async Task<IEnumerable<Medico>> ObterTodos()
-        {
-            return await _context.Medicos.AsNoTracking().ToListAsync();
         }
     }
 }

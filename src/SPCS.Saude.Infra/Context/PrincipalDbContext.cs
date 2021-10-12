@@ -24,6 +24,8 @@ namespace SPCS.Saude.Infra.Context
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Ficha> Fichas { get; set; }
         public DbSet<Agrotoxico> Agrotoxicos { get; set; }
+        public DbSet<Diagnostico> Diagnosticos { get; set; }
+        public DbSet<Amostra> Amostras { get; set; }
         public DbSet<RefreshTokenData> RefreshTokens { get; set; }
 
 

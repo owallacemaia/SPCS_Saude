@@ -9,7 +9,9 @@ namespace SPCS.Saude.Business.Interfaces
     public interface IPacienteRepository : IRepository<Paciente>
     {
         void Adicionar(Paciente paciente);
+        void Atualizar(Paciente paciente);
         Task<IEnumerable<Paciente>> ObterTodos();
         Task<Paciente> ObterPorId(Guid id);
+        Task<Paciente> ObterPorCpf(string cpf);
     }
 }
