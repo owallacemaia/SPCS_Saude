@@ -107,18 +107,18 @@ namespace SPCS.Saude.API.Controllers
             return CustomResponse();
         }
 
-        [HttpGet("buscar/{cpf}")]
-        public async Task<ActionResult<UsuarioResponseApiModel>> ObterPorCpf(string cpf)
+        [HttpGet("paciente/{cpf}")]
+        public async Task<ActionResult<UsuarioResponseApiModel>> ObterPacientePorCpf(string cpf)
         {
-            var usuario = await _usuarioRepository.ObterPorCpf(cpf);
+            var paciente = await _pacienteRepository.ObterPorCpf(cpf);
 
-            if (usuario == null || usuario.Cpf != cpf)
+            if (paciente == null || paciente.Cpf != cpf)
             {
                 AdicionarErroProcessamento("Usuário não encontrado! Confirme o ID informado.");
                 return CustomResponse();
             }
 
-            return CustomResponse(_mapper.Map<UsuarioResponseApiModel>(usuario));
+            return CustomResponse(_mapper.Map<PacienteResponseApiModel>(paciente));
         }
 
         [HttpPost("novo/paciente")]
