@@ -4,6 +4,7 @@ using SPCS.ApiModels.Usuario;
 using SPCS.Saude.API.Services;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
+using SPCS.Saude.Core.Identidade;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace SPCS.Saude.API.Controllers
             _usuarioService = usuarioService;
         }
 
+        [ClaimsAuthorize("Administrador", "Total")]
         [HttpPost("nova-conta")]
         public async Task<IActionResult> Registrar(CadastrarAdminRequestApiModel usuarioRegistro)
         {

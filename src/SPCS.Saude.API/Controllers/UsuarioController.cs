@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SPCS.ApiModels.Usuario;
 using SPCS.Saude.API.Data;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
+using SPCS.Saude.Core.Identidade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
 {
+    [Authorize]
     [Route("api/usuario")]
     public class UsuarioController : MainController
     {
@@ -144,6 +147,7 @@ namespace SPCS.Saude.API.Controllers
             return CustomResponse(_mapper.Map<PacienteResponseApiModel>(paciente));
         }
 
+        [ClaimsAuthorize("Administrador", "Total")]
         [HttpPost("novo/medico")]
         public async Task<ActionResult<MedicoResponseApiModel>> Cadastrar(CadastrarMedicoRequestApiModel model)
         {
@@ -185,6 +189,7 @@ namespace SPCS.Saude.API.Controllers
             return CustomResponse();
         }
 
+        [ClaimsAuthorize("Administrador","Total")]
         [HttpPost("novo/enfermeiro")]
         public async Task<ActionResult<EnfermeiroResponseApiModel>> Cadastrar(CadastrarEnfermeiroRequestApiModel model)
         {

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SPCS.ApiModels.Ficha;
 using SPCS.Saude.Business.Interfaces;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
 {
+    [Authorize]
     [Route("api/ficha")]
     public class FichaController : MainController
     {
@@ -44,7 +46,7 @@ namespace SPCS.Saude.API.Controllers
         }
 
         [HttpPost("cadastrar")]
-        public async Task<ActionResult<FichaResponseApiModel>> Cadastrar(FichaResponseApiModel model)
+        public async Task<ActionResult<FichaResponseApiModel>> Cadastrar(CadastrarFichaRequestApiModel model)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(model);

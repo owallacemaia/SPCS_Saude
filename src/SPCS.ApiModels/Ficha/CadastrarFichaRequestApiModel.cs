@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SPCS.ApiModels.Ficha
@@ -15,31 +16,31 @@ namespace SPCS.ApiModels.Ficha
         public string MunicipioTrabalho { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Gestante { get; private set; }
+        public string Gestante { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Tabagismo { get; private set; }
+        public string Tabagismo { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool TabagismoAtual { get; private set; }
+        public string TabagismoAtual { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool TabagismoAnterior { get; private set; }
+        public string TabagismoAnterior { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Etilismo { get; private set; }
+        public string Etilismo { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool EtilismoAtual { get; private set; }
+        public string EtilismoAtual { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool EtilismoAnterior { get; private set; }
+        public string EtilismoAnterior { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool IngestaoCafe { get; private set; }
+        public string IngestaoCafe { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double CafeMlDia { get; private set; }
+        public string CafeMlDia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string RelacaoTrabalho { get; private set; }
@@ -48,7 +49,7 @@ namespace SPCS.ApiModels.Ficha
         public string FuncaoTrabalho { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool ContatoPraguicida { get; private set; }
+        public string ContatoPraguicida { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string TempoContatoPraguicida { get; private set; }
@@ -66,261 +67,268 @@ namespace SPCS.ApiModels.Ficha
         public string ViaExposicao { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Adoeceu { get; private set; }
+        public string Adoeceu { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string QtdVezesAdoeceu { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Internado { get; private set; }
+        public string stringernado { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public string QtdVezesInternado { get; set; }
+        public string QtdVezesstringernado { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public string QuandoInterndo { get; set; }
+        public string Quandostringerndo { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string TipoContato { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool EquipamentoProtecao { get; set; }
+        public string EquipamentoProtecao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool RoupaProtecao { get; set; }
+        public string RoupaProtecao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool BotaProtecao { get; set; }
+        public string BotaProtecao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool LuvasProtecao { get; set; }
+        public string LuvasProtecao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool MascaraProtecao { get; set; }
+        public string MascaraProtecao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool OculosProtecao { get; set; }
+        public string OculosProtecao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool ProtetorAuricular { get; set; }
+        public string ProtetorAuricular { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DoencaCardioVascular { get; private set; }
+        public string DoencaCardioVascular { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool HipertensaoArterial { get; private set; }
+        public string HipertensaoArterial { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool HipotensaoArterial { get; private set; }
+        public string HipotensaoArterial { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Arritmia { get; private set; }
+        public string Arritmia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool AlteracaoSNervoso { get; private set; }
+        public string AlteracaoSNervoso { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DorCabeca { get; private set; }
+        public string DorCabeca { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool FraquezaMuscular { get; private set; }
+        public string FraquezaMuscular { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Tremedeira { get; private set; }
+        public string Tremedeira { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool TremorMuscular { get; private set; }
+        public string TremorMuscular { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool VisãoTurvaEmbacada { get; private set; }
+        public string VisãoTurvaEmbacada { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool AgitacaoIrritabilidade { get; private set; }
+        public string AgitacaoIrritabilidade { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool VertigensTonturas { get; private set; }
+        public string VertigensTonturas { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Formigamento { get; private set; }
+        public string Formigamento { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool IncoordenacaoMotora { get; private set; }
+        public string IncoordenacaoMotora { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool AparelhoDigestorio { get; private set; }
+        public string AparelhoDigestorio { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool ColicasDorBarriga { get; private set; }
+        public string ColicasDorBarriga { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DorEstomago { get; private set; }
+        public string DorEstomago { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool AziaQueimacao { get; private set; }
+        public string AziaQueimacao { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool NauseasEnjoo { get; private set; }
+        public string NauseasEnjoo { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Vomito { get; private set; }
+        public string Vomito { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Diarreia { get; private set; }
+        public string Diarreia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool AparelhoRespiratorio { get; private set; }
+        public string AparelhoRespiratorio { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool FaltaDeAr { get; private set; }
+        public string FaltaDeAr { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool IrritaçaoNasal { get; private set; }
+        public string IrritaçaoNasal { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool CatarroEscarro { get; private set; }
+        public string CatarroEscarro { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Tosse { get; private set; }
+        public string Tosse { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool AparelhoAuditivo { get; private set; }
+        public string AparelhoAuditivo { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DiminuicaoAudicao { get; private set; }
+        public string DiminuicaoAudicao { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Zumbido { get; private set; }
+        public string Zumbido { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool PeleMucosa { get; private set; }
+        public string PeleMucosa { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DcSensibilizante { get; private set; }
+        public string DcSensibilizante { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DcIrritativa { get; private set; }
+        public string DcIrritativa { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool IrritacaoOcular { get; private set; }
+        public string IrritacaoOcular { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool AparelhoUrinario { get; private set; }
+        public string AparelhoUrinario { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DiminuicaoUrina { get; private set; }
+        public string DiminuicaoUrina { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool UrinaescuraSangue { get; private set; }
+        public string UrinaescuraSangue { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool Outro { get; private set; }
+        public string Outro { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string ExposicaoRaiox { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public int QuandodiasExposicao { get; private set; }
+        public string QuandodiasExposicao { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool TeveCancer { get; private set; }
+        public string TeveCancer { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool SncCancer { get; private set; }
+        public string SncCancer { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DigestorioCcancer { get; private set; }
+        public string DigestorioCcancer { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool RespiratorioCancer { get; private set; }
+        public string RespiratorioCancer { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool ReprodutorCancer { get; private set; }
+        public string ReprodutorCancer { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool GlandularCancer { get; private set; }
+        public string GlandularCancer { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool PeleOssoSangueCancer { get; private set; }
+        public string PeleOssoSangueCancer { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool FamiliaCancer { get; private set; }
+        public string FamiliaCancer { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool SNCCancerFamilia { get; private set; }
+        public string SNCCancerFamilia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DigestorioCancerfamilia { get; private set; }
+        public string DigestorioCancerfamilia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool RespiratorioCancerfamilia { get; private set; }
+        public string RespiratorioCancerfamilia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool ReprodutorCancerfamilia { get; private set; }
+        public string ReprodutorCancerfamilia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool GlandularCancerfamilia { get; private set; }
+        public string GlandularCancerfamilia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool PeleOssoSangueCancerfamilia { get; private set; }
+        public string PeleOssoSangueCancerfamilia { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool EdaRegiao { get; private set; }
+        public string EdaRegiao { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double Ch_t { get; private set; }
+        public string Ch_t { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double Ch_e { get; private set; }
+        public string Ch_e { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double Ch_p { get; private set; }
+        public string Ch_p { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double Ast { get; private set; }
+        public string Ast { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double Alt { get; private set; }
+        public string Alt { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double Y_gt { get; private set; }
+        public string Y_gt { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double Creatinina { get; private set; }
+        public string Creatinina { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public String Ambulatorio { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double HabitoAlimentar { get; private set; }
+        public string HabitoAlimentar { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public double Imc { get; private set; }
+        public string Imc { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public int CircunferenciaAbdominal { get; private set; }
+        public string CircunferenciaAbdominal { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool DificuldadeEngravidar { get; private set; }
+        public string DificuldadeEngravidar { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool AbortoEspontaneo { get; private set; }
+        public string AbortoEspontaneo { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool TemFilhos { get; private set; }
+        public string TemFilhos { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool FilhoMaFormacao { get; private set; }
+        public string FilhoMaFormacao { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool MedicamentoContinuo { get; private set; }
+        public string MedicamentoContinuo { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Medicamento { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool RemedioMicose { get; private set; }
+        public string RemedioMicose { get; private set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string NomeRemedio { get; private set; }
+
+        public IEnumerable<FichaAgroApiModel> FichaAgros { get; set; }
+    }
+
+    public class FichaAgroApiModel
+    {
+        public Guid Id { get; set; }
     }
 }

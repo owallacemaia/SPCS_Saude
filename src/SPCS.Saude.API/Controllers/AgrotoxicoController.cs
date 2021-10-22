@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SPCS.ApiModels.Agrotoxico;
 using SPCS.Saude.Business.Interfaces;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
 {
+    [Authorize]
     [Route("api/agrotoxico")]
     public class AgrotoxicoController : MainController
     {

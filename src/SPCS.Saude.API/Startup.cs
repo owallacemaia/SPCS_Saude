@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SPCS.Saude.API.Configuration;
 using SPCS.Saude.Core.Identidade;
+using System.Net;
 
 namespace SPCS.Saude.API
 {
