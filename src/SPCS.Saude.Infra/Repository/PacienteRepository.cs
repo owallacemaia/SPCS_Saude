@@ -59,5 +59,12 @@ namespace SPCS.Saude.Infra.Repository
         {
             _context?.Dispose();
         }
+
+        public async Task<IEnumerable<Paciente>> ObterPacientesFichas()
+        {
+            return await _context.Pacientes.AsNoTracking()
+                .Include(a => a.Fichas)
+                .ToListAsync();
+        }
     }
 }

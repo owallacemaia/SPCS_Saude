@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SPCS.ApiModels.Ficha;
 using SPCS.ApiModels.Usuario;
 using SPCS.Saude.Business.Models;
 
@@ -17,6 +18,7 @@ namespace SPCS.Saude.API.AutoMapper
             CreateMap<PacienteResponseApiModel, Paciente>().ReverseMap();
             CreateMap<PacienteResponseApiModel, Usuario>().ReverseMap();
             CreateMap<EnderecoResponseApiModel, Endereco>().ReverseMap();
+            CreateMap<UsuarioFichaRequestApiModel, Paciente>().ReverseMap();
 
             //Medico
             CreateMap<MedicoResponseApiModel, Medico>().ReverseMap();

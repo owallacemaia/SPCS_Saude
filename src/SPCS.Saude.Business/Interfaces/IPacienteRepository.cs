@@ -13,5 +13,6 @@ namespace SPCS.Saude.Business.Interfaces
         Task<IEnumerable<Paciente>> ObterTodos();
         Task<Paciente> ObterPorId(Guid id);
         Task<Paciente> ObterPorCpf(string cpf);
+        Task<IEnumerable<Paciente>> ObterPacientesFichas();
     }
 }
