@@ -82,7 +82,7 @@ namespace SPCS.Saude.Business.Models
         public string QuandodiasExposicao { get; private set; }
         public string TeveCancer { get; private set; }
         public string SncCancer { get; private set; }
-        public string DigestorioCcancer { get; private set; }
+        public string DigestorioCancer { get; private set; }
         public string RespiratorioCancer { get; private set; }
         public string ReprodutorCancer { get; private set; }
         public string GlandularCancer { get; private set; }
@@ -112,6 +112,7 @@ namespace SPCS.Saude.Business.Models
         public string FilhoMaFormacao { get; private set; }
         public string MedicamentoContinuo { get; private set; }
         public string RemedioMicose { get; private set; }
+        public string NomeRemedio { get; private set; }
         public string SiglaDiagnostico { get; private set; }
 
         protected Amostra() { }
@@ -211,7 +212,7 @@ namespace SPCS.Saude.Business.Models
             QuandodiasExposicao = quandodiasExposicao;
             TeveCancer = teveCancer;
             SncCancer = sncCancer;
-            DigestorioCcancer = digestorioCcancer;
+            DigestorioCancer = digestorioCcancer;
             RespiratorioCancer = respiratorioCancer;
             ReprodutorCancer = reprodutorCancer;
             GlandularCancer = glandularCancer;

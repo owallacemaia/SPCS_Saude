@@ -8,90 +8,90 @@ namespace SPCS.ApiModels.Ficha
         public Guid PacienteId { get; set; }
         public DateTime DataCadastro { get; set; }
         public string MunicipioTrabalho { get; set; }
-        public bool Gestante { get; set; }
-        public bool Tabagismo { get; set; }
-        public bool TabagismoAtual { get; set; }
-        public bool TabagismoAnterior { get; private set; }
-        public bool Etilismo { get; set; }
-        public bool EtilismoAtual { get; set; }
-        public bool EtilismoAnterior { get; set; }
-        public bool IngestaoCafe { get; set; }
+        public string Gestante { get; set; }
+        public string Tabagismo { get; set; }
+        public string TabagismoAtual { get; set; }
+        public string TabagismoAnterior { get; private set; }
+        public string Etilismo { get; set; }
+        public string EtilismoAtual { get; set; }
+        public string EtilismoAnterior { get; set; }
+        public string IngestaoCafe { get; set; }
         public double CafeMlDia { get; set; }
         public string RelacaoTrabalho { get; set; }
         public string FuncaoTrabalho { get; set; }
-        public bool ContatoPraguicida { get; set; }
+        public string ContatoPraguicida { get; set; }
         public string TempoContatoPraguicida { get; set; }
         public string FrequenciaContatoPraguicida { get; set; }
         public string UltimoContatoPraguicida { get; set; }
         public string FormaAplicacao { get; set; }
         public string ViaExposicao { get; set; }
-        public bool Adoeceu { get; set; }
+        public string Adoeceu { get; set; }
         public string QtdVezesAdoeceu { get; set; }
-        public bool Internado { get; set; }
+        public string Internado { get; set; }
         public string QtdVezesInternado { get; set; }
         public string QuandoInterndo { get; set; }
         public string TipoContato { get; set; }
-        public bool EquipamentoProtecao { get; set; }
-        public bool RoupaProtecao { get; set; }
-        public bool BotaProtecao { get; set; }
-        public bool LuvasProtecao { get; set; }
-        public bool MascaraProtecao { get; set; }
-        public bool OculosProtecao { get; set; }
-        public bool ProtetorAuricular { get; set; }
-        public bool DoencaCardioVascular { get; set; }
-        public bool HipertensaoArterial { get; set; }
-        public bool HipotensaoArterial { get; set; }
-        public bool Arritmia { get; set; }
-        public bool AlteracaoSNervoso { get; set; }
-        public bool DorCabeca { get; set; }
-        public bool FraquezaMuscular { get; set; }
-        public bool Tremedeira { get; set; }
-        public bool TremorMuscular { get; set; }
-        public bool VisãoTurvaEmbacada { get; set; }
-        public bool AgitacaoIrritabilidade { get; set; }
-        public bool VertigensTonturas { get; set; }
-        public bool Formigamento { get; set; }
-        public bool IncoordenacaoMotora { get; set; }
-        public bool AparelhoDigestorio { get; set; }
-        public bool ColicasDorBarriga { get; set; }
-        public bool DorEstomago { get; set; }
-        public bool AziaQueimacao { get; set; }
-        public bool NauseasEnjoo { get; set; }
-        public bool Vomito { get; set; }
-        public bool Diarreia { get; set; }
-        public bool AparelhoRespiratorio { get; set; }
-        public bool FaltaDeAr { get; set; }
-        public bool IrritaçaoNasal { get; set; }
-        public bool CatarroEscarro { get; set; }
-        public bool Tosse { get; set; }
-        public bool AparelhoAuditivo { get; set; }
-        public bool DiminuicaoAudicao { get; set; }
-        public bool Zumbido { get; set; }
-        public bool PeleMucosa { get; set; }
-        public bool DcSensibilizante { get; set; }
-        public bool DcIrritativa { get; set; }
-        public bool IrritacaoOcular { get; set; }
-        public bool AparelhoUrinario { get; set; }
-        public bool DiminuicaoUrina { get; set; }
-        public bool UrinaescuraSangue { get; set; }
-        public bool Outro { get; set; }
+        public string EquipamentoProtecao { get; set; }
+        public string RoupaProtecao { get; set; }
+        public string BotaProtecao { get; set; }
+        public string LuvasProtecao { get; set; }
+        public string MascaraProtecao { get; set; }
+        public string OculosProtecao { get; set; }
+        public string ProtetorAuricular { get; set; }
+        public string DoencaCardioVascular { get; set; }
+        public string HipertensaoArterial { get; set; }
+        public string HipotensaoArterial { get; set; }
+        public string Arritmia { get; set; }
+        public string AlteracaoSNervoso { get; set; }
+        public string DorCabeca { get; set; }
+        public string FraquezaMuscular { get; set; }
+        public string Tremedeira { get; set; }
+        public string TremorMuscular { get; set; }
+        public string VisãoTurvaEmbacada { get; set; }
+        public string AgitacaoIrritabilidade { get; set; }
+        public string VertigensTonturas { get; set; }
+        public string Formigamento { get; set; }
+        public string IncoordenacaoMotora { get; set; }
+        public string AparelhoDigestorio { get; set; }
+        public string ColicasDorBarriga { get; set; }
+        public string DorEstomago { get; set; }
+        public string AziaQueimacao { get; set; }
+        public string NauseasEnjoo { get; set; }
+        public string Vomito { get; set; }
+        public string Diarreia { get; set; }
+        public string AparelhoRespiratorio { get; set; }
+        public string FaltaDeAr { get; set; }
+        public string IrritaçaoNasal { get; set; }
+        public string CatarroEscarro { get; set; }
+        public string Tosse { get; set; }
+        public string AparelhoAuditivo { get; set; }
+        public string DiminuicaoAudicao { get; set; }
+        public string Zumbido { get; set; }
+        public string PeleMucosa { get; set; }
+        public string DcSensibilizante { get; set; }
+        public string DcIrritativa { get; set; }
+        public string IrritacaoOcular { get; set; }
+        public string AparelhoUrinario { get; set; }
+        public string DiminuicaoUrina { get; set; }
+        public string UrinaescuraSangue { get; set; }
+        public string Outro { get; set; }
         public string ExposicaoRaiox { get; set; }
-        public int QuandodiasExposicao { get; set; }
-        public bool TeveCancer { get; set; }
-        public bool SncCancer { get; set; }
-        public bool DigestorioCcancer { get; set; }
-        public bool RespiratorioCancer { get; set; }
-        public bool ReprodutorCancer { get; set; }
-        public bool GlandularCancer { get; set; }
-        public bool PeleOssoSangueCancer { get; set; }
-        public bool FamiliaCancer { get; set; }
-        public bool SNCCancerFamilia { get; set; }
-        public bool DigestorioCancerfamilia { get; set; }
-        public bool RespiratorioCancerfamilia { get; set; }
-        public bool ReprodutorCancerfamilia { get; set; }
-        public bool GlandularCancerfamilia { get; set; }
-        public bool PeleOssoSangueCancerfamilia { get; set; }
-        public bool EdaRegiao { get; set; }
+        public string QuandodiasExposicao { get; set; }
+        public string TeveCancer { get; set; }
+        public string SncCancer { get; set; }
+        public string DigestorioCancer { get; set; }
+        public string RespiratorioCancer { get; set; }
+        public string ReprodutorCancer { get; set; }
+        public string GlandularCancer { get; set; }
+        public string PeleOssoSangueCancer { get; set; }
+        public string FamiliaCancer { get; set; }
+        public string SNCCancerFamilia { get; set; }
+        public string DigestorioCancerfamilia { get; set; }
+        public string RespiratorioCancerfamilia { get; set; }
+        public string ReprodutorCancerfamilia { get; set; }
+        public string GlandularCancerfamilia { get; set; }
+        public string PeleOssoSangueCancerfamilia { get; set; }
+        public string EdaRegiao { get; set; }
         public double Ch_t { get; set; }
         public double Ch_e { get; set; }
         public double Ch_p { get; set; }
@@ -100,16 +100,16 @@ namespace SPCS.ApiModels.Ficha
         public double Y_gt { get; set; }
         public double Creatinina { get; set; }
         public string Ambulatorio { get; set; }
-        public double HabitoAlimentar { get; set; }
+        public string HabitoAlimentar { get; set; }
         public double Imc { get; set; }
         public int CircunferenciaAbdominal { get; set; }
-        public bool DificuldadeEngravidar { get; set; }
-        public bool AbortoEspontaneo { get; set; }
-        public bool TemFilhos { get; set; }
-        public bool FilhoMaFormacao { get; set; }
-        public bool MedicamentoContinuo { get; set; }
+        public string DificuldadeEngravidar { get; set; }
+        public string AbortoEspontaneo { get; set; }
+        public string TemFilhos { get; set; }
+        public string FilhoMaFormacao { get; set; }
+        public string MedicamentoContinuo { get; set; }
         public string Medicamento { get; set; }
-        public bool RemedioMicose { get; set; }
+        public string RemedioMicose { get; set; }
         public string NomeRemedio { get; set; }
     }
 }
