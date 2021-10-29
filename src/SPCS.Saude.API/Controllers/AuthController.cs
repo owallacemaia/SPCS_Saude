@@ -69,12 +69,44 @@ namespace SPCS.Saude.API.Controllers
             if (!ModelState.IsValid)
                 return CustomResponse();
 
-            if (await accessManager.ValidateCredentials(usuarioLogin))
+            var result = await _accessManager.SignInManager.PasswordSignInAsync(usuarioLogin.Email, usuarioLogin.Senha,
+                false, true);
+
+            if (result.Succeeded)
             {
-                return await accessManager.GerarToken(usuarioLogin.Email);
+                return CustomResponse(await _accessManager.GerarToken(usuarioLogin.Email));
             }
 
-            return BadRequest();
+            if (result.IsLockedOut)
+            {
+                AdicionarErroProcessamento("Usuário temporariamente bloqueado por tentativas inválidas");
+                return CustomResponse();
+            }
+
+            AdicionarErroProcessamento("Usuário ou Senha incorretos");
+            return CustomResponse();
+        }
+
+        [HttpPost("refresh-token")]
+        public async Task<ActionResult> RefreshToken([FromBody] string refreshToken)
+        {
+            if (string.IsNullOrEmpty(refreshToken))
+            {
+                AdicionarErroProcessamento("Refresh Token inválido");
+                return CustomResponse();
+            }
+
+            var token = await _accessManager.ObterRefreshToken(refreshToken);
+
+            if (token is null || token.Expires <= DateTime.Now)
+            {
+                AdicionarErroProcessamento("Refresh Token expirado");
+                return CustomResponse();
+            }
+
+            await _accessManager.RemoverToken(token);
+
+            return CustomResponse(await _accessManager.GerarToken(token.Email));
         }
     }
 }

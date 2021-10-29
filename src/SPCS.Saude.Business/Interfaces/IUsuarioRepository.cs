@@ -15,7 +15,9 @@ namespace SPCS.Saude.Business.Interfaces
         Task<Usuario> ObterPorId(Guid id);
         Task<Usuario> ObterPorEmail(string email);
         void GravarToken(RefreshTokenData refreshToken);
-        Task<RefreshTokenData> ObterTokenUsuario(string email);
+        Task<RefreshTokenData> ObterTokenUsuario(string refreshToken);
+        Task<RefreshTokenData> ObterTokenUsuarioEmail(string email);
+        void RemoverTokenUsuario(RefreshTokenData refreshToken);
         Task<IEnumerable<Usuario>> ObterPorTipo(Guid tipoId);
         Task<IEnumerable<Usuario>> ObterTodos();
     }

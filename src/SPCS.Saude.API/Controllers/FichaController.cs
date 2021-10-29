@@ -17,12 +17,14 @@ namespace SPCS.Saude.API.Controllers
         private readonly IMapper _mapper;
         private readonly IFichaService _fichaService;
         private readonly IFichaRepository _fichaRepository;
+        private readonly IPacienteRepository _pacienteRepository;
 
-        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository)
+        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository, IPacienteRepository pacienteRepository)
         {
             _mapper = mapper;
             _fichaService = fichaService;
             _fichaRepository = fichaRepository;
+            _pacienteRepository = pacienteRepository;
         }
 
         [HttpGet("listar")]
@@ -59,6 +61,12 @@ namespace SPCS.Saude.API.Controllers
                 return CustomResponse();
 
             return CustomResponse(_mapper.Map<FichaResponseApiModel>(ficha));
+        }
+
+        [HttpGet("fichas-pacientes")]
+        public async Task<IEnumerable<UsuarioFichaRequestApiModel>> ListarFichas()
+        {
+            return (_mapper.Map<IEnumerable<UsuarioFichaRequestApiModel>>(await _pacienteRepository.ObterPacientesFichas()));
         }
     }
 }

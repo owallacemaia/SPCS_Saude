@@ -57,9 +57,9 @@ namespace SPCS.Saude.Infra.Repository
             _context.RefreshTokens.Add(refreshToken);
         }
 
-        public async Task<RefreshTokenData> ObterTokenUsuario(string email)
+        public async Task<RefreshTokenData> ObterTokenUsuario(string refreshToken)
         {
-            return await _context.RefreshTokens.AsNoTracking().FirstOrDefaultAsync(a => a.Email == email);
+            return await _context.RefreshTokens.AsNoTracking().FirstOrDefaultAsync(a => a.RefreshToken == refreshToken);
         }
 
         public async Task<Usuario> ObterPorId(Guid id)
@@ -75,6 +75,16 @@ namespace SPCS.Saude.Infra.Repository
         public void Remover(Guid id)
         {
             _context.Remove(id);
+        }
+
+        public void RemoverTokenUsuario(RefreshTokenData refreshToken)
+        {
+            _context.RefreshTokens.Remove(refreshToken);
+        }
+
+        public async Task<RefreshTokenData> ObterTokenUsuarioEmail(string email)
+        {
+            return await _context.RefreshTokens.FirstOrDefaultAsync(a => a.Email == email);
         }
     }
 }

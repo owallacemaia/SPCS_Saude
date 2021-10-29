@@ -8,4 +8,8 @@
     <ProjectReference Include="..\SPCS.Saude.Business\SPCS.Saude.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Diagnostico\" />
+  </ItemGroup>
+
 </Project>
