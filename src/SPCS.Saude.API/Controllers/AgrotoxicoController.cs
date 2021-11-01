@@ -75,12 +75,14 @@ namespace SPCS.Saude.API.Controllers
                 return CustomResponse(model);
             }
 
-            await _agrotoxicoService.Atualizar(_mapper.Map<Agrotoxico>(model));
+            var agrotoxicomap = _mapper.Map<Agrotoxico>(model);
+
+            await _agrotoxicoService.Atualizar(agrotoxicomap);
 
             if (!OperacaoValida())
                 return CustomResponse();
 
-            return CustomResponse(_mapper.Map<AgrotoxicoResponseApiModel>(model));
+            return CustomResponse(_mapper.Map<AgrotoxicoResponseApiModel>(agrotoxicomap));
         }
     }
 }

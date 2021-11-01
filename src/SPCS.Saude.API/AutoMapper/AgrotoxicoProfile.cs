@@ -9,6 +9,7 @@ namespace SPCS.Saude.API.AutoMapper
         public AgrotoxicoProfile()
         {
             CreateMap<CadastrarAgrotoxicoRequestApiModel, Agrotoxico>().ReverseMap();
+            CreateMap<AtualizarAgrotoxicoRequestApiModel, Agrotoxico>().ReverseMap();
             CreateMap<AgrotoxicoResponseApiModel, Agrotoxico>().ReverseMap();
         }
     }
