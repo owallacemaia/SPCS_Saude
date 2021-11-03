@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.Extensions.Hosting;
+using System.Net;
 
 namespace SPCS.Saude.API
 {
@@ -16,5 +19,6 @@ namespace SPCS.Saude.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }

@@ -50,6 +50,13 @@ namespace SPCS.Saude.Business.Services
                 AdicionarErro("O token está vazio");
             }
 
+            var possuiToken = await _usuarioRepository.ObterTokenUsuarioEmail(refreshToken.Email);
+
+            if (possuiToken != null)
+            {
+                _usuarioRepository.RemoverTokenUsuario(possuiToken);
+            }
+
             _usuarioRepository.GravarToken(refreshToken);
 
             return await PersistirDados(_usuarioRepository.UnitOfWork);

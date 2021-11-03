@@ -20,7 +20,16 @@ namespace SPCS.Saude.Business.Services
             if (!enfermeiro.IsValid())
                 return enfermeiro.ValidationResult;
 
+            var enfermeiroExistente = await _enfermeiroRepository.EnfermeiroFiltro(cpf: enfermeiro.Coren, corem: enfermeiro.Coren);
+
+            if(enfermeiroExistente != null)
+            {
+                AdicionarErro("O CPF ou CRM informado já esta cadastrado na nossa base de dados");
+                return ValidationResult;
+            }
+
             _enfermeiroRepository.Adicionar(enfermeiro);
+
             return await PersistirDados(_enfermeiroRepository.UnitOfWork);
         }
 

@@ -1,23 +1,31 @@
-﻿using SPCS.Saude.Business.Models;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SPCS.Saude.API.ViewModels
+namespace SPCS.ApiModels.Usuario
 {
-    public class UsuarioViewModel
+    public class CadastrarMedicoRequestApiModel
     {
-        [Key]
-        public Guid Id { get; set; }
-
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [EmailAddress(ErrorMessage = "O campo {0} está em formato inválido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Cpf { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Telefone { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Sexo { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [DataType(DataType.Date)]
+        public DateTime DataNascimento { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public Guid TipoUsuarioId { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(100, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 6)]
@@ -28,6 +36,7 @@ namespace SPCS.Saude.API.ViewModels
 
         public string Imagem { get; set; }
 
-        public Guid TipoUsuarioId { get; set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Crm { get; set; }
     }
 }

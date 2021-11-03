@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using SPCS.Saude.API.ViewModels;
+using SPCS.ApiModels.Ficha;
+using SPCS.ApiModels.Usuario;
 using SPCS.Saude.Business.Models;
 
 namespace SPCS.Saude.API.AutoMapper
@@ -8,8 +9,24 @@ namespace SPCS.Saude.API.AutoMapper
     {
         public UsuarioProfile()
         {
-            CreateMap<UsuarioViewModel, Usuario>().ReverseMap();
-            CreateMap<EnderecoViewModel, Endereco>().ReverseMap();
+            //Usuario
+            CreateMap<CadastrarUsuarioRequestApiModel, Usuario>().ReverseMap();
+            CreateMap<CadastrarEnderecoRequestApiModel, Endereco>().ReverseMap();
+            CreateMap<UsuarioResponseApiModel, Usuario>().ReverseMap();
+            
+            //Paciente
+            CreateMap<PacienteResponseApiModel, Paciente>().ReverseMap();
+            CreateMap<PacienteResponseApiModel, Usuario>().ReverseMap();
+            CreateMap<EnderecoResponseApiModel, Endereco>().ReverseMap();
+            CreateMap<UsuarioFichaRequestApiModel, Paciente>().ReverseMap();
+
+            //Medico
+            CreateMap<MedicoResponseApiModel, Medico>().ReverseMap();
+            CreateMap<MedicoResponseApiModel, Usuario>().ReverseMap();
+
+            //Enfermeiro
+            CreateMap<EnfermeiroResponseApiModel, Enfermeiro>().ReverseMap();
+            CreateMap<EnfermeiroResponseApiModel, Usuario>().ReverseMap();
         }
     }
 }

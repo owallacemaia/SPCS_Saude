@@ -20,13 +20,34 @@ namespace SPCS.Saude.Business.Services
             if (!paciente.IsValid())
                 return paciente.ValidationResult;
 
+            var pacienteExistente = await _pacienteRepository.ObterPorCpf(paciente.Cpf);
+
+            if(pacienteExistente != null)
+            {
+                AdicionarErro($"Já existe um paciente com o CPF {paciente.Cpf}");
+                return ValidationResult;
+            }
+
             _pacienteRepository.Adicionar(paciente);
             return await PersistirDados(_pacienteRepository.UnitOfWork);
         }
 
-        public Task<ValidationResult> Atualizar(Paciente paciente)
+        public async Task<ValidationResult> Atualizar(Paciente paciente)
         {
-            throw new NotImplementedException();
+            if (!paciente.IsValid())
+                return paciente.ValidationResult;
+
+            var pacienteExistente = await _pacienteRepository.ObterPorCpf(paciente.Cpf);
+
+            if (pacienteExistente != null && pacienteExistente.Cpf != paciente.Cpf)
+            {
+                AdicionarErro($"Já existe um paciente com o CPF {paciente.Cpf}");
+                return ValidationResult;
+            }
+
+            _pacienteRepository.Atualizar(paciente);
+
+            return await PersistirDados(_pacienteRepository.UnitOfWork);
         }
     }
 }

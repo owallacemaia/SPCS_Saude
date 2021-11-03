@@ -1,37 +1,54 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SPCS.Saude.API.ViewModels;
+using SPCS.ApiModels.Ficha;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
 {
+    [Authorize]
     [Route("api/ficha")]
     public class FichaController : MainController
     {
         private readonly IMapper _mapper;
         private readonly IFichaService _fichaService;
         private readonly IFichaRepository _fichaRepository;
+        private readonly IPacienteRepository _pacienteRepository;
 
-        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository)
+        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository, IPacienteRepository pacienteRepository)
         {
             _mapper = mapper;
             _fichaService = fichaService;
             _fichaRepository = fichaRepository;
+            _pacienteRepository = pacienteRepository;
         }
 
         [HttpGet("listar")]
-        public async Task<IEnumerable<FichaViewModel>> Listar()
+        public async Task<IEnumerable<FichaResponseApiModel>> Listar()
         {
-            var fichas = _mapper.Map<IEnumerable<FichaViewModel>>(await _fichaRepository.ListarAsync());
+            return (_mapper.Map<IEnumerable<FichaResponseApiModel>>(await _fichaRepository.ListarAsync()));
+        }
 
-            return (fichas);
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<FichaResponseApiModel>> ObterPorId(Guid id)
+        {
+            var ficha = await _fichaRepository.ObterPorId(id);
+
+            if(ficha == null)
+            {
+                AdicionarErroProcessamento("Não foi encontrado nenhuma ficha com o ID informado!");
+                CustomResponse();
+            }
+
+            return CustomResponse(_mapper.Map<FichaResponseApiModel>(ficha));
         }
 
         [HttpPost("cadastrar")]
-        public async Task<ActionResult<FichaViewModel>> Cadastrar(FichaViewModel model)
+        public async Task<ActionResult<FichaResponseApiModel>> Cadastrar(CadastrarFichaRequestApiModel model)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(model);
@@ -43,7 +60,13 @@ namespace SPCS.Saude.API.Controllers
             if (!OperacaoValida())
                 return CustomResponse();
 
-            return CustomResponse(model);
+            return CustomResponse(_mapper.Map<FichaResponseApiModel>(ficha));
+        }
+
+        [HttpGet("fichas-pacientes")]
+        public async Task<IEnumerable<UsuarioFichaRequestApiModel>> ListarFichas()
+        {
+            return (_mapper.Map<IEnumerable<UsuarioFichaRequestApiModel>>(await _pacienteRepository.ObterPacientesFichas()));
         }
     }
 }

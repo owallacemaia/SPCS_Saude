@@ -11,7 +11,7 @@ namespace SPCS.Saude.Business.Interfaces
         void Adicionar(Ficha ficha);
         void Atualizar(Ficha ficha);
 
-        Task<Ficha> BuscarPorId(Guid id);
+        Task<Ficha> ObterPorId(Guid id);
         Task<IEnumerable<Ficha>> ListarAsync();
     }
 }

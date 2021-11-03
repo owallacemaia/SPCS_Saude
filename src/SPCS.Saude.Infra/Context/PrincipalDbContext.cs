@@ -23,7 +23,10 @@ namespace SPCS.Saude.Infra.Context
         public DbSet<Enfermeiro> TiposUsuarios { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Ficha> Fichas { get; set; }
+        public DbSet<FichaAgro> FichasAgro { get; set; }
         public DbSet<Agrotoxico> Agrotoxicos { get; set; }
+        public DbSet<Diagnostico> Diagnosticos { get; set; }
+        public DbSet<Amostra> Amostras { get; set; }
         public DbSet<RefreshTokenData> RefreshTokens { get; set; }
 
 

@@ -30,7 +30,7 @@ namespace SPCS.Saude.Infra.Repository
             _context.Fichas.Update(ficha);
         }
 
-        public async Task<Ficha> BuscarPorId(Guid id)
+        public async Task<Ficha> ObterPorId(Guid id)
         {
             return await _context.Fichas.AsNoTracking()
                 .FirstOrDefaultAsync(a => a.Id == id);

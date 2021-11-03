@@ -1,17 +1,21 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SPCS.ApiModels.Usuario;
 using SPCS.Saude.API.Data;
-using SPCS.Saude.API.ViewModels;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
+using SPCS.Saude.Core.Identidade;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.API.Controllers
 {
+    [Authorize]
     [Route("api/usuario")]
     public class UsuarioController : MainController
     {
@@ -21,14 +25,16 @@ namespace SPCS.Saude.API.Controllers
         private readonly IEnfermeiroService _enfermeiroService;
         public readonly SignInManager<IdentityUser> SignInManager;
         public readonly UserManager<IdentityUser> UserManager;
-        public readonly ApplicationDbContext _context;
 
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IPacienteRepository _pacienteRepository;
+        private readonly IMedicoRepository _medicoRepository;
+        private readonly IEnfermeiroRepository _enfermeiroRepository;
         private readonly IMapper _mapper;
 
-        public UsuarioController(IPacienteService pacienteService, IUsuarioService usuarioService, IMedicoService medicoService, IEnfermeiroService enfermeiroService,
-                                 SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, ApplicationDbContext context, IUsuarioRepository usuarioRepository,
-                                 IMapper mapper)
+        public UsuarioController(IPacienteService pacienteService, IUsuarioService usuarioService, IMedicoService medicoService, IEnfermeiroService enfermeiroService, 
+                                 SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IUsuarioRepository usuarioRepository, IPacienteRepository pacienteRepository, 
+                                 IMedicoRepository medicoRepository, IEnfermeiroRepository enfermeiroRepository, IMapper mapper)
         {
             _pacienteService = pacienteService;
             _usuarioService = usuarioService;
@@ -36,150 +42,143 @@ namespace SPCS.Saude.API.Controllers
             _enfermeiroService = enfermeiroService;
             SignInManager = signInManager;
             UserManager = userManager;
-            _context = context;
             _usuarioRepository = usuarioRepository;
+            _pacienteRepository = pacienteRepository;
+            _medicoRepository = medicoRepository;
+            _enfermeiroRepository = enfermeiroRepository;
             _mapper = mapper;
         }
 
-        [HttpGet("obter-usuarios")]
-        public async Task<ActionResult<IEnumerable<UsuarioViewModel>>> TodosUsuarios()
+        [HttpGet("{tipoUsuarioId:guid}/{id:guid}")]
+        public async Task<ActionResult<dynamic>> ObterPorId(Guid tipoUsuarioId, Guid id)
         {
-            var usuarios = _mapper.Map<IEnumerable<UsuarioViewModel>>(await _usuarioRepository.ObterTodos());
+            if (tipoUsuarioId == TipoUsuario.Enfermeiro.Id)
+            {
+                var enfermeiro = await _enfermeiroRepository.ObterPorId(id);
 
-            return CustomResponse(usuarios);
+                if(enfermeiro == null || enfermeiro.Id != id)
+                {
+                    AdicionarErroProcessamento("Não foi encontrado o enfermeiro com o ID informado!");
+                    return CustomResponse(enfermeiro);
+                }
+
+                return CustomResponse(_mapper.Map<EnfermeiroResponseApiModel>(enfermeiro));
+            }
+            else if (tipoUsuarioId == TipoUsuario.Medico.Id)
+            {
+                var medico = await _medicoRepository.ObterPorId(id);
+
+                if (medico == null || medico.Id != id)
+                {
+                    AdicionarErroProcessamento("Não foi encontrado o medico com o ID informado!");
+                    return CustomResponse(medico);
+                }
+
+                return CustomResponse(_mapper.Map<MedicoResponseApiModel>(medico));
+            }
+            else if (tipoUsuarioId == TipoUsuario.Paciente.Id)
+            {
+
+                var paciente = await _pacienteRepository.ObterPorId(id);
+
+                if (paciente == null || paciente.Id != id)
+                {
+                    AdicionarErroProcessamento("Não foi encontrado o medico com o ID informado!");
+                    return CustomResponse(paciente);
+                }
+
+                return CustomResponse(_mapper.Map<PacienteResponseApiModel>(paciente));
+            }
+
+            AdicionarErroProcessamento("Não foi encontrado o tipo de usuario informado");
+
+            return CustomResponse();
         }
 
-        [HttpGet("buscar/{id:guid}")]
-        public async Task<ActionResult<UsuarioViewModel>> ObterPorId(Guid id)
+        [HttpGet("listar/todos/{tipoUsuarioId:guid}")]
+        public async Task<ActionResult<IEnumerable<dynamic>>> ListarTodos(Guid tipoUsuarioId)
         {
-            var usuario = await _usuarioRepository.ObterPorId(id);
+            if (tipoUsuarioId == TipoUsuario.Enfermeiro.Id)
+                return CustomResponse(_mapper.Map<IEnumerable<EnfermeiroResponseApiModel>>(await _enfermeiroRepository.ObterTodos()));
+            else if (tipoUsuarioId == TipoUsuario.Medico.Id)
+                return CustomResponse(_mapper.Map<IEnumerable<MedicoResponseApiModel>>(await _medicoRepository.ObterTodos()));
+            else if (tipoUsuarioId == TipoUsuario.Paciente.Id)
+                return CustomResponse(_mapper.Map<IEnumerable<PacienteResponseApiModel>>(await _pacienteRepository.ObterTodos()));
 
-            if (usuario == null && usuario.Id != id)
+            AdicionarErroProcessamento("Não foi encontrado o tipo de usuario informado");
+
+            return CustomResponse();
+        }
+
+        [HttpGet("paciente/{cpf}")]
+        public async Task<ActionResult<UsuarioResponseApiModel>> ObterPacientePorCpf(string cpf)
+        {
+            var paciente = await _pacienteRepository.ObterPorCpf(cpf);
+
+            if (paciente == null || paciente.Cpf != cpf)
             {
                 AdicionarErroProcessamento("Usuário não encontrado! Confirme o ID informado.");
                 return CustomResponse();
             }
 
-            return CustomResponse(_mapper.Map<UsuarioViewModel>(usuario));
+            return CustomResponse(_mapper.Map<PacienteResponseApiModel>(paciente));
         }
 
-        [HttpGet("buscar/{cpf}")]
-        public async Task<ActionResult<UsuarioViewModel>> ObterPorCpf(string cpf)
-        {
-            var usuario = await _usuarioRepository.ObterPorCpf(cpf);
-
-            if (usuario == null || usuario.Cpf != cpf)
-            {
-                AdicionarErroProcessamento("Usuário não encontrado! Confirme o ID informado.");
-                return CustomResponse();
-            }
-
-            return CustomResponse(_mapper.Map<UsuarioViewModel>(usuario));
-        }
-
-        //TODO: Ao criar o usuario adicionar as claims do usuario.
         [HttpPost("novo/paciente")]
-        public async Task<IActionResult> Cadastrar(PacienteViewModel model)
+        public async Task<ActionResult<PacienteResponseApiModel>> Cadastrar(CadastrarPacienteRequestApiModel usuarioRegistro)
         {
             if (!ModelState.IsValid)
-                return CustomResponse(model);
+                return CustomResponse(usuarioRegistro);
 
-            var usuario = new Usuario(Guid.NewGuid(), model.Nome, model.Email, model.Cpf, model.TipoUsuarioId);
+            var endereco = _mapper.Map<Endereco>(usuarioRegistro.Endereco);
 
-            var addUsuario = await _usuarioService.Adicionar(usuario);
+            var paciente = new Paciente(usuarioRegistro.Nome, usuarioRegistro.Cpf,
+                                          usuarioRegistro.Imagem, usuarioRegistro.Sexo, usuarioRegistro.DataNascimento, usuarioRegistro.Telefone,
+                                          usuarioRegistro.Escolaridade, endereco, usuarioRegistro.TipoUsuarioId);
 
-            if (!addUsuario.IsValid)
+            await _pacienteService.Adicionar(paciente);
+
+            if (!OperacaoValida())
             {
                 AdicionarErroProcessamento("Houve um erro ao tentar cadastrar o paciente");
                 return CustomResponse();
             }
 
-            var endereco = _mapper.Map<Endereco>(model.Endereco);
-            var paciente = new Paciente(usuario.Id, endereco);
-
-            var addPaciente = await _pacienteService.Adicionar(paciente);
-
-            if (!addPaciente.IsValid)
-            {
-                AdicionarErroProcessamento("Houve um erro ao tentar cadastrar o paciente!");
-                return CustomResponse();
-            }
-
-            return CustomResponse("Usuario cadastrado");
+            return CustomResponse(_mapper.Map<PacienteResponseApiModel>(paciente));
         }
 
+        [ClaimsAuthorize("Administrador", "Total")]
         [HttpPost("novo/medico")]
-        public async Task<IActionResult> Cadastrar(MedicoViewModel model)
+        public async Task<ActionResult<MedicoResponseApiModel>> Cadastrar(CadastrarMedicoRequestApiModel model)
         {
             if (!ModelState.IsValid)
                 return CustomResponse(model);
 
-            var usuarioRegistrado = await Registrar(model);
-
-            if (!OperacaoValida())
-                return CustomResponse();
-
-            var medico = new Medico(Guid.Parse(usuarioRegistrado.Id), model.Crm);
-
-            var addMedico = await _medicoService.Adicionar(medico);
-
-            if (!addMedico.IsValid)
-            {
-                await UserManager.DeleteAsync(usuarioRegistrado);
-                _usuarioRepository.Remover(Guid.Parse(usuarioRegistrado.Id));
-            }
-
-            await AdicionarPermissoes(usuarioRegistrado, model.TipoUsuarioId);
-
-            return CustomResponse("Usuario Cadastrado");
-        }
-
-        [HttpPost("novo/enfermeiro")]
-        public async Task<IActionResult> Cadastrar(EnfermeiroViewModel model)
-        {
-            if (!ModelState.IsValid)
-                return CustomResponse(model);
-
-            var usuarioRegistrado = await Registrar(model);
-
-            if (!OperacaoValida() || usuarioRegistrado == null)
-                return CustomResponse();
-
-            var enfermeiro = new Enfermeiro(Guid.Parse(usuarioRegistrado.Id), model.Coren);
-
-            var addEnfermeiro = await _enfermeiroService.Adicionar(enfermeiro);
-
-            if (!addEnfermeiro.IsValid)
-            {
-                await UserManager.DeleteAsync(usuarioRegistrado);
-                _usuarioRepository.Remover(Guid.Parse(usuarioRegistrado.Id));
-            }
-
-            await AdicionarPermissoes(usuarioRegistrado, model.TipoUsuarioId);
-
-            return CustomResponse("Usuario Cadastrado");
-        }
-
-        private async Task<IdentityUser> Registrar(UsuarioViewModel usuarioRegistro)
-        {
             var user = new IdentityUser
             {
-                UserName = usuarioRegistro.Email,
-                Email = usuarioRegistro.Email,
+                UserName = model.Email,
+                Email = model.Email,
                 EmailConfirmed = true
             };
 
-            var result = await UserManager.CreateAsync(user, usuarioRegistro.Senha);
+            var result = await UserManager.CreateAsync(user, model.Senha);
             if (result.Succeeded)
             {
-                var usuario = new Usuario(Guid.Parse(user.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf, usuarioRegistro.TipoUsuarioId);
+                var medicouser = new Medico(Guid.Parse(user.Id), model.Nome, model.Email, model.Cpf,
+                                          model.Imagem, model.Sexo, model.DataNascimento, model.Telefone,
+                                          model.Crm, model.TipoUsuarioId);
 
-                var addUsuario = await _usuarioService.Adicionar(usuario);
+                var registroMedico = await _medicoService.Adicionar(medicouser);
 
-                if (!addUsuario.IsValid)
+                if (!registroMedico.IsValid)
+                {
                     await UserManager.DeleteAsync(user);
-                else
-                    return user;
+                    return CustomResponse();
+                }
+                    
+                await AdicionarPermissoes(user, model.TipoUsuarioId);
+
+                return CustomResponse(_mapper.Map<MedicoResponseApiModel>(medicouser));
             }
 
             foreach (var error in result.Errors)
@@ -187,9 +186,50 @@ namespace SPCS.Saude.API.Controllers
                 AdicionarErroProcessamento(error.Description);
             }
 
-            return null;
+            return CustomResponse();
         }
 
+        [ClaimsAuthorize("Administrador","Total")]
+        [HttpPost("novo/enfermeiro")]
+        public async Task<ActionResult<EnfermeiroResponseApiModel>> Cadastrar(CadastrarEnfermeiroRequestApiModel model)
+        {
+            if (!ModelState.IsValid)
+                return CustomResponse(model);
+
+            var user = new IdentityUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                EmailConfirmed = true
+            };
+
+            var result = await UserManager.CreateAsync(user, model.Senha);
+            if (result.Succeeded)
+            {
+                var enfermeirouser = new Enfermeiro(Guid.Parse(user.Id), model.Nome, model.Email, model.Cpf,
+                                          model.Imagem, model.Sexo, model.DataNascimento, model.Telefone,
+                                          model.Coren, model.TipoUsuarioId);
+
+                var registroEnfermeiro = await _enfermeiroService.Adicionar(enfermeirouser);
+
+                if (!registroEnfermeiro.IsValid)
+                {
+                    await UserManager.DeleteAsync(user);
+                    return CustomResponse(registroEnfermeiro);
+                }
+
+                await AdicionarPermissoes(user, model.TipoUsuarioId);
+
+                return CustomResponse(_mapper.Map<EnfermeiroResponseApiModel>(enfermeirouser));
+            }
+
+            foreach (var error in result.Errors)
+            {
+                AdicionarErroProcessamento(error.Description);
+            }
+
+            return CustomResponse();
+        }
 
         private async Task AdicionarPermissoes(IdentityUser user, TipoUsuario tipoUsuario)
         {
@@ -208,7 +248,7 @@ namespace SPCS.Saude.API.Controllers
                     }
             }
 
-            await UserManager.AddClaimAsync(user, new Claim(tipoUsuario.Descricao,permissoes));
+            await UserManager.AddClaimAsync(user, new Claim(tipoUsuario.Descricao, permissoes));
         }
     }
 }

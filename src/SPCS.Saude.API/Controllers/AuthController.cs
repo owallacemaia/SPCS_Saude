@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SPCS.ApiModels.Usuario;
 using SPCS.Saude.API.Services;
-using SPCS.Saude.API.ViewModels;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
+using SPCS.Saude.Core.Identidade;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -22,8 +23,9 @@ namespace SPCS.Saude.API.Controllers
             _usuarioService = usuarioService;
         }
 
+        [ClaimsAuthorize("Administrador", "Total")]
         [HttpPost("nova-conta")]
-        public async Task<IActionResult> Registrar(UsuarioRegistro usuarioRegistro)
+        public async Task<IActionResult> Registrar(CadastrarAdminRequestApiModel usuarioRegistro)
         {
             if (!ModelState.IsValid)
                 return CustomResponse();
@@ -62,17 +64,49 @@ namespace SPCS.Saude.API.Controllers
         }
 
         [HttpPost("autenticar")]
-        public async Task<ActionResult<UsuarioRespostaLogin>> Login(UsuarioLogin usuarioLogin, [FromServices] AccessManager accessManager)
+        public async Task<ActionResult<UsuarioLoginResponseApiModel>> Login(UsuarioLoginRequestApiModel usuarioLogin, [FromServices] AccessManager accessManager)
         {
             if (!ModelState.IsValid)
                 return CustomResponse();
 
-            if (await accessManager.ValidateCredentials(usuarioLogin))
+            var result = await _accessManager.SignInManager.PasswordSignInAsync(usuarioLogin.Email, usuarioLogin.Senha,
+                false, true);
+
+            if (result.Succeeded)
             {
-                return await accessManager.GerarToken(usuarioLogin.Email);
+                return CustomResponse(await _accessManager.GerarToken(usuarioLogin.Email));
             }
 
-            return BadRequest();
+            if (result.IsLockedOut)
+            {
+                AdicionarErroProcessamento("Usuário temporariamente bloqueado por tentativas inválidas");
+                return CustomResponse();
+            }
+
+            AdicionarErroProcessamento("Usuário ou Senha incorretos");
+            return CustomResponse();
+        }
+
+        [HttpPost("refresh-token")]
+        public async Task<ActionResult> RefreshToken([FromBody] string refreshToken)
+        {
+            if (string.IsNullOrEmpty(refreshToken))
+            {
+                AdicionarErroProcessamento("Refresh Token inválido");
+                return CustomResponse();
+            }
+
+            var token = await _accessManager.ObterRefreshToken(refreshToken);
+
+            if (token is null || token.Expires <= DateTime.Now)
+            {
+                AdicionarErroProcessamento("Refresh Token expirado");
+                return CustomResponse();
+            }
+
+            _accessManager.RemoverToken(token);
+
+            return CustomResponse(await _accessManager.GerarToken(token.Email));
         }
     }
 }

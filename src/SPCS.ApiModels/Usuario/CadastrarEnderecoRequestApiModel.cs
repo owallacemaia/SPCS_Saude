@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SPCS.Saude.API.ViewModels
+namespace SPCS.ApiModels.Usuario
 {
-    public class EnderecoViewModel
+    public class CadastrarEnderecoRequestApiModel
     {
         [Key]
         public Guid Id { get; set; }
@@ -14,7 +14,6 @@ namespace SPCS.Saude.API.ViewModels
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Numero { get; set; }
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Complemento { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]

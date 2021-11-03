@@ -9,6 +9,7 @@ using SPCS.Saude.API.Data;
 using SPCS.Saude.API.Extensions;
 using SPCS.Saude.Core.Identidade;
 using SPCS.Saude.Infra.Context;
+using System.Net;
 
 namespace SPCS.Saude.API.Configuration
 {
@@ -27,6 +28,11 @@ namespace SPCS.Saude.API.Configuration
                 .AddErrorDescriber<IdentityMensagensPortugues>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            });
 
             services.AddScoped<PrincipalDbContext>();
             services.AddScoped<ApplicationDbContext>();

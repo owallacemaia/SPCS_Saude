@@ -42,6 +42,367 @@ namespace SPCS.Saude.Infra.Migrations
                     b.ToTable("Agrotoxicos");
                 });
 
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Amostra", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AbortoEspontaneo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Adoeceu")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("AgitacaoIrritabilidade")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Alt_discretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("AlteracaoSNervoso")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Ambulatorio")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("AparelhoAuditivo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("AparelhoDigestorio")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("AparelhoRespiratorio")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("AparelhoUrinario")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Arritmia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Ast_discretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("AziaQueimacao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("BotaProtecao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("CafeMldiaDiscretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("CatarroEscarro")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Ch_e_discretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Ch_p_discretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Ch_t_discretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("CircunferenciaAbdominalDiscretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ClasseProduto1")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ClasseProduto2")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ClasseProduto3")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ColicasDorBarriga")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ContatoPraguicida")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("CreatininaDiscretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DcIrritativa")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DcSensibilizante")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Diarreia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DificuldadeEngravidar")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DigestorioCancer")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DigestorioCancerfamilia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DiminuicaoAudicao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DiminuicaoUrina")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DoencaCardioVascular")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DorCabeca")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DorEstomago")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("EdaRegiao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("EquipamentoProtecao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Etilismo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("EtilismoAnterior")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("EtilismoAtual")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ExposicaoRaiox")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("FaltaDeAr")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("FamiliaCancer")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("FilhoMaFormacao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("FormaAplicacao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Formigamento")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("FraquezaMuscular")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("FrequenciaContatoPraguicida")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("FuncaoTrabalho")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Gestante")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("GlandularCancer")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("GlandularCancerfamilia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("HabitoAlimentarDiscretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("HipertensaoArterial")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("HipotensaoArterial")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("IdadeDiscretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ImcDiscretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("IncoordenacaoMotora")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("IngestaoCafe")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Internado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("IrritacaoOcular")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("IrritaçaoNasal")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("LuvasProtecao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("MascaraProtecao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("MedicamentoContinuo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("NVezesAdoeceu")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("NauseasEnjoo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("NomeRemedio")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("NvezesInternado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("OculosProtecao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Outro")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PeleMucosa")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("PeleOssoSangueCancer")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("PeleOssoSangueCancerfamilia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ProtetorAuricular")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("QuandoInternado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("QuandodiasExposicao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("RelacaoTrabalho")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("RemedioMicose")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ReprodutorCancer")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ReprodutorCancerfamilia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("RespiratorioCancer")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("RespiratorioCancerfamilia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("RoupaProtecao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("SNCCancerFamilia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Sexo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("SiglaDiagnostico")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("SncCancer")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Tabagismo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("TabagismoAnterior")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("TabagismoAtual")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("TemFilhos")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("TempoContatoPraguicida")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("TeveCancer")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("TipoContato")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Tosse")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Tremedeira")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("TremorMuscular")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("UltimoContatoPraguicida")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("UrinaescuraSangue")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("VertigensTonturas")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ViaExposicao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("VisaoTurvaEmbacada")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Vomito")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Y_gt_discretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Zumbido")
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Amostras");
+                });
+
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Diagnostico", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<Guid>("FichaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Sigla")
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FichaId")
+                        .IsUnique();
+
+                    b.ToTable("Diagnosticos");
+                });
+
             modelBuilder.Entity("SPCS.Saude.Business.Models.Endereco", b =>
                 {
                     b.Property<Guid>("Id")
@@ -96,10 +457,38 @@ namespace SPCS.Saude.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(250)");
 
-                    b.Property<Guid>("UsuarioId")
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("varchar(14)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Sexo")
+                        .IsRequired()
+                        .HasColumnType("varchar(9)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<Guid?>("TipoUsuarioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoUsuarioId");
 
                     b.ToTable("Enfermeiros");
                 });
@@ -110,143 +499,146 @@ namespace SPCS.Saude.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("AbortoEspontaneo")
-                        .HasColumnType("bit");
+                    b.Property<string>("AbortoEspontaneo")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Adoeceu")
-                        .HasColumnType("bit");
+                    b.Property<string>("Adoeceu")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("AgitacaoIrritabilidade")
-                        .HasColumnType("bit");
+                    b.Property<string>("AgitacaoIrritabilidade")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("Alt")
-                        .HasColumnType("float");
+                    b.Property<string>("Alt")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("AlteracaoSNervoso")
-                        .HasColumnType("bit");
+                    b.Property<string>("AlteracaoSNervoso")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Ambulatorio")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("AparelhoAuditivo")
-                        .HasColumnType("bit");
+                    b.Property<string>("AparelhoAuditivo")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("AparelhoDigestorio")
-                        .HasColumnType("bit");
+                    b.Property<string>("AparelhoDigestorio")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("AparelhoRespiratorio")
-                        .HasColumnType("bit");
+                    b.Property<string>("AparelhoRespiratorio")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("AparelhoUrinario")
-                        .HasColumnType("bit");
+                    b.Property<string>("AparelhoUrinario")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Arritmia")
-                        .HasColumnType("bit");
+                    b.Property<string>("Arritmia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("Ast")
-                        .HasColumnType("float");
+                    b.Property<string>("Ast")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("AziaQueimacao")
-                        .HasColumnType("bit");
+                    b.Property<string>("AziaQueimacao")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("BotaProtecao")
-                        .HasColumnType("bit");
+                    b.Property<string>("BotaProtecao")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("CafeMlDia")
-                        .HasColumnType("float");
+                    b.Property<string>("CafeMlDia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("CatarroEscarro")
-                        .HasColumnType("bit");
+                    b.Property<string>("CatarroEscarro")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("Ch_e")
-                        .HasColumnType("float");
+                    b.Property<string>("Ch_e")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("Ch_p")
-                        .HasColumnType("float");
+                    b.Property<string>("Ch_p")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("Ch_t")
-                        .HasColumnType("float");
+                    b.Property<string>("Ch_t")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<int>("CircunferenciaAbdominal")
-                        .HasColumnType("int");
+                    b.Property<string>("CircunferenciaAbdominal")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("ColicasDorBarriga")
-                        .HasColumnType("bit");
+                    b.Property<string>("ColicasDorBarriga")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("ContatoPraguicida")
-                        .HasColumnType("bit");
+                    b.Property<string>("ContatoPraguicida")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("Creatinina")
-                        .HasColumnType("float");
+                    b.Property<string>("Creatinina")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DcIrritativa")
-                        .HasColumnType("bit");
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
 
-                    b.Property<bool>("DcSensibilizante")
-                        .HasColumnType("bit");
+                    b.Property<string>("DcIrritativa")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Diarreia")
-                        .HasColumnType("bit");
+                    b.Property<string>("DcSensibilizante")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DificuldadeEngravidar")
-                        .HasColumnType("bit");
+                    b.Property<string>("Diarreia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DigestorioCancerfamilia")
-                        .HasColumnType("bit");
+                    b.Property<string>("DificuldadeEngravidar")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DigestorioCcancer")
-                        .HasColumnType("bit");
+                    b.Property<string>("DigestorioCancer")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DiminuicaoAudicao")
-                        .HasColumnType("bit");
+                    b.Property<string>("DigestorioCancerfamilia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DiminuicaoUrina")
-                        .HasColumnType("bit");
+                    b.Property<string>("DiminuicaoAudicao")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DoencaCardioVascular")
-                        .HasColumnType("bit");
+                    b.Property<string>("DiminuicaoUrina")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DorCabeca")
-                        .HasColumnType("bit");
+                    b.Property<string>("DoencaCardioVascular")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("DorEstomago")
-                        .HasColumnType("bit");
+                    b.Property<string>("DorCabeca")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("EdaRegiao")
-                        .HasColumnType("bit");
+                    b.Property<string>("DorEstomago")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("EquipamentoProtecao")
-                        .HasColumnType("bit");
+                    b.Property<string>("EdaRegiao")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Etilismo")
-                        .HasColumnType("bit");
+                    b.Property<string>("EquipamentoProtecao")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("EtilismoAnterior")
-                        .HasColumnType("bit");
+                    b.Property<string>("Etilismo")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("EtilismoAtual")
-                        .HasColumnType("bit");
+                    b.Property<string>("EtilismoAnterior")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("EtilismoAtual")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("ExposicaoRaiox")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("FaltaDeAr")
-                        .HasColumnType("bit");
+                    b.Property<string>("FaltaDeAr")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("FamiliaCancer")
-                        .HasColumnType("bit");
+                    b.Property<string>("FamiliaCancer")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("FilhoMaFormacao")
-                        .HasColumnType("bit");
+                    b.Property<string>("FilhoMaFormacao")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("FormaAplicacao")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Formigamento")
-                        .HasColumnType("bit");
+                    b.Property<string>("Formigamento")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("FraquezaMuscular")
-                        .HasColumnType("bit");
+                    b.Property<string>("FraquezaMuscular")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("FrequenciaContatoPraguicida")
                         .HasColumnType("varchar(100)");
@@ -254,83 +646,83 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("FuncaoTrabalho")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Gestante")
-                        .HasColumnType("bit");
+                    b.Property<string>("Gestante")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("GlandularCancer")
-                        .HasColumnType("bit");
+                    b.Property<string>("GlandularCancer")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("GlandularCancerfamilia")
-                        .HasColumnType("bit");
+                    b.Property<string>("GlandularCancerfamilia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("HabitoAlimentar")
-                        .HasColumnType("float");
+                    b.Property<string>("HabitoAlimentar")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("HipertensaoArterial")
-                        .HasColumnType("bit");
+                    b.Property<string>("HipertensaoArterial")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("HipotensaoArterial")
-                        .HasColumnType("bit");
+                    b.Property<string>("HipotensaoArterial")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("Imc")
-                        .HasColumnType("float");
+                    b.Property<string>("Imc")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("IncoordenacaoMotora")
-                        .HasColumnType("bit");
+                    b.Property<string>("IncoordenacaoMotora")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("IngestaoCafe")
-                        .HasColumnType("bit");
+                    b.Property<string>("IngestaoCafe")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Internado")
-                        .HasColumnType("bit");
+                    b.Property<string>("Internado")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("IrritacaoOcular")
-                        .HasColumnType("bit");
+                    b.Property<string>("IrritacaoOcular")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("IrritaçaoNasal")
-                        .HasColumnType("bit");
+                    b.Property<string>("IrritaçaoNasal")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("LuvasProtecao")
-                        .HasColumnType("bit");
+                    b.Property<string>("LuvasProtecao")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("MascaraProtecao")
-                        .HasColumnType("bit");
+                    b.Property<string>("MascaraProtecao")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Medicamento")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("MedicamentoContinuo")
-                        .HasColumnType("bit");
+                    b.Property<string>("MedicamentoContinuo")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("MunicipioTrabalho")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("NauseasEnjoo")
-                        .HasColumnType("bit");
+                    b.Property<string>("NauseasEnjoo")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("NomeRemedio")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("OculosProtecao")
-                        .HasColumnType("bit");
+                    b.Property<string>("OculosProtecao")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Outro")
-                        .HasColumnType("bit");
+                    b.Property<string>("Outro")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<Guid>("PacienteId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("PeleMucosa")
-                        .HasColumnType("bit");
+                    b.Property<string>("PeleMucosa")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("PeleOssoSangueCancer")
-                        .HasColumnType("bit");
+                    b.Property<string>("PeleOssoSangueCancer")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("PeleOssoSangueCancerfamilia")
-                        .HasColumnType("bit");
+                    b.Property<string>("PeleOssoSangueCancerfamilia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("ProtetorAuricular")
-                        .HasColumnType("bit");
+                    b.Property<string>("ProtetorAuricular")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("QtdVezesAdoeceu")
                         .HasColumnType("varchar(100)");
@@ -341,89 +733,89 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("QuandoInterndo")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<int>("QuandodiasExposicao")
-                        .HasColumnType("int");
+                    b.Property<string>("QuandodiasExposicao")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("RelacaoTrabalho")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("RemedioMicose")
-                        .HasColumnType("bit");
+                    b.Property<string>("RemedioMicose")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("ReprodutorCancer")
-                        .HasColumnType("bit");
+                    b.Property<string>("ReprodutorCancer")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("ReprodutorCancerfamilia")
-                        .HasColumnType("bit");
+                    b.Property<string>("ReprodutorCancerfamilia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("RespiratorioCancer")
-                        .HasColumnType("bit");
+                    b.Property<string>("RespiratorioCancer")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("RespiratorioCancerfamilia")
-                        .HasColumnType("bit");
+                    b.Property<string>("RespiratorioCancerfamilia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("RoupaProtecao")
-                        .HasColumnType("bit");
+                    b.Property<string>("RoupaProtecao")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("SNCCancerFamilia")
-                        .HasColumnType("bit");
+                    b.Property<string>("SNCCancerFamilia")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("SncCancer")
-                        .HasColumnType("bit");
+                    b.Property<string>("SncCancer")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Tabagismo")
-                        .HasColumnType("bit");
+                    b.Property<string>("Tabagismo")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("TabagismoAnterior")
-                        .HasColumnType("bit");
+                    b.Property<string>("TabagismoAnterior")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("TabagismoAtual")
-                        .HasColumnType("bit");
+                    b.Property<string>("TabagismoAtual")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("TemFilhos")
-                        .HasColumnType("bit");
+                    b.Property<string>("TemFilhos")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("TempoContatoPraguicida")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("TeveCancer")
-                        .HasColumnType("bit");
+                    b.Property<string>("TeveCancer")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("TipoContato")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Tosse")
-                        .HasColumnType("bit");
+                    b.Property<string>("Tosse")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Tremedeira")
-                        .HasColumnType("bit");
+                    b.Property<string>("Tremedeira")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("TremorMuscular")
-                        .HasColumnType("bit");
+                    b.Property<string>("TremorMuscular")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("UltimoContatoPraguicida")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("UrinaescuraSangue")
-                        .HasColumnType("bit");
+                    b.Property<string>("UrinaescuraSangue")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("VertigensTonturas")
-                        .HasColumnType("bit");
+                    b.Property<string>("VertigensTonturas")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("ViaExposicao")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("VisãoTurvaEmbacada")
-                        .HasColumnType("bit");
+                    b.Property<string>("VisaoTurvaEmbacada")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Vomito")
-                        .HasColumnType("bit");
+                    b.Property<string>("Vomito")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<double>("Y_gt")
-                        .HasColumnType("float");
+                    b.Property<string>("Y_gt")
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("Zumbido")
-                        .HasColumnType("bit");
+                    b.Property<string>("Zumbido")
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
 
@@ -456,14 +848,42 @@ namespace SPCS.Saude.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("varchar(14)");
+
                     b.Property<string>("Crm")
                         .IsRequired()
                         .HasColumnType("varchar(250)");
 
-                    b.Property<Guid>("UsuarioId")
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Sexo")
+                        .IsRequired()
+                        .HasColumnType("varchar(9)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<Guid?>("TipoUsuarioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoUsuarioId");
 
                     b.ToTable("Medicos");
                 });
@@ -474,10 +894,38 @@ namespace SPCS.Saude.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UsuarioId")
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Escolaridade")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Sexo")
+                        .IsRequired()
+                        .HasColumnType("varchar(9)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<Guid?>("TipoUsuarioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoUsuarioId");
 
                     b.ToTable("Pacientes");
                 });
@@ -534,11 +982,7 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("varchar(250)");
-
-                    b.Property<string>("Escolaridade")
-                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Imagem")
                         .HasColumnType("varchar(100)");
@@ -548,8 +992,10 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("varchar(250)");
 
                     b.Property<string>("Sexo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<Guid?>("TipoUsuarioId")
                         .HasColumnType("uniqueidentifier");
@@ -561,6 +1007,16 @@ namespace SPCS.Saude.Infra.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Diagnostico", b =>
+                {
+                    b.HasOne("SPCS.Saude.Business.Models.Ficha", "Ficha")
+                        .WithOne("Diagnostico")
+                        .HasForeignKey("SPCS.Saude.Business.Models.Diagnostico", "FichaId")
+                        .IsRequired();
+
+                    b.Navigation("Ficha");
+                });
+
             modelBuilder.Entity("SPCS.Saude.Business.Models.Endereco", b =>
                 {
                     b.HasOne("SPCS.Saude.Business.Models.Paciente", "Paciente")
@@ -569,6 +1025,15 @@ namespace SPCS.Saude.Infra.Migrations
                         .IsRequired();
 
                     b.Navigation("Paciente");
+                });
+
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Enfermeiro", b =>
+                {
+                    b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
+                        .WithMany()
+                        .HasForeignKey("TipoUsuarioId");
+
+                    b.Navigation("TipoUsuario");
                 });
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>
@@ -598,6 +1063,24 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Navigation("Ficha");
                 });
 
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Medico", b =>
+                {
+                    b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
+                        .WithMany()
+                        .HasForeignKey("TipoUsuarioId");
+
+                    b.Navigation("TipoUsuario");
+                });
+
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Paciente", b =>
+                {
+                    b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
+                        .WithMany()
+                        .HasForeignKey("TipoUsuarioId");
+
+                    b.Navigation("TipoUsuario");
+                });
+
             modelBuilder.Entity("SPCS.Saude.Business.Models.Usuario", b =>
                 {
                     b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
@@ -615,6 +1098,8 @@ namespace SPCS.Saude.Infra.Migrations
             modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>
                 {
                     b.Navigation("Agrotoxicos");
+
+                    b.Navigation("Diagnostico");
                 });
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Paciente", b =>
