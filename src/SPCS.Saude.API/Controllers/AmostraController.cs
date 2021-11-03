@@ -13,16 +13,25 @@ namespace SPCS.Saude.API.Controllers
     public class AmostraController : MainController
     {
         private readonly IPacienteRepository _pacienteRepository;
+        private readonly IFichaAgroRepository _fichaAgroRepository;
+        private readonly IAgrotoxicoRepository _agrotoxicoRepository;
 
-        public AmostraController(IPacienteRepository pacienteRepository)
+        public AmostraController(IPacienteRepository pacienteRepository, IFichaAgroRepository fichaAgroRepository, IAgrotoxicoRepository agrotoxicoRepository)
         {
             _pacienteRepository = pacienteRepository;
+            _fichaAgroRepository = fichaAgroRepository;
+            _agrotoxicoRepository = agrotoxicoRepository;
         }
+
         [HttpPost("cadastrar")]
         public async Task<IActionResult> Cadastrar(FichaResponseApiModel model)
         {
             #region Conversão de Variaveis
             var paciente = await _pacienteRepository.ObterPorId(model.PacienteId);
+
+            var fichaAgro = await _fichaAgroRepository.ObterPorId(model.FichaAgro);
+            var agrotoxico = await _agrotoxicoRepository.ObterPorId(fichaAgro.AgrotoxicoId);
+
             int idade = (DateTime.Now.Year - paciente.DataNascimento.Year);
             double cafe = Convert.ToDouble(model.CafeMlDia);
             int tempoContato = Convert.ToInt32(model.TempoContatoPraguicida);

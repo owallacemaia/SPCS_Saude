@@ -111,5 +111,6 @@ namespace SPCS.ApiModels.Ficha
         public string Medicamento { get; set; }
         public string RemedioMicose { get; set; }
         public string NomeRemedio { get; set; }
+        public Guid FichaAgro { get; set; } //verificar
     }
 }
