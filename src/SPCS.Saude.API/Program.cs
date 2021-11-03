@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.Extensions.Hosting;
-using System.Diagnostics;
-using System.Security.Authentication;
+using System.Net;
 
 namespace SPCS.Saude.API
 {
@@ -16,14 +17,6 @@ namespace SPCS.Saude.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseKestrel((context, serverOptions) =>
-                    {
-                        var teste = serverOptions.Configure(context.Configuration.GetSection("Kestrel"))
-                            .Endpoint("HTTPS", listenOptions =>
-                            {
-                                listenOptions.HttpsOptions.SslProtocols = SslProtocols.Tls12;
-                            });
-                    });
                     webBuilder.UseStartup<Startup>();
                 });
 

@@ -124,7 +124,7 @@ namespace SPCS.Saude.API.Services
             return await _usuarioRepository.ObterTokenUsuario(refreshToken);
         }
 
-        public async Task RemoverToken(RefreshTokenData refreshToken)
+        public void RemoverToken(RefreshTokenData refreshToken)
         {
             _usuarioRepository.RemoverTokenUsuario(refreshToken);
         }

@@ -104,7 +104,7 @@ namespace SPCS.Saude.API.Controllers
                 return CustomResponse();
             }
 
-            await _accessManager.RemoverToken(token);
+            _accessManager.RemoverToken(token);
 
             return CustomResponse(await _accessManager.GerarToken(token.Email));
         }
