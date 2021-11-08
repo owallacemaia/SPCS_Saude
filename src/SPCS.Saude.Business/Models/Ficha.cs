@@ -29,16 +29,16 @@ namespace SPCS.Saude.Business.Models
         public string Adoeceu { get; private set; }
         public string QtdVezesAdoeceu { get; private set; }
         public string Internado { get; private set; }
-        public string QtdVezesInternado { get; set; }
-        public string QuandoInterndo { get; set; }
-        public string TipoContato { get; set; }
-        public string EquipamentoProtecao { get; set; }
-        public string RoupaProtecao { get; set; }
-        public string BotaProtecao { get; set; }
-        public string LuvasProtecao { get; set; }
-        public string MascaraProtecao { get; set; }
-        public string OculosProtecao { get; set; }
-        public string ProtetorAuricular { get; set; }
+        public string QtdVezesInternado { get; private set; }
+        public string QuandoInterndo { get; private set; }
+        public string TipoContato { get; private set; }
+        public string EquipamentoProtecao { get; private set; }
+        public string RoupaProtecao { get; private set; }
+        public string BotaProtecao { get; private set; }
+        public string LuvasProtecao { get; private set; }
+        public string MascaraProtecao { get; private set; }
+        public string OculosProtecao { get; private set; }
+        public string ProtetorAuricular { get; private set; }
         public string DoencaCardioVascular { get; private set; }
         public string HipertensaoArterial { get; private set; }
         public string HipotensaoArterial { get; private set; }
@@ -112,8 +112,8 @@ namespace SPCS.Saude.Business.Models
         public string Medicamento { get; private set; }
         public string RemedioMicose { get; private set; }
         public string NomeRemedio { get; private set; }
-        public virtual IEnumerable<FichaAgro> Agrotoxicos { get; set; }
-        public Diagnostico Diagnostico { get; set; }
+        public virtual IEnumerable<FichaAgro> Agrotoxicos { get; private set; }
+        public Diagnostico Diagnostico { get; private set; }
         public Paciente Paciente { get; private set; }
 
         protected Ficha() { }
