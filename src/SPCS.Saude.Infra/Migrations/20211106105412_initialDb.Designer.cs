@@ -10,8 +10,8 @@ using SPCS.Saude.Infra.Context;
 namespace SPCS.Saude.Infra.Migrations
 {
     [DbContext(typeof(PrincipalDbContext))]
-    [Migration("20211025225556_createRelationsWithPacientesAndFichas")]
-    partial class createRelationsWithPacientesAndFichas
+    [Migration("20211106105412_initialDb")]
+    partial class initialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -140,10 +140,10 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("DificuldadeEngravidar")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("DigestorioCancerfamilia")
+                    b.Property<string>("DigestorioCancer")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("DigestorioCcancer")
+                    b.Property<string>("DigestorioCancerfamilia")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("DiminuicaoAudicao")
@@ -255,6 +255,9 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("NauseasEnjoo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("NomeRemedio")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("NvezesInternado")
@@ -582,10 +585,10 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("DificuldadeEngravidar")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("DigestorioCancerfamilia")
+                    b.Property<string>("DigestorioCancer")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("DigestorioCcancer")
+                    b.Property<string>("DigestorioCancerfamilia")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("DiminuicaoAudicao")
@@ -804,7 +807,7 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("ViaExposicao")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("VisãoTurvaEmbacada")
+                    b.Property<string>("VisaoTurvaEmbacada")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Vomito")

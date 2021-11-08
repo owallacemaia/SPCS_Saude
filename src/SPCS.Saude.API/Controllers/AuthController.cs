@@ -23,7 +23,7 @@ namespace SPCS.Saude.API.Controllers
             _usuarioService = usuarioService;
         }
 
-        [ClaimsAuthorize("Administrador", "Total")]
+       
         [HttpPost("nova-conta")]
         public async Task<IActionResult> Registrar(CadastrarAdminRequestApiModel usuarioRegistro)
         {
