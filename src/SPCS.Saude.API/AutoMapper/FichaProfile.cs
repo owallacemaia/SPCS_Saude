@@ -10,6 +10,7 @@ namespace SPCS.Saude.API.AutoMapper
         {
             CreateMap<CadastrarFichaRequestApiModel, Ficha>().ReverseMap();
             CreateMap<FichaResponseApiModel, Ficha>().ReverseMap();
+            CreateMap<FichaAgro, FichaAgroApiModel>().ReverseMap();
         }
     }
 }
