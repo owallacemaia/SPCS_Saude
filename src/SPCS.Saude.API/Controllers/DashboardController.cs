@@ -11,6 +11,11 @@ namespace SPCS.Saude.API.Controllers
     {
         private readonly IPacienteRepository _pacienteRepository;
 
+        public DashboardController(IPacienteRepository pacienteRepository)
+        {
+            _pacienteRepository = pacienteRepository;
+        }
+
         [HttpGet("obter-rel-dashboard")]
         public async Task<ActionResult<DashboardApiModel>> GerarRelatorio()
         {

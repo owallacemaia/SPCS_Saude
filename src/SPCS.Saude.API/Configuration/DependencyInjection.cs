@@ -39,6 +39,9 @@ namespace SPCS.Saude.API.Configuration
             //Amostra
             services.AddScoped<IAmostraRepository, AmostraRepository>();
             services.AddScoped<IAmostraService, AmostraService>();
+
+            //Ficha
+            services.AddScoped<IFichaRepository, FichaRepository>();
         }
     }
 }

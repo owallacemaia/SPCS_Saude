@@ -13,15 +13,8 @@ namespace SPCS.Saude.API.Controllers
     public class AmostraController : MainController
     {
         private readonly IPacienteRepository _pacienteRepository;
-        private readonly IFichaAgroRepository _fichaAgroRepository;
+        //private readonly IFichaAgroRepository _fichaAgroRepository;
         private readonly IAgrotoxicoRepository _agrotoxicoRepository;
-
-        public AmostraController(IPacienteRepository pacienteRepository, IFichaAgroRepository fichaAgroRepository, IAgrotoxicoRepository agrotoxicoRepository)
-        {
-            _pacienteRepository = pacienteRepository;
-            _fichaAgroRepository = fichaAgroRepository;
-            _agrotoxicoRepository = agrotoxicoRepository;
-        }
 
         [HttpPost("cadastrar")]
         public async Task<IActionResult> Cadastrar(FichaResponseApiModel model)
@@ -29,8 +22,8 @@ namespace SPCS.Saude.API.Controllers
             #region Conversão de Variaveis
             var paciente = await _pacienteRepository.ObterPorId(model.PacienteId);
 
-            var fichaAgro = await _fichaAgroRepository.ObterPorId(model.FichaAgro);
-            var agrotoxico = await _agrotoxicoRepository.ObterPorId(fichaAgro.AgrotoxicoId);
+            //var fichaAgro = await _fichaAgroRepository.ObterPorId(model.FichaAgros);
+            //var agrotoxico = await _agrotoxicoRepository.ObterPorId(fichaAgro.AgrotoxicoId);
 
             int idade = (DateTime.Now.Year - paciente.DataNascimento.Year);
             double cafe = Convert.ToDouble(model.CafeMlDia);
@@ -73,9 +66,6 @@ namespace SPCS.Saude.API.Controllers
                 UltimoContatoPraguicida = ultimoContato == 0 ? "Não Informado" : (ultimoContato > 0) && (ultimoContato <= 7) ? "Exposição Aguda" :
                                         (ultimoContato > 7) && (ultimoContato <= 30) ? "Exposição Subaguda" : (ultimoContato > 30) && (ultimoContato <= 90) ? "Exposição Subcrônica" :
                                         (ultimoContato > 90) ? "Exposição Crônica" : null,
-                ClasseProduto1 = null,
-                ClasseProduto2 = null,
-                ClasseProduto3 = null,
                 ViaExposicao = model.ViaExposicao,
                 Adoeceu = model.Adoeceu,
                 NVezesAdoeceu = (qtdAdoeceu == 0) ? "Nenhuma Vez" : (qtdAdoeceu == 1) ? "Uma Única Vez" : (qtdAdoeceu > 1) ? "Mais De Uma Vez" : null,

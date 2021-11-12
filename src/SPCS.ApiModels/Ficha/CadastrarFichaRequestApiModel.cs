@@ -23,7 +23,9 @@ namespace SPCS.ApiModels.Ficha
         public string TempoContatoPraguicida { get; set; }
         public string FrequenciaContatoPraguicida { get; set; }
         public string UltimoContatoPraguicida { get; set; }
+        public Guid ProdutoContatoUltimaVez { get; set; }
         public string FormaAplicacao { get; set; }
+        public string Cultura { get; set; }
         public string ViaExposicao { get; set; }
         public string Adoeceu { get; set; }
         public string QtdVezesAdoeceu { get; set; }
@@ -47,7 +49,7 @@ namespace SPCS.ApiModels.Ficha
         public string FraquezaMuscular { get; set; }
         public string Tremedeira { get; set; }
         public string TremorMuscular { get; set; }
-        public string VisãoTurvaEmbacada { get; set; }
+        public string VisaoTurvaEmbacada { get; set; }
         public string AgitacaoIrritabilidade { get; set; }
         public string VertigensTonturas { get; set; }
         public string Formigamento { get; set; }
@@ -79,7 +81,7 @@ namespace SPCS.ApiModels.Ficha
         public string QuandodiasExposicao { get; set; }
         public string TeveCancer { get; set; }
         public string SncCancer { get; set; }
-        public string DigestorioCcancer { get; set; }
+        public string DigestorioCancer { get; set; }
         public string RespiratorioCancer { get; set; }
         public string ReprodutorCancer { get; set; }
         public string GlandularCancer { get; set; }
@@ -111,11 +113,6 @@ namespace SPCS.ApiModels.Ficha
         public string Medicamento { get; set; }
         public string RemedioMicose { get; set; }
         public string NomeRemedio { get; set; }
-        public IEnumerable<FichaAgroApiModel> FichaAgros { get; set; }
-    }
-
-    public class FichaAgroApiModel
-    {
-        public Guid Id { get; set; }
+        public virtual IEnumerable<FichaAgroApiModel> Agrotoxicos { get; set; }
     }
 }

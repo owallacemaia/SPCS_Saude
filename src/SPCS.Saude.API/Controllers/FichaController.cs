@@ -19,19 +19,17 @@ namespace SPCS.Saude.API.Controllers
         private readonly IFichaService _fichaService;
         private readonly IFichaRepository _fichaRepository;
         private readonly IPacienteRepository _pacienteRepository;
-        private readonly IFichaAgroRepository _fichaAgroRepository;
         private readonly IAgrotoxicoRepository _agrotoxicoRepository;
         private readonly IAmostraRepository _amostraRepository;
 
-        public FichaController(
-               IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository, IPacienteRepository pacienteRepository, 
-               IFichaAgroRepository fichaAgroRepository, IAgrotoxicoRepository agrotoxicoRepository, IAmostraRepository amostraRepository)
+        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository, 
+                               IPacienteRepository pacienteRepository, IAgrotoxicoRepository agrotoxicoRepository, 
+                               IAmostraRepository amostraRepository)
         {
             _mapper = mapper;
             _fichaService = fichaService;
             _fichaRepository = fichaRepository;
             _pacienteRepository = pacienteRepository;
-            _fichaAgroRepository = fichaAgroRepository;
             _agrotoxicoRepository = agrotoxicoRepository;
             _amostraRepository = amostraRepository;
         }
@@ -62,6 +60,8 @@ namespace SPCS.Saude.API.Controllers
             if (!ModelState.IsValid)
                 return CustomResponse(model);
 
+            model.DataCadastro = DateTime.UtcNow;
+
             var ficha = _mapper.Map<Ficha>(model);
 
             await _fichaService.Adicionar(ficha);
@@ -71,7 +71,7 @@ namespace SPCS.Saude.API.Controllers
 
             var response = _mapper.Map<FichaResponseApiModel>(ficha);
 
-            await GerarAmostra(response);
+            //await GerarAmostra(response);
 
             return CustomResponse(response);
         }
@@ -86,9 +86,6 @@ namespace SPCS.Saude.API.Controllers
         {
             #region Conversão de Variaveis
             var paciente = await _pacienteRepository.ObterPorId(model.PacienteId);
-
-            var fichaAgro = await _fichaAgroRepository.ObterPorId(model.FichaAgro);
-            var agrotoxico = await _agrotoxicoRepository.ObterPorId(fichaAgro.AgrotoxicoId);
 
             int idade = (DateTime.Now.Year - paciente.DataNascimento.Year);
             double cafe = Convert.ToDouble(model.CafeMlDia);
@@ -130,9 +127,6 @@ namespace SPCS.Saude.API.Controllers
                 UltimoContatoPraguicida = ultimoContato == 0 ? "Não Informado" : (ultimoContato > 0) && (ultimoContato <= 7) ? "Exposição Aguda" :
                                         (ultimoContato > 7) && (ultimoContato <= 30) ? "Exposição Subaguda" : (ultimoContato > 30) && (ultimoContato <= 90) ? "Exposição Subcrônica" :
                                         (ultimoContato > 90) ? "Exposição Crônica" : null,
-                ClasseProduto1 = null,
-                ClasseProduto2 = null,
-                ClasseProduto3 = null,
                 ViaExposicao = model.ViaExposicao,
                 Adoeceu = model.Adoeceu,
                 NVezesAdoeceu = (qtdAdoeceu == 0) ? "Nenhuma Vez" : (qtdAdoeceu == 1) ? "Uma Única Vez" : (qtdAdoeceu > 1) ? "Mais De Uma Vez" : null,

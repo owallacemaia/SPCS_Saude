@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SPCS.ApiModels.Ficha
 {
@@ -111,6 +112,6 @@ namespace SPCS.ApiModels.Ficha
         public string Medicamento { get; set; }
         public string RemedioMicose { get; set; }
         public string NomeRemedio { get; set; }
-        public Guid FichaAgro { get; set; } //verificar
+        public IEnumerable<FichaAgroApiModel> FichaAgros { get; set; } //verificar
     }
 }
