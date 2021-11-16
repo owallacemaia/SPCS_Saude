@@ -115,7 +115,7 @@ namespace SPCS.Saude.Business.Models
         public string RemedioMicose { get; private set; }
         public string NomeRemedio { get; private set; }
         public virtual IEnumerable<FichaAgro> Agrotoxicos { get; private set; }
-        public Diagnostico Diagnostico { get; private set; }
+        public IEnumerable<Diagnostico> Diagnosticos { get; private set; }
         public Paciente Paciente { get; private set; }
 
         protected Ficha() { }

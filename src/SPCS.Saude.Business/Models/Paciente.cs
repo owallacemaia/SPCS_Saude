@@ -15,7 +15,6 @@ namespace SPCS.Saude.Business.Models
         public string Escolaridade { get; private set; }
         public Endereco Endereco { get; private set; }
         public IEnumerable<Ficha> Fichas { get; set; }
-        public TipoUsuario TipoUsuario { get; private set; }
 
         protected Paciente() { }
 
