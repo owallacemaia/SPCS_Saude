@@ -22,7 +22,6 @@ namespace SPCS.Saude.Infra.Repository
 
         public void Adicionar(Paciente paciente)
         {
-            _context.Attach(paciente.TipoUsuario);
             _context.Pacientes.Add(paciente);
         }
 
@@ -34,7 +33,6 @@ namespace SPCS.Saude.Infra.Repository
         public async Task<Paciente> ObterPorCpf(string cpf)
         {
             return await _context.Pacientes.AsNoTracking()
-                .Include(a => a.TipoUsuario)
                 .Include(a => a.Endereco)
                 .FirstOrDefaultAsync(p => p.Cpf == cpf);
         }
@@ -42,7 +40,6 @@ namespace SPCS.Saude.Infra.Repository
         public async Task<Paciente> ObterPorId(Guid id)
         {
             return await _context.Pacientes.AsNoTracking()
-                .Include(a => a.TipoUsuario)
                 .Include(a => a.Endereco)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
@@ -50,7 +47,6 @@ namespace SPCS.Saude.Infra.Repository
         public async Task<IEnumerable<Paciente>> ObterTodos()
         {
             return await _context.Pacientes.AsNoTracking()
-                .Include(a => a.TipoUsuario)
                 .Include(a => a.Endereco)
                 .ToListAsync();
         }

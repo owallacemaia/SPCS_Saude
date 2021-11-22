@@ -19,7 +19,7 @@ namespace SPCS.Saude.Business.Models
         protected Paciente() { }
 
         public Paciente(string nome, string cpf, string imagem, string sexo, DateTime dataNascimento, string telefone, 
-                        string escolaridade, Endereco endereco, Guid tipoUsuarioId)
+                        string escolaridade, Endereco endereco)
         {
             Nome = nome;
             Cpf = cpf;
@@ -29,7 +29,6 @@ namespace SPCS.Saude.Business.Models
             Telefone = telefone;
             Escolaridade = escolaridade;
             Endereco = endereco;
-            TipoUsuario = tipoUsuarioId;
         }
 
         internal bool IsValid()

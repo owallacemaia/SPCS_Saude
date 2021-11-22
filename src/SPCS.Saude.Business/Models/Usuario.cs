@@ -18,13 +18,16 @@ namespace SPCS.Saude.Business.Models
         //EF Constructor
         protected Usuario() { }
 
-        public Usuario(Guid id, string nome, string email, string cpf, Guid tipoUsuarioId)
+        public Usuario(Guid id, string nome, string email, string cpf, string sexo, DateTime dataNascimento, string telefone, TipoUsuario tipoUsuario)
         {
             Id = id;
             Nome = nome;
             Email = email;
             Cpf = cpf;
-            TipoUsuario = tipoUsuarioId;
+            Sexo = sexo;
+            DataNascimento = dataNascimento;
+            Telefone = telefone;
+            TipoUsuario = tipoUsuario;
         }
 
         internal bool EhValido()

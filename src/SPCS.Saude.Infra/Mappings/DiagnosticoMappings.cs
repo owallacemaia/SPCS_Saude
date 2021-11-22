@@ -16,7 +16,7 @@ namespace SPCS.Saude.Infra.Mappings
             builder.HasKey(a => a.Id);
 
             builder.HasOne(a => a.Ficha)
-                .WithOne(a => a.Diagnostico);
+                .WithMany(a => a.Diagnosticos);
 
             builder.ToTable("Diagnosticos");
         }
