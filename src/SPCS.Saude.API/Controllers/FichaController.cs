@@ -5,6 +5,7 @@ using SPCS.ApiModels.Amostra;
 using SPCS.ApiModels.Ficha;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
+using SPCS.Saude.Core.Identidade;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace SPCS.Saude.API.Controllers
     [Route("api/ficha")]
     public class FichaController : MainController
     {
+        private const string TipoAuthorize = "Fichas";
+        private const string Permissoes = "Criar, Visualizar, Alterar";
         private readonly IMapper _mapper;
         private readonly IFichaService _fichaService;
         private readonly IFichaRepository _fichaRepository;
@@ -22,8 +25,8 @@ namespace SPCS.Saude.API.Controllers
         private readonly IAgrotoxicoRepository _agrotoxicoRepository;
         private readonly IAmostraRepository _amostraRepository;
 
-        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository, 
-                               IPacienteRepository pacienteRepository, IAgrotoxicoRepository agrotoxicoRepository, 
+        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository,
+                               IPacienteRepository pacienteRepository, IAgrotoxicoRepository agrotoxicoRepository,
                                IAmostraRepository amostraRepository)
         {
             _mapper = mapper;
@@ -45,7 +48,7 @@ namespace SPCS.Saude.API.Controllers
         {
             var ficha = await _fichaRepository.ObterPorId(id);
 
-            if(ficha == null)
+            if (ficha == null)
             {
                 AdicionarErroProcessamento("Não foi encontrado nenhuma ficha com o ID informado!");
                 CustomResponse();
@@ -54,6 +57,7 @@ namespace SPCS.Saude.API.Controllers
             return CustomResponse(_mapper.Map<FichaResponseApiModel>(ficha));
         }
 
+        [ClaimsAuthorize(TipoAuthorize, Permissoes)]
         [HttpPost("cadastrar")]
         public async Task<ActionResult<FichaResponseApiModel>> Cadastrar(CadastrarFichaRequestApiModel model)
         {
@@ -82,17 +86,31 @@ namespace SPCS.Saude.API.Controllers
             return (_mapper.Map<IEnumerable<UsuarioFichaRequestApiModel>>(await _pacienteRepository.ObterPacientesFichas()));
         }
 
-        private async Task<bool> GerarAmostra(FichaResponseApiModel model)
-        {
-            #region Conversão de Variaveis
-            var paciente = await _pacienteRepository.ObterPorId(model.PacienteId);
-            var agrotoxicoUltimoContato = await _agrotoxicoRepository.ObterPorId(model.ProdutoContatoUltimaVez);
-            
-            if (agrotoxicoUltimoContato == null)
-            {
-                AdicionarErroProcessamento("Não foi possível encontrar o Produto de ultimo contato!");
-                return false;
-            }
+        //[ClaimsAuthorize(TipoAuthorize, Permissoes)]
+        //[HttpPut("atualizar")]
+        //public async Task<ActionResult<FichaResponseApiModel>> Atualizar()
+        //{
+
+        //}
+        //private async Task GerarAmostra(FichaResponseApiModel model)
+        //{
+        //    #region Conversão de Variaveis
+        //    var paciente = await _pacienteRepository.ObterPorId(model.PacienteId);
+
+        //    int idade = (DateTime.Now.Year - paciente.DataNascimento.Year);
+        //    double cafe = Convert.ToDouble(model.CafeMlDia);
+        //    int tempoContato = Convert.ToInt32(model.TempoContatoPraguicida);
+        //    int ultimoContato = Convert.ToInt32(model.UltimoContatoPraguicida);
+        //    int qtdAdoeceu = Convert.ToInt32(model.QtdVezesAdoeceu);
+        //    int numInternado = Convert.ToInt32(model.QtdVezesInternado);
+        //    int QInternado = Convert.ToInt32(model.QuandoInterndo);
+        //    double chT = Convert.ToDouble(model.Ch_t);
+        //    double chE = Convert.ToDouble(model.Ch_e);
+        //    double chP = Convert.ToDouble(model.Ch_p);
+        //    double ast = Convert.ToDouble(model.Ast);
+        //    double alt = Convert.ToDouble(model.Alt);
+        //    double ygt = Convert.ToDouble(model.Y_gt);
+        //    double creatinina = Convert.ToDouble(model.Creatinina);
 
             int idade = (DateTime.Now.Year - paciente.DataNascimento.Year);
             double cafe = Convert.ToDouble(model.CafeMlDia);

@@ -20,5 +20,8 @@ namespace SPCS.Saude.Business.Interfaces
         void RemoverTokenUsuario(RefreshTokenData refreshToken);
         Task<IEnumerable<Usuario>> ObterPorTipo(Guid tipoId);
         Task<IEnumerable<Usuario>> ObterTodos();
+        Task<IEnumerable<Usuario>> ObterMedicos();
+        Task<IEnumerable<Usuario>> ObterEnfermeiros();
+            
     }
 }

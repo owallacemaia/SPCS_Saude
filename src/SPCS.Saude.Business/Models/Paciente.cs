@@ -6,14 +6,14 @@ namespace SPCS.Saude.Business.Models
 {
     public class Paciente : Entity, IAggregateRoot
     {
-        public string Nome { get; private set; }
-        public string Cpf { get; private set; }
-        public string Imagem { get; private set; }
-        public string Sexo { get; private set; }
-        public DateTime DataNascimento { get; private set; }
-        public string Telefone { get; private set; }
-        public string Escolaridade { get; private set; }
-        public Endereco Endereco { get; private set; }
+        public string Nome { get; set; }
+        public string Cpf { get; set; }
+        public string Imagem { get; set; }
+        public string Sexo { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public string Telefone { get; set; }
+        public string Escolaridade { get; set; }
+        public Endereco Endereco { get; set; }
         public IEnumerable<Ficha> Fichas { get; set; }
 
         protected Paciente() { }

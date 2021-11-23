@@ -14,7 +14,7 @@ namespace SPCS.Saude.Business.Models
             if (id == Medico.Id)
                 return Medico;
             else if (id == Administrador.Id)
-                return Medico;
+                return Administrador;
             else if (id == Enfermeiro.Id)
                 return Enfermeiro;
             else

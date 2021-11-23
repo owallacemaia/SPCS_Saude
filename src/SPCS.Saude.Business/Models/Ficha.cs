@@ -6,117 +6,117 @@ namespace SPCS.Saude.Business.Models
 {
     public class Ficha : Entity, IAggregateRoot
     {
-        public Guid PacienteId { get; private set; }
-        public DateTime DataCadastro { get; private set; }
-        public string MunicipioTrabalho { get; private set; }
-        public string Gestante { get; private set; }
-        public string Tabagismo { get; private set; }
-        public string TabagismoAtual { get; private set; }
-        public string TabagismoAnterior { get; private set; }
-        public string Etilismo { get; private set; }
-        public string EtilismoAtual { get; private set; }
-        public string EtilismoAnterior { get; private set; }
-        public string IngestaoCafe { get; private set; }
-        public string CafeMlDia { get; private set; }
-        public string RelacaoTrabalho { get; private set; }
-        public string FuncaoTrabalho { get; private set; }
-        public string ContatoPraguicida { get; private set; }
-        public string TempoContatoPraguicida { get; private set; }
-        public string FrequenciaContatoPraguicida { get; private set; }
-        public string UltimoContatoPraguicida { get; private set; }
-        public Guid ProdutoContatoUltimaVez { get; private set; }
-        public string FormaAplicacao { get; private set; }
-        public string Cultura { get; private set; }
-        public string ViaExposicao { get; private set; }
-        public string Adoeceu { get; private set; }
-        public string QtdVezesAdoeceu { get; private set; }
-        public string Internado { get; private set; }
-        public string QtdVezesInternado { get; private set; }
-        public string QuandoInterndo { get; private set; }
-        public string TipoContato { get; private set; }
-        public string EquipamentoProtecao { get; private set; }
-        public string RoupaProtecao { get; private set; }
-        public string BotaProtecao { get; private set; }
-        public string LuvasProtecao { get; private set; }
-        public string MascaraProtecao { get; private set; }
-        public string OculosProtecao { get; private set; }
-        public string ProtetorAuricular { get; private set; }
-        public string DoencaCardioVascular { get; private set; }
-        public string HipertensaoArterial { get; private set; }
-        public string HipotensaoArterial { get; private set; }
-        public string Arritmia { get; private set; }
-        public string AlteracaoSNervoso { get; private set; }
-        public string DorCabeca { get; private set; }
-        public string FraquezaMuscular { get; private set; }
-        public string Tremedeira { get; private set; }
-        public string TremorMuscular { get; private set; }
-        public string VisaoTurvaEmbacada { get; private set; }
-        public string AgitacaoIrritabilidade { get; private set; }
-        public string VertigensTonturas { get; private set; }
-        public string Formigamento { get; private set; }
-        public string IncoordenacaoMotora { get; private set; }
-        public string AparelhoDigestorio { get; private set; }
-        public string ColicasDorBarriga { get; private set; }
-        public string DorEstomago { get; private set; }
-        public string AziaQueimacao { get; private set; }
-        public string NauseasEnjoo { get; private set; }
-        public string Vomito { get; private set; }
-        public string Diarreia { get; private set; }
-        public string AparelhoRespiratorio { get; private set; }
-        public string FaltaDeAr { get; private set; }
-        public string IrritaçaoNasal { get; private set; }
-        public string CatarroEscarro { get; private set; }
-        public string Tosse { get; private set; }
-        public string AparelhoAuditivo { get; private set; }
-        public string DiminuicaoAudicao { get; private set; }
-        public string Zumbido { get; private set; }
-        public string PeleMucosa { get; private set; }
-        public string DcSensibilizante { get; private set; }
-        public string DcIrritativa { get; private set; }
-        public string IrritacaoOcular { get; private set; }
-        public string AparelhoUrinario { get; private set; }
-        public string DiminuicaoUrina { get; private set; }
-        public string UrinaescuraSangue { get; private set; }
-        public string Outro { get; private set; }
-        public string ExposicaoRaiox { get; private set; }
-        public string QuandodiasExposicao { get; private set; }
-        public string TeveCancer { get; private set; }
-        public string SncCancer { get; private set; }
-        public string DigestorioCancer { get; private set; }
-        public string RespiratorioCancer { get; private set; }
-        public string ReprodutorCancer { get; private set; }
-        public string GlandularCancer { get; private set; }
-        public string PeleOssoSangueCancer { get; private set; }
-        public string FamiliaCancer { get; private set; }
-        public string SNCCancerFamilia { get; private set; }
-        public string DigestorioCancerfamilia { get; private set; }
-        public string RespiratorioCancerfamilia { get; private set; }
-        public string ReprodutorCancerfamilia { get; private set; }
-        public string GlandularCancerfamilia { get; private set; }
-        public string PeleOssoSangueCancerfamilia { get; private set; }
-        public string EdaRegiao { get; private set; }
-        public string Ch_t { get; private set; }
-        public string Ch_e { get; private set; }
-        public string Ch_p { get; private set; }
-        public string Ast { get; private set; }
-        public string Alt { get; private set; }
-        public string Y_gt { get; private set; }
-        public string Creatinina { get; private set; }
-        public string Ambulatorio { get; private set; }
-        public string HabitoAlimentar { get; private set; }
-        public string Imc { get; private set; }
-        public string CircunferenciaAbdominal { get; private set; }
-        public string DificuldadeEngravidar { get; private set; }
-        public string AbortoEspontaneo { get; private set; }
-        public string TemFilhos { get; private set; }
-        public string FilhoMaFormacao { get; private set; }
-        public string MedicamentoContinuo { get; private set; }
-        public string Medicamento { get; private set; }
-        public string RemedioMicose { get; private set; }
-        public string NomeRemedio { get; private set; }
-        public virtual IEnumerable<FichaAgro> Agrotoxicos { get; private set; }
-        public IEnumerable<Diagnostico> Diagnosticos { get; private set; }
-        public Paciente Paciente { get; private set; }
+        public Guid PacienteId { get; set; }
+        public DateTime DataCadastro { get; set; }
+        public string MunicipioTrabalho { get; set; }
+        public string Gestante { get; set; }
+        public string Tabagismo { get; set; }
+        public string TabagismoAtual { get; set; }
+        public string TabagismoAnterior { get; set; }
+        public string Etilismo { get; set; }
+        public string EtilismoAtual { get; set; }
+        public string EtilismoAnterior { get; set; }
+        public string IngestaoCafe { get; set; }
+        public string CafeMlDia { get; set; }
+        public string RelacaoTrabalho { get; set; }
+        public string FuncaoTrabalho { get; set; }
+        public string ContatoPraguicida { get; set; }
+        public string TempoContatoPraguicida { get; set; }
+        public string FrequenciaContatoPraguicida { get; set; }
+        public string UltimoContatoPraguicida { get; set; }
+        public Guid ProdutoContatoUltimaVez { get; set; }
+        public string FormaAplicacao { get; set; }
+        public string Cultura { get; set; }
+        public string ViaExposicao { get; set; }
+        public string Adoeceu { get; set; }
+        public string QtdVezesAdoeceu { get; set; }
+        public string Internado { get; set; }
+        public string QtdVezesInternado { get; set; }
+        public string QuandoInterndo { get; set; }
+        public string TipoContato { get; set; }
+        public string EquipamentoProtecao { get; set; }
+        public string RoupaProtecao { get; set; }
+        public string BotaProtecao { get; set; }
+        public string LuvasProtecao { get; set; }
+        public string MascaraProtecao { get; set; }
+        public string OculosProtecao { get; set; }
+        public string ProtetorAuricular { get; set; }
+        public string DoencaCardioVascular { get; set; }
+        public string HipertensaoArterial { get; set; }
+        public string HipotensaoArterial { get; set; }
+        public string Arritmia { get; set; }
+        public string AlteracaoSNervoso { get; set; }
+        public string DorCabeca { get; set; }
+        public string FraquezaMuscular { get; set; }
+        public string Tremedeira { get; set; }
+        public string TremorMuscular { get; set; }
+        public string VisaoTurvaEmbacada { get; set; }
+        public string AgitacaoIrritabilidade { get; set; }
+        public string VertigensTonturas { get; set; }
+        public string Formigamento { get; set; }
+        public string IncoordenacaoMotora { get; set; }
+        public string AparelhoDigestorio { get; set; }
+        public string ColicasDorBarriga { get; set; }
+        public string DorEstomago { get; set; }
+        public string AziaQueimacao { get; set; }
+        public string NauseasEnjoo { get; set; }
+        public string Vomito { get; set; }
+        public string Diarreia { get; set; }
+        public string AparelhoRespiratorio { get; set; }
+        public string FaltaDeAr { get; set; }
+        public string IrritaçaoNasal { get; set; }
+        public string CatarroEscarro { get; set; }
+        public string Tosse { get; set; }
+        public string AparelhoAuditivo { get; set; }
+        public string DiminuicaoAudicao { get; set; }
+        public string Zumbido { get; set; }
+        public string PeleMucosa { get; set; }
+        public string DcSensibilizante { get; set; }
+        public string DcIrritativa { get; set; }
+        public string IrritacaoOcular { get; set; }
+        public string AparelhoUrinario { get; set; }
+        public string DiminuicaoUrina { get; set; }
+        public string UrinaescuraSangue { get; set; }
+        public string Outro { get; set; }
+        public string ExposicaoRaiox { get; set; }
+        public string QuandodiasExposicao { get; set; }
+        public string TeveCancer { get; set; }
+        public string SncCancer { get; set; }
+        public string DigestorioCancer { get; set; }
+        public string RespiratorioCancer { get; set; }
+        public string ReprodutorCancer { get; set; }
+        public string GlandularCancer { get; set; }
+        public string PeleOssoSangueCancer { get; set; }
+        public string FamiliaCancer { get; set; }
+        public string SNCCancerFamilia { get; set; }
+        public string DigestorioCancerfamilia { get; set; }
+        public string RespiratorioCancerfamilia { get; set; }
+        public string ReprodutorCancerfamilia { get; set; }
+        public string GlandularCancerfamilia { get; set; }
+        public string PeleOssoSangueCancerfamilia { get; set; }
+        public string EdaRegiao { get; set; }
+        public string Ch_t { get; set; }
+        public string Ch_e { get; set; }
+        public string Ch_p { get; set; }
+        public string Ast { get; set; }
+        public string Alt { get; set; }
+        public string Y_gt { get; set; }
+        public string Creatinina { get; set; }
+        public string Ambulatorio { get; set; }
+        public string HabitoAlimentar { get; set; }
+        public string Imc { get; set; }
+        public string CircunferenciaAbdominal { get; set; }
+        public string DificuldadeEngravidar { get; set; }
+        public string AbortoEspontaneo { get; set; }
+        public string TemFilhos { get; set; }
+        public string FilhoMaFormacao { get; set; }
+        public string MedicamentoContinuo { get; set; }
+        public string Medicamento { get; set; }
+        public string RemedioMicose { get; set; }
+        public string NomeRemedio { get; set; }
+        public virtual IEnumerable<FichaAgro> Agrotoxicos { get; set; }
+        public IEnumerable<Diagnostico> Diagnosticos { get; set; }
+        public Paciente Paciente { get; set; }
 
         protected Ficha() { }
 

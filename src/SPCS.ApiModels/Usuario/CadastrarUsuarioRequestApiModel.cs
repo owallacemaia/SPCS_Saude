@@ -33,7 +33,5 @@ namespace SPCS.ApiModels.Usuario
 
         [Compare("Senha", ErrorMessage = "As senhas não conferem.")]
         public string SenhaConfirmacao { get; set; }
-
-        public string Imagem { get; set; }
     }
 }
