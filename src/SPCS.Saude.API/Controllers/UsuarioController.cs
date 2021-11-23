@@ -76,7 +76,7 @@ namespace SPCS.Saude.API.Controllers
 
                 return CustomResponse(_mapper.Map<MedicoResponseApiModel>(medico));
             }
-            else if (tipoUsuarioId == TipoUsuario.Paciente.Id)
+            else 
             {
 
                 var paciente = await _pacienteRepository.ObterPorId(id);
@@ -89,10 +89,6 @@ namespace SPCS.Saude.API.Controllers
 
                 return CustomResponse(_mapper.Map<PacienteResponseApiModel>(paciente));
             }
-
-            AdicionarErroProcessamento("Não foi encontrado o tipo de usuario informado");
-
-            return CustomResponse();
         }
 
         [HttpGet("listar/todos/{tipoUsuarioId:guid}")]
@@ -102,12 +98,8 @@ namespace SPCS.Saude.API.Controllers
                 return CustomResponse(_mapper.Map<IEnumerable<EnfermeiroResponseApiModel>>(await _enfermeiroRepository.ObterTodos()));
             else if (tipoUsuarioId == TipoUsuario.Medico.Id)
                 return CustomResponse(_mapper.Map<IEnumerable<MedicoResponseApiModel>>(await _medicoRepository.ObterTodos()));
-            else if (tipoUsuarioId == TipoUsuario.Paciente.Id)
+            else 
                 return CustomResponse(_mapper.Map<IEnumerable<PacienteResponseApiModel>>(await _pacienteRepository.ObterTodos()));
-
-            AdicionarErroProcessamento("Não foi encontrado o tipo de usuario informado");
-
-            return CustomResponse();
         }
 
         [HttpGet("paciente/{cpf}")]
@@ -134,7 +126,7 @@ namespace SPCS.Saude.API.Controllers
 
             var paciente = new Paciente(usuarioRegistro.Nome, usuarioRegistro.Cpf,
                                           usuarioRegistro.Imagem, usuarioRegistro.Sexo, usuarioRegistro.DataNascimento, usuarioRegistro.Telefone,
-                                          usuarioRegistro.Escolaridade, endereco, usuarioRegistro.TipoUsuarioId);
+                                          usuarioRegistro.Escolaridade, endereco);
 
             await _pacienteService.Adicionar(paciente);
 

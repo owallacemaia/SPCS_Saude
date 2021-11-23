@@ -24,21 +24,23 @@ namespace SPCS.Saude.Business.Models
         public string TempoContatoPraguicida { get; private set; }
         public string FrequenciaContatoPraguicida { get; private set; }
         public string UltimoContatoPraguicida { get; private set; }
+        public Guid ProdutoContatoUltimaVez { get; private set; }
         public string FormaAplicacao { get; private set; }
+        public string Cultura { get; private set; }
         public string ViaExposicao { get; private set; }
         public string Adoeceu { get; private set; }
         public string QtdVezesAdoeceu { get; private set; }
         public string Internado { get; private set; }
-        public string QtdVezesInternado { get; set; }
-        public string QuandoInterndo { get; set; }
-        public string TipoContato { get; set; }
-        public string EquipamentoProtecao { get; set; }
-        public string RoupaProtecao { get; set; }
-        public string BotaProtecao { get; set; }
-        public string LuvasProtecao { get; set; }
-        public string MascaraProtecao { get; set; }
-        public string OculosProtecao { get; set; }
-        public string ProtetorAuricular { get; set; }
+        public string QtdVezesInternado { get; private set; }
+        public string QuandoInterndo { get; private set; }
+        public string TipoContato { get; private set; }
+        public string EquipamentoProtecao { get; private set; }
+        public string RoupaProtecao { get; private set; }
+        public string BotaProtecao { get; private set; }
+        public string LuvasProtecao { get; private set; }
+        public string MascaraProtecao { get; private set; }
+        public string OculosProtecao { get; private set; }
+        public string ProtetorAuricular { get; private set; }
         public string DoencaCardioVascular { get; private set; }
         public string HipertensaoArterial { get; private set; }
         public string HipotensaoArterial { get; private set; }
@@ -112,13 +114,13 @@ namespace SPCS.Saude.Business.Models
         public string Medicamento { get; private set; }
         public string RemedioMicose { get; private set; }
         public string NomeRemedio { get; private set; }
-        public virtual IEnumerable<FichaAgro> Agrotoxicos { get; set; }
-        public Diagnostico Diagnostico { get; set; }
+        public virtual IEnumerable<FichaAgro> Agrotoxicos { get; private set; }
+        public IEnumerable<Diagnostico> Diagnosticos { get; private set; }
         public Paciente Paciente { get; private set; }
 
         protected Ficha() { }
 
-        public Ficha(Guid pacienteId, DateTime dataCadastro, string municipioTrabalho, string gestante, string tabagismo, string tabagismoAtual, string tabagismoAnterior, string etilismo, string etilismoAtual, string etilismoAnterior, string ingestaoCafe, string cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, string contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string formaAplicacao, string viaExposicao, string adoeceu, string qtdVezesAdoeceu, string internado, string qtdVezesInternado, string quandoInterndo, string tipoContato, string equipamentoProtecao, string roupaProtecao, string botaProtecao, string luvasProtecao, string mascaraProtecao, string oculosProtecao, string protetorAuricular, string doencaCardioVascular, string hipertensaoArterial, string hipotensaoArterial, string arritmia, string alteracaoSNervoso, string dorCabeca, string fraquezaMuscular, string tremedeira, string tremorMuscular, string visaoTurvaEmbacada, string agitacaoIrritabilidade, string vertigensTonturas, string formigamento, string incoordenacaoMotora, string aparelhoDigestorio, string colicasDorBarriga, string dorEstomago, string aziaQueimacao, string nauseasEnjoo, string vomito, string diarreia, string aparelhoRespiratorio, string faltaDeAr, string irritaçaoNasal, string catarroEscarro, string tosse, string aparelhoAuditivo, string diminuicaoAudicao, string zumbido, string peleMucosa, string dcSensibilizante, string dcIrritativa, string irritacaoOcular, string aparelhoUrinario, string diminuicaoUrina, string urinaescuraSangue, string outro, string exposicaoRaiox, string quandodiasExposicao, string teveCancer, string sncCancer, string digestorioCancer, string respiratorioCancer, string reprodutorCancer, string glandularCancer, string peleOssoSangueCancer, string familiaCancer, string sNCCancerFamilia, string digestorioCancerfamilia, string respiratorioCancerfamilia, string reprodutorCancerfamilia, string glandularCancerfamilia, string peleOssoSangueCancerfamilia, string edaRegiao, string ch_t, string ch_e, string ch_p, string ast, string alt, string y_gt, string creatinina, string ambulatorio, string habitoAlimentar, string imc, string circunferenciaAbdominal, string dificuldadeEngravidar, string abortoEspontaneo, string temFilhos, string filhoMaFormacao, string medicamentoContinuo, string medicamento, string remedioMicose, string nomeRemedio, IEnumerable<FichaAgro> agrotoxicos, Diagnostico diagnostico, Paciente paciente)
+        public Ficha(Guid pacienteId, DateTime dataCadastro, string municipioTrabalho, string gestante, string tabagismo, string tabagismoAtual, string tabagismoAnterior, string etilismo, string etilismoAtual, string etilismoAnterior, string ingestaoCafe, string cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, string contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, string ultimoContatoPraguicida, Guid produtoContatoUltimaVez, string formaAplicacao, string cultura, string viaExposicao, string adoeceu, string qtdVezesAdoeceu, string internado, string qtdVezesInternado, string quandoInterndo, string tipoContato, string equipamentoProtecao, string roupaProtecao, string botaProtecao, string luvasProtecao, string mascaraProtecao, string oculosProtecao, string protetorAuricular, string doencaCardioVascular, string hipertensaoArterial, string hipotensaoArterial, string arritmia, string alteracaoSNervoso, string dorCabeca, string fraquezaMuscular, string tremedeira, string tremorMuscular, string visaoTurvaEmbacada, string agitacaoIrritabilidade, string vertigensTonturas, string formigamento, string incoordenacaoMotora, string aparelhoDigestorio, string colicasDorBarriga, string dorEstomago, string aziaQueimacao, string nauseasEnjoo, string vomito, string diarreia, string aparelhoRespiratorio, string faltaDeAr, string irritaçaoNasal, string catarroEscarro, string tosse, string aparelhoAuditivo, string diminuicaoAudicao, string zumbido, string peleMucosa, string dcSensibilizante, string dcIrritativa, string irritacaoOcular, string aparelhoUrinario, string diminuicaoUrina, string urinaescuraSangue, string outro, string exposicaoRaiox, string quandodiasExposicao, string teveCancer, string sncCancer, string digestorioCancer, string respiratorioCancer, string reprodutorCancer, string glandularCancer, string peleOssoSangueCancer, string familiaCancer, string sNCCancerFamilia, string digestorioCancerfamilia, string respiratorioCancerfamilia, string reprodutorCancerfamilia, string glandularCancerfamilia, string peleOssoSangueCancerfamilia, string edaRegiao, string ch_t, string ch_e, string ch_p, string ast, string alt, string y_gt, string creatinina, string ambulatorio, string habitoAlimentar, string imc, string circunferenciaAbdominal, string dificuldadeEngravidar, string abortoEspontaneo, string temFilhos, string filhoMaFormacao, string medicamentoContinuo, string medicamento, string remedioMicose, string nomeRemedio, IEnumerable<FichaAgro> agrotoxicos)
         {
             PacienteId = pacienteId;
             DataCadastro = dataCadastro;
@@ -138,7 +140,9 @@ namespace SPCS.Saude.Business.Models
             TempoContatoPraguicida = tempoContatoPraguicida;
             FrequenciaContatoPraguicida = frequenciaContatoPraguicida;
             UltimoContatoPraguicida = ultimoContatoPraguicida;
+            ProdutoContatoUltimaVez = produtoContatoUltimaVez;
             FormaAplicacao = formaAplicacao;
+            Cultura = cultura;
             ViaExposicao = viaExposicao;
             Adoeceu = adoeceu;
             QtdVezesAdoeceu = qtdVezesAdoeceu;
@@ -227,8 +231,6 @@ namespace SPCS.Saude.Business.Models
             RemedioMicose = remedioMicose;
             NomeRemedio = nomeRemedio;
             Agrotoxicos = agrotoxicos;
-            Diagnostico = diagnostico;
-            Paciente = paciente;
         }
 
         internal bool IsValid()

@@ -10,8 +10,8 @@ using SPCS.Saude.Infra.Context;
 namespace SPCS.Saude.Infra.Migrations
 {
     [DbContext(typeof(PrincipalDbContext))]
-    [Migration("20211012160437_initial")]
-    partial class initial
+    [Migration("20211106105412_initialDb")]
+    partial class initialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -140,10 +140,10 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("DificuldadeEngravidar")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("DigestorioCancerfamilia")
+                    b.Property<string>("DigestorioCancer")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("DigestorioCcancer")
+                    b.Property<string>("DigestorioCancerfamilia")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("DiminuicaoAudicao")
@@ -255,6 +255,9 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("NauseasEnjoo")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("NomeRemedio")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("NvezesInternado")
@@ -388,10 +391,16 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("varchar(100)");
 
+                    b.Property<Guid>("FichaId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Sigla")
                         .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FichaId")
+                        .IsUnique();
 
                     b.ToTable("Diagnosticos");
                 });
@@ -576,10 +585,10 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("DificuldadeEngravidar")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("DigestorioCancerfamilia")
+                    b.Property<string>("DigestorioCancer")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("DigestorioCcancer")
+                    b.Property<string>("DigestorioCancerfamilia")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("DiminuicaoAudicao")
@@ -798,7 +807,7 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("ViaExposicao")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("VisãoTurvaEmbacada")
+                    b.Property<string>("VisaoTurvaEmbacada")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Vomito")
@@ -1000,6 +1009,16 @@ namespace SPCS.Saude.Infra.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Diagnostico", b =>
+                {
+                    b.HasOne("SPCS.Saude.Business.Models.Ficha", "Ficha")
+                        .WithOne("Diagnostico")
+                        .HasForeignKey("SPCS.Saude.Business.Models.Diagnostico", "FichaId")
+                        .IsRequired();
+
+                    b.Navigation("Ficha");
+                });
+
             modelBuilder.Entity("SPCS.Saude.Business.Models.Endereco", b =>
                 {
                     b.HasOne("SPCS.Saude.Business.Models.Paciente", "Paciente")
@@ -1081,6 +1100,8 @@ namespace SPCS.Saude.Infra.Migrations
             modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>
                 {
                     b.Navigation("Agrotoxicos");
+
+                    b.Navigation("Diagnostico");
                 });
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Paciente", b =>

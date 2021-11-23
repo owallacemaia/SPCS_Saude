@@ -23,9 +23,9 @@ namespace SPCS.Saude.API.Controllers
             _usuarioService = usuarioService;
         }
 
-        [ClaimsAuthorize("Administrador", "Total")]
+       
         [HttpPost("nova-conta")]
-        public async Task<IActionResult> Registrar(CadastrarAdminRequestApiModel usuarioRegistro)
+        public async Task<IActionResult> Registrar(CadastrarUsuarioRequestApiModel usuarioRegistro)
         {
             if (!ModelState.IsValid)
                 return CustomResponse();
@@ -41,7 +41,7 @@ namespace SPCS.Saude.API.Controllers
 
             if (result.Succeeded)
             {
-                var novoUsuario = new Usuario(Guid.Parse(user.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf, usuarioRegistro.TipoUsuarioId);
+                var novoUsuario = new Usuario(Guid.Parse(user.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf, usuarioRegistro.Sexo, usuarioRegistro.DataNascimento, usuarioRegistro.Telefone, usuarioRegistro.TipoUsuarioId);
                 var registrarUsuario = await _usuarioService.Adicionar(novoUsuario);
 
                 if (!registrarUsuario.IsValid)
@@ -50,7 +50,7 @@ namespace SPCS.Saude.API.Controllers
                     return CustomResponse(registrarUsuario);
                 }
 
-                await _accessManager.UserManager.AddClaimAsync(user, new Claim("Administrador", "Total"));
+                await AdicionarPermissoes(user, novoUsuario.TipoUsuario);
 
                 return CustomResponse(await _accessManager.GerarToken(user.Email));
             }
@@ -61,6 +61,31 @@ namespace SPCS.Saude.API.Controllers
             }
 
             return CustomResponse();
+        }
+
+        private async Task AdicionarPermissoes(IdentityUser user, TipoUsuario tipoUsuario)
+        {
+            string permissoes = null;
+            switch (tipoUsuario.Descricao)
+            {
+                case "Administrador":
+                    {
+                        permissoes = "Total";
+                        break;
+                    }
+                case "Medico":
+                    {
+                        permissoes = "Criar, Visualizar, Alterar, Excluir";
+                        break;
+                    }
+                case "Enfermeiro":
+                    {
+                        permissoes = "Criar, Visualizar, Alterar";
+                        break;
+                    }
+            }
+
+            await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoUsuario.Descricao, permissoes));
         }
 
         [HttpPost("autenticar")]

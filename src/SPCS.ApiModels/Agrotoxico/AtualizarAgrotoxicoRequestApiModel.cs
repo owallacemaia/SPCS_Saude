@@ -1,9 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SPCS.ApiModels.Agrotoxico
 {
-    public class CadastrarAgrotoxicoRequestApiModel
+    public class AtualizarAgrotoxicoRequestApiModel
     {
+        [Key]
+        public Guid Id { get; set; }
+
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Nome { get; set; }
 

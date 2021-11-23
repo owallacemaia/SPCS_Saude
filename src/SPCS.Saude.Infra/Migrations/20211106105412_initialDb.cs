@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SPCS.Saude.Infra.Migrations
 {
-    public partial class initial : Migration
+    public partial class initialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -103,7 +103,7 @@ namespace SPCS.Saude.Infra.Migrations
                     QuandodiasExposicao = table.Column<string>(type: "varchar(100)", nullable: true),
                     TeveCancer = table.Column<string>(type: "varchar(100)", nullable: true),
                     SncCancer = table.Column<string>(type: "varchar(100)", nullable: true),
-                    DigestorioCcancer = table.Column<string>(type: "varchar(100)", nullable: true),
+                    DigestorioCancer = table.Column<string>(type: "varchar(100)", nullable: true),
                     RespiratorioCancer = table.Column<string>(type: "varchar(100)", nullable: true),
                     ReprodutorCancer = table.Column<string>(type: "varchar(100)", nullable: true),
                     GlandularCancer = table.Column<string>(type: "varchar(100)", nullable: true),
@@ -133,24 +133,12 @@ namespace SPCS.Saude.Infra.Migrations
                     FilhoMaFormacao = table.Column<string>(type: "varchar(100)", nullable: true),
                     MedicamentoContinuo = table.Column<string>(type: "varchar(100)", nullable: true),
                     RemedioMicose = table.Column<string>(type: "varchar(100)", nullable: true),
+                    NomeRemedio = table.Column<string>(type: "varchar(100)", nullable: true),
                     SiglaDiagnostico = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Amostras", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Diagnosticos",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Sigla = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Descricao = table.Column<string>(type: "varchar(100)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Diagnosticos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -354,7 +342,7 @@ namespace SPCS.Saude.Infra.Migrations
                     FraquezaMuscular = table.Column<string>(type: "varchar(100)", nullable: true),
                     Tremedeira = table.Column<string>(type: "varchar(100)", nullable: true),
                     TremorMuscular = table.Column<string>(type: "varchar(100)", nullable: true),
-                    VisãoTurvaEmbacada = table.Column<string>(type: "varchar(100)", nullable: true),
+                    VisaoTurvaEmbacada = table.Column<string>(type: "varchar(100)", nullable: true),
                     AgitacaoIrritabilidade = table.Column<string>(type: "varchar(100)", nullable: true),
                     VertigensTonturas = table.Column<string>(type: "varchar(100)", nullable: true),
                     Formigamento = table.Column<string>(type: "varchar(100)", nullable: true),
@@ -386,7 +374,7 @@ namespace SPCS.Saude.Infra.Migrations
                     QuandodiasExposicao = table.Column<string>(type: "varchar(100)", nullable: true),
                     TeveCancer = table.Column<string>(type: "varchar(100)", nullable: true),
                     SncCancer = table.Column<string>(type: "varchar(100)", nullable: true),
-                    DigestorioCcancer = table.Column<string>(type: "varchar(100)", nullable: true),
+                    DigestorioCancer = table.Column<string>(type: "varchar(100)", nullable: true),
                     RespiratorioCancer = table.Column<string>(type: "varchar(100)", nullable: true),
                     ReprodutorCancer = table.Column<string>(type: "varchar(100)", nullable: true),
                     GlandularCancer = table.Column<string>(type: "varchar(100)", nullable: true),
@@ -431,6 +419,26 @@ namespace SPCS.Saude.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Diagnosticos",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FichaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Sigla = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Descricao = table.Column<string>(type: "varchar(100)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Diagnosticos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Diagnosticos_Fichas_FichaId",
+                        column: x => x.FichaId,
+                        principalTable: "Fichas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FichaAgro",
                 columns: table => new
                 {
@@ -454,6 +462,12 @@ namespace SPCS.Saude.Infra.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Diagnosticos_FichaId",
+                table: "Diagnosticos",
+                column: "FichaId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Enderecos_PacienteId",

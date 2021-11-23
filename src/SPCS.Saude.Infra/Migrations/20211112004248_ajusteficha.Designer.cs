@@ -10,8 +10,8 @@ using SPCS.Saude.Infra.Context;
 namespace SPCS.Saude.Infra.Migrations
 {
     [DbContext(typeof(PrincipalDbContext))]
-    [Migration("20211103235011_RefacorModelFicha")]
-    partial class RefacorModelFicha
+    [Migration("20211112004248_ajusteficha")]
+    partial class ajusteficha
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -110,15 +110,6 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("CircunferenciaAbdominalDiscretizado")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("ClasseProduto1")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ClasseProduto2")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ClasseProduto3")
-                        .HasColumnType("varchar(100)");
-
                     b.Property<string>("ColicasDorBarriga")
                         .HasColumnType("varchar(100)");
 
@@ -126,6 +117,9 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("CreatininaDiscretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Cultura")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("DcIrritativa")
@@ -257,6 +251,9 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("NauseasEnjoo")
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("NomeComercial")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("NomeRemedio")
                         .HasColumnType("varchar(100)");
 
@@ -279,6 +276,12 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("PeleOssoSangueCancerfamilia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("PrincipioAtivo1")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("PrincipioAtivo2")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("ProtetorAuricular")
@@ -570,6 +573,9 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("Creatinina")
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("Cultura")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
@@ -722,6 +728,9 @@ namespace SPCS.Saude.Infra.Migrations
 
                     b.Property<string>("PeleOssoSangueCancerfamilia")
                         .HasColumnType("varchar(100)");
+
+                    b.Property<Guid>("ProdutoContatoUltimaVez")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ProtetorAuricular")
                         .HasColumnType("varchar(100)");

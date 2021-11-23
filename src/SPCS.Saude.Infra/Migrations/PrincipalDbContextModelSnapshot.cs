@@ -108,15 +108,6 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("CircunferenciaAbdominalDiscretizado")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("ClasseProduto1")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ClasseProduto2")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ClasseProduto3")
-                        .HasColumnType("varchar(100)");
-
                     b.Property<string>("ColicasDorBarriga")
                         .HasColumnType("varchar(100)");
 
@@ -124,6 +115,9 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("CreatininaDiscretizado")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Cultura")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("DcIrritativa")
@@ -255,6 +249,9 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("NauseasEnjoo")
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("NomeComercial")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("NomeRemedio")
                         .HasColumnType("varchar(100)");
 
@@ -277,6 +274,12 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("PeleOssoSangueCancerfamilia")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("PrincipioAtivo1")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("PrincipioAtivo2")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("ProtetorAuricular")
@@ -397,8 +400,7 @@ namespace SPCS.Saude.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FichaId")
-                        .IsUnique();
+                    b.HasIndex("FichaId");
 
                     b.ToTable("Diagnosticos");
                 });
@@ -568,6 +570,9 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("Creatinina")
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("Cultura")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
@@ -720,6 +725,9 @@ namespace SPCS.Saude.Infra.Migrations
 
                     b.Property<string>("PeleOssoSangueCancerfamilia")
                         .HasColumnType("varchar(100)");
+
+                    b.Property<Guid>("ProdutoContatoUltimaVez")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ProtetorAuricular")
                         .HasColumnType("varchar(100)");
@@ -920,12 +928,7 @@ namespace SPCS.Saude.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(11)");
 
-                    b.Property<Guid?>("TipoUsuarioId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TipoUsuarioId");
 
                     b.ToTable("Pacientes");
                 });
@@ -1010,8 +1013,8 @@ namespace SPCS.Saude.Infra.Migrations
             modelBuilder.Entity("SPCS.Saude.Business.Models.Diagnostico", b =>
                 {
                     b.HasOne("SPCS.Saude.Business.Models.Ficha", "Ficha")
-                        .WithOne("Diagnostico")
-                        .HasForeignKey("SPCS.Saude.Business.Models.Diagnostico", "FichaId")
+                        .WithMany("Diagnosticos")
+                        .HasForeignKey("FichaId")
                         .IsRequired();
 
                     b.Navigation("Ficha");
@@ -1072,15 +1075,6 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Navigation("TipoUsuario");
                 });
 
-            modelBuilder.Entity("SPCS.Saude.Business.Models.Paciente", b =>
-                {
-                    b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
-                        .WithMany()
-                        .HasForeignKey("TipoUsuarioId");
-
-                    b.Navigation("TipoUsuario");
-                });
-
             modelBuilder.Entity("SPCS.Saude.Business.Models.Usuario", b =>
                 {
                     b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
@@ -1099,7 +1093,7 @@ namespace SPCS.Saude.Infra.Migrations
                 {
                     b.Navigation("Agrotoxicos");
 
-                    b.Navigation("Diagnostico");
+                    b.Navigation("Diagnosticos");
                 });
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Paciente", b =>

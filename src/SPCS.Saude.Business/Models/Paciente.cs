@@ -15,12 +15,11 @@ namespace SPCS.Saude.Business.Models
         public string Escolaridade { get; private set; }
         public Endereco Endereco { get; private set; }
         public IEnumerable<Ficha> Fichas { get; set; }
-        public TipoUsuario TipoUsuario { get; private set; }
 
         protected Paciente() { }
 
         public Paciente(string nome, string cpf, string imagem, string sexo, DateTime dataNascimento, string telefone, 
-                        string escolaridade, Endereco endereco, Guid tipoUsuarioId)
+                        string escolaridade, Endereco endereco)
         {
             Nome = nome;
             Cpf = cpf;
@@ -30,7 +29,6 @@ namespace SPCS.Saude.Business.Models
             Telefone = telefone;
             Escolaridade = escolaridade;
             Endereco = endereco;
-            TipoUsuario = tipoUsuarioId;
         }
 
         internal bool IsValid()

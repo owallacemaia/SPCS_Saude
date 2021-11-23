@@ -25,9 +25,6 @@ namespace SPCS.ApiModels.Usuario
         public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public string Escolaridade { get; set; }
-
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public Guid TipoUsuarioId { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]

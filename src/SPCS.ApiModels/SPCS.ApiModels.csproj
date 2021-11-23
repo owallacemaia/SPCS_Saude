@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SPCS.Saude.Business\SPCS.Saude.Business.csproj" />
+    <Compile Remove="Diagnostico\**" />
+    <EmbeddedResource Remove="Diagnostico\**" />
+    <None Remove="Diagnostico\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Diagnostico\" />
+    <ProjectReference Include="..\SPCS.Saude.Business\SPCS.Saude.Business.csproj" />
   </ItemGroup>
 
 </Project>

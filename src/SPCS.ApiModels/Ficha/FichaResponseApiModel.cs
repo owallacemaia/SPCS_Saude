@@ -1,29 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SPCS.ApiModels.Ficha
 {
     public class FichaResponseApiModel
     {
-        public Guid Id { get; set; }
         public Guid PacienteId { get; set; }
         public DateTime DataCadastro { get; set; }
         public string MunicipioTrabalho { get; set; }
         public string Gestante { get; set; }
         public string Tabagismo { get; set; }
         public string TabagismoAtual { get; set; }
-        public string TabagismoAnterior { get; private set; }
+        public string TabagismoAnterior { get; set; }
         public string Etilismo { get; set; }
         public string EtilismoAtual { get; set; }
         public string EtilismoAnterior { get; set; }
         public string IngestaoCafe { get; set; }
-        public double CafeMlDia { get; set; }
+        public string CafeMlDia { get; set; }
         public string RelacaoTrabalho { get; set; }
         public string FuncaoTrabalho { get; set; }
         public string ContatoPraguicida { get; set; }
         public string TempoContatoPraguicida { get; set; }
         public string FrequenciaContatoPraguicida { get; set; }
         public string UltimoContatoPraguicida { get; set; }
+        public Guid ProdutoContatoUltimaVez { get; set; }
         public string FormaAplicacao { get; set; }
+        public string Cultura { get; set; }
         public string ViaExposicao { get; set; }
         public string Adoeceu { get; set; }
         public string QtdVezesAdoeceu { get; set; }
@@ -47,7 +49,7 @@ namespace SPCS.ApiModels.Ficha
         public string FraquezaMuscular { get; set; }
         public string Tremedeira { get; set; }
         public string TremorMuscular { get; set; }
-        public string VisãoTurvaEmbacada { get; set; }
+        public string VisaoTurvaEmbacada { get; set; }
         public string AgitacaoIrritabilidade { get; set; }
         public string VertigensTonturas { get; set; }
         public string Formigamento { get; set; }
@@ -92,17 +94,17 @@ namespace SPCS.ApiModels.Ficha
         public string GlandularCancerfamilia { get; set; }
         public string PeleOssoSangueCancerfamilia { get; set; }
         public string EdaRegiao { get; set; }
-        public double Ch_t { get; set; }
-        public double Ch_e { get; set; }
-        public double Ch_p { get; set; }
-        public double Ast { get; set; }
-        public double Alt { get; set; }
-        public double Y_gt { get; set; }
-        public double Creatinina { get; set; }
+        public string Ch_t { get; set; }
+        public string Ch_e { get; set; }
+        public string Ch_p { get; set; }
+        public string Ast { get; set; }
+        public string Alt { get; set; }
+        public string Y_gt { get; set; }
+        public string Creatinina { get; set; }
         public string Ambulatorio { get; set; }
         public string HabitoAlimentar { get; set; }
-        public double Imc { get; set; }
-        public int CircunferenciaAbdominal { get; set; }
+        public string Imc { get; set; }
+        public string CircunferenciaAbdominal { get; set; }
         public string DificuldadeEngravidar { get; set; }
         public string AbortoEspontaneo { get; set; }
         public string TemFilhos { get; set; }
@@ -111,6 +113,6 @@ namespace SPCS.ApiModels.Ficha
         public string Medicamento { get; set; }
         public string RemedioMicose { get; set; }
         public string NomeRemedio { get; set; }
-        public Guid FichaAgro { get; set; } //verificar
+        public virtual IEnumerable<FichaAgroApiModel> Agrotoxicos { get; set; }
     }
 }
