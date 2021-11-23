@@ -6,14 +6,15 @@ namespace SPCS.Saude.Business.Models
 {
     public class Usuario : Entity, IAggregateRoot
     {
-        public string Nome { get; private set; }
-        public string Email { get; private set; }
-        public string Cpf { get; private set; }
-        public string Imagem { get; private set; }
-        public string Sexo { get; private set; }
-        public DateTime DataNascimento { get; private set; }
-        public string Telefone { get; private set; }
-        public TipoUsuario TipoUsuario { get; private set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public string Cpf { get; set; }
+        public string Imagem { get; set; }
+        public string Sexo { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public string Telefone { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }
+        public bool Ativo { get; set; }
 
         //EF Constructor
         protected Usuario() { }
@@ -28,6 +29,7 @@ namespace SPCS.Saude.Business.Models
             DataNascimento = dataNascimento;
             Telefone = telefone;
             TipoUsuario = tipoUsuario;
+            Ativo = true;
         }
 
         internal bool EhValido()

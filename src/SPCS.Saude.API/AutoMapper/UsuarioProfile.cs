@@ -19,14 +19,6 @@ namespace SPCS.Saude.API.AutoMapper
             CreateMap<PacienteResponseApiModel, Usuario>().ReverseMap();
             CreateMap<EnderecoResponseApiModel, Endereco>().ReverseMap();
             CreateMap<UsuarioFichaRequestApiModel, Paciente>().ReverseMap();
-
-            //Medico
-            CreateMap<MedicoResponseApiModel, Medico>().ReverseMap();
-            CreateMap<MedicoResponseApiModel, Usuario>().ReverseMap();
-
-            //Enfermeiro
-            CreateMap<EnfermeiroResponseApiModel, Enfermeiro>().ReverseMap();
-            CreateMap<EnfermeiroResponseApiModel, Usuario>().ReverseMap();
         }
     }
 }

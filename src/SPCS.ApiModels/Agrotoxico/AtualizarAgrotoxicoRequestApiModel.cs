@@ -16,5 +16,8 @@ namespace SPCS.ApiModels.Agrotoxico
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string PrincipioAtivo { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Ativo { get; set; }
     }
 }

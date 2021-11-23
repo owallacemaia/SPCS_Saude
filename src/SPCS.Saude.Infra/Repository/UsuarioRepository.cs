@@ -86,5 +86,15 @@ namespace SPCS.Saude.Infra.Repository
         {
             return await _context.RefreshTokens.FirstOrDefaultAsync(a => a.Email == email);
         }
+
+        public async Task<IEnumerable<Usuario>> ObterMedicos()
+        {
+            return await _context.Usuarios.AsNoTracking().Where(a => TipoUsuario.Medico.Id == a.TipoUsuario.Id).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Usuario>> ObterEnfermeiros()
+        {
+            return await _context.Usuarios.AsNoTracking().Where(a => TipoUsuario.Enfermeiro.Id == a.TipoUsuario.Id).ToListAsync();
+        }
     }
 }

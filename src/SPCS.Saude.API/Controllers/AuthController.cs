@@ -4,7 +4,6 @@ using SPCS.ApiModels.Usuario;
 using SPCS.Saude.API.Services;
 using SPCS.Saude.Business.Interfaces;
 using SPCS.Saude.Business.Models;
-using SPCS.Saude.Core.Identidade;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -23,7 +22,7 @@ namespace SPCS.Saude.API.Controllers
             _usuarioService = usuarioService;
         }
 
-       
+
         [HttpPost("nova-conta")]
         public async Task<IActionResult> Registrar(CadastrarUsuarioRequestApiModel usuarioRegistro)
         {
@@ -65,27 +64,27 @@ namespace SPCS.Saude.API.Controllers
 
         private async Task AdicionarPermissoes(IdentityUser user, TipoUsuario tipoUsuario)
         {
-            string permissoes = null;
             switch (tipoUsuario.Descricao)
             {
                 case "Administrador":
                     {
-                        permissoes = "Total";
-                        break;
-                    }
-                case "Medico":
-                    {
-                        permissoes = "Criar, Visualizar, Alterar, Excluir";
-                        break;
-                    }
-                case "Enfermeiro":
-                    {
+                        var tipoPermissao = "Usuarios";
+                        var permissoes = "Criar Enfermeiro, Criar Paciente, Criar Medico, Visualizar, Alterar, Desativar";
+
+                        await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
+
+                        tipoPermissao = "Agrotoxicos";
+                        permissoes = "Criar, Visualizar, Alterar, Desativar";
+
+                        await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
+
+                        tipoPermissao = "Fichas";
                         permissoes = "Criar, Visualizar, Alterar";
+
+                        await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
                         break;
                     }
             }
-
-            await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoUsuario.Descricao, permissoes));
         }
 
         [HttpPost("autenticar")]

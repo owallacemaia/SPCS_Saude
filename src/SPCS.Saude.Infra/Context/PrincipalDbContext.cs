@@ -17,10 +17,8 @@ namespace SPCS.Saude.Infra.Context
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Medico> Medicos { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
-        public DbSet<Enfermeiro> Enfermeiros { get; set; }
-        public DbSet<Enfermeiro> TiposUsuarios { get; set; }
+        public DbSet<TipoUsuario> TiposUsuarios { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Ficha> Fichas { get; set; }
         public DbSet<FichaAgro> FichasAgro { get; set; }

@@ -24,7 +24,7 @@ namespace SPCS.Saude.Business.Services
 
             if (usuarioExistente != null)
             {
-                AdicionarErro("Já existe um usuário cadastrado com o CPF informado");
+                AdicionarErro($"Já existe um usuário cadastrado com o CPF {usuario.Cpf}");
                 return ValidationResult;
             }
 

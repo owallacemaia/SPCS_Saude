@@ -20,14 +20,6 @@ namespace SPCS.Saude.API.Configuration
             services.AddScoped<IPacienteRepository, PacienteRepository>();
             services.AddScoped<IPacienteService, PacienteService>();
 
-            //Medico
-            services.AddScoped<IMedicoRepository, MedicoRepository>();
-            services.AddScoped<IMedicoService, MedicoService>();
-
-            //Enfermeiro
-            services.AddScoped<IEnfermeiroRepository, EnfermeiroRepository>();
-            services.AddScoped<IEnfermeiroService, EnfermeiroService>();
-
             //Ficha
             services.AddScoped<IFichaRepository, FichaRepository>();
             services.AddScoped<IFichaService, FichaService>();

@@ -5,7 +5,7 @@ namespace SPCS.Saude.Core.Messages
 {
     public class Event : Message, INotification
     {
-        public DateTime Timestamp { get; private set; }
+        public DateTime Timestamp { get; set; }
 
         protected Event()
         {
