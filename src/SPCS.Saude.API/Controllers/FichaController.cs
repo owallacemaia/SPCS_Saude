@@ -75,7 +75,7 @@ namespace SPCS.Saude.API.Controllers
 
             var response = _mapper.Map<FichaResponseApiModel>(ficha);
 
-            //await GerarAmostra(response);
+            await GerarAmostra(response);
 
             return CustomResponse(response);
         }
@@ -86,31 +86,17 @@ namespace SPCS.Saude.API.Controllers
             return (_mapper.Map<IEnumerable<UsuarioFichaRequestApiModel>>(await _pacienteRepository.ObterPacientesFichas()));
         }
 
-        //[ClaimsAuthorize(TipoAuthorize, Permissoes)]
-        //[HttpPut("atualizar")]
-        //public async Task<ActionResult<FichaResponseApiModel>> Atualizar()
-        //{
+        private async Task<bool> GerarAmostra(FichaResponseApiModel model)
+        {
+            #region Conversão de Variaveis
+            var paciente = await _pacienteRepository.ObterPorId(model.PacienteId);
+            var agrotoxicoUltimoContato = await _agrotoxicoRepository.ObterPorId(model.ProdutoContatoUltimaVez);
 
-        //}
-        //private async Task GerarAmostra(FichaResponseApiModel model)
-        //{
-        //    #region Conversão de Variaveis
-        //    var paciente = await _pacienteRepository.ObterPorId(model.PacienteId);
-
-        //    int idade = (DateTime.Now.Year - paciente.DataNascimento.Year);
-        //    double cafe = Convert.ToDouble(model.CafeMlDia);
-        //    int tempoContato = Convert.ToInt32(model.TempoContatoPraguicida);
-        //    int ultimoContato = Convert.ToInt32(model.UltimoContatoPraguicida);
-        //    int qtdAdoeceu = Convert.ToInt32(model.QtdVezesAdoeceu);
-        //    int numInternado = Convert.ToInt32(model.QtdVezesInternado);
-        //    int QInternado = Convert.ToInt32(model.QuandoInterndo);
-        //    double chT = Convert.ToDouble(model.Ch_t);
-        //    double chE = Convert.ToDouble(model.Ch_e);
-        //    double chP = Convert.ToDouble(model.Ch_p);
-        //    double ast = Convert.ToDouble(model.Ast);
-        //    double alt = Convert.ToDouble(model.Alt);
-        //    double ygt = Convert.ToDouble(model.Y_gt);
-        //    double creatinina = Convert.ToDouble(model.Creatinina);
+            if (agrotoxicoUltimoContato == null)
+            {
+                AdicionarErroProcessamento("Não foi possível encontrar o Produto de ultimo contato!");
+                return false;
+            }
 
             int idade = (DateTime.Now.Year - paciente.DataNascimento.Year);
             double cafe = Convert.ToDouble(model.CafeMlDia);
@@ -153,7 +139,7 @@ namespace SPCS.Saude.API.Controllers
                 UltimoContatoPraguicida = ultimoContato == 0 ? "Não Informado" : (ultimoContato > 0) && (ultimoContato <= 7) ? "Exposição Aguda" :
                                         (ultimoContato > 7) && (ultimoContato <= 30) ? "Exposição Subaguda" : (ultimoContato > 30) && (ultimoContato <= 90) ? "Exposição Subcrônica" :
                                         (ultimoContato > 90) ? "Exposição Crônica" : null,
-                PrincipioAtivo1= agrotoxicoUltimoContato.PrincipioAtivo,
+                PrincipioAtivo1 = agrotoxicoUltimoContato.PrincipioAtivo,
                 NomeComercial = null,
                 PrincipioAtivo2 = null,
                 ViaExposicao = model.ViaExposicao,
