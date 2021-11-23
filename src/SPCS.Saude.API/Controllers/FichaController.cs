@@ -71,7 +71,7 @@ namespace SPCS.Saude.API.Controllers
 
             var response = _mapper.Map<FichaResponseApiModel>(ficha);
 
-            //await GerarAmostra(response);
+            await GerarAmostra(response);
 
             return CustomResponse(response);
         }
