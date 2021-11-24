@@ -118,7 +118,7 @@ namespace SPCS.Saude.API.Controllers
 
             var response = new AmostraApiModel
             {
-
+                PacienteId = model.PacienteId,
                 Sexo = paciente.Sexo,
                 Gestante = model.Gestante,
                 IdadeDiscretizado = (idade > 0) && (idade <= 12) ? "Criança" : (idade > 12) && (idade <= 17) ? "Jovem" :
@@ -229,7 +229,6 @@ namespace SPCS.Saude.API.Controllers
                 RemedioMicose = model.RemedioMicose,
                 NomeRemedio = model.NomeRemedio,
                 SiglaDiagnostico = null,
-
             };
 
             var amostra = _mapper.Map<Amostra>(response);
