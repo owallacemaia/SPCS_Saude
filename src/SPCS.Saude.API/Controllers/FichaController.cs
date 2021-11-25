@@ -104,7 +104,6 @@ namespace SPCS.Saude.API.Controllers
             int ultimoContato = Convert.ToInt32(model.UltimoContatoPraguicida);
             int qtdAdoeceu = Convert.ToInt32(model.QtdVezesAdoeceu);
             int numInternado = Convert.ToInt32(model.QtdVezesInternado);
-            int QInternado = Convert.ToInt32(model.QuandoInterndo);
             double chT = Convert.ToDouble(model.Ch_t);
             double chE = Convert.ToDouble(model.Ch_e);
             double chP = Convert.ToDouble(model.Ch_p);
@@ -147,7 +146,7 @@ namespace SPCS.Saude.API.Controllers
                 NVezesAdoeceu = (qtdAdoeceu == 0) ? "Nenhuma Vez" : (qtdAdoeceu == 1) ? "Uma Única Vez" : (qtdAdoeceu > 1) ? "Mais De Uma Vez" : null,
                 Internado = model.Internado,
                 NvezesInternado = (numInternado == 0) ? "Nenhuma Vez" : (numInternado == 1) ? "Uma Única Vez" : (numInternado > 1) ? "Mais De Uma Vez" : null,
-                QuandoInternado = (QInternado == 0) ? "Nenhuma Vez" : (QInternado < 10) ? "Há Menos de 10 Anos" : (QInternado > 10) ? "Há Mais de 10 Anos" : null,
+                QuandoInternado = model.QuandoInterndo,
                 TipoContato = model.TipoContato,
                 EquipamentoProtecao = model.EquipamentoProtecao,
                 RoupaProtecao = model.RoupaProtecao,

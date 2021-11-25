@@ -82,6 +82,11 @@ namespace SPCS.Saude.API.Controllers
                         permissoes = "Criar, Visualizar, Alterar";
 
                         await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
+
+                        tipoPermissao = "Administrador";
+                        permissoes = "Administrador";
+
+                        await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
                         break;
                     }
             }
