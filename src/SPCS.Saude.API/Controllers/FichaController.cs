@@ -24,10 +24,12 @@ namespace SPCS.Saude.API.Controllers
         private readonly IPacienteRepository _pacienteRepository;
         private readonly IAgrotoxicoRepository _agrotoxicoRepository;
         private readonly IAmostraRepository _amostraRepository;
+        private readonly IAmostraService _amostraService;
 
-        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository,
-                               IPacienteRepository pacienteRepository, IAgrotoxicoRepository agrotoxicoRepository,
-                               IAmostraRepository amostraRepository)
+        public FichaController(IMapper mapper, IFichaService fichaService, 
+                               IFichaRepository fichaRepository, IPacienteRepository pacienteRepository, 
+                               IAgrotoxicoRepository agrotoxicoRepository, IAmostraRepository amostraRepository, 
+                               IAmostraService amostraService)
         {
             _mapper = mapper;
             _fichaService = fichaService;
@@ -35,6 +37,7 @@ namespace SPCS.Saude.API.Controllers
             _pacienteRepository = pacienteRepository;
             _agrotoxicoRepository = agrotoxicoRepository;
             _amostraRepository = amostraRepository;
+            _amostraService = amostraService;
         }
 
         [HttpGet("listar")]
@@ -231,7 +234,7 @@ namespace SPCS.Saude.API.Controllers
             };
 
             var amostra = _mapper.Map<Amostra>(response);
-            _amostraRepository.Adicionar(amostra);
+            await _amostraService.Adicionar(amostra);
             return true;
         }
     }

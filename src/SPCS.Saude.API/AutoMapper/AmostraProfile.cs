@@ -9,6 +9,7 @@ namespace SPCS.Saude.API.AutoMapper
         public AmostraProfile()
         {
             CreateMap<AmostraApiModel, Amostra>().ReverseMap();
+            CreateMap<AmostraResponseApiModel, Amostra>().ReverseMap();
         }
     }
 }

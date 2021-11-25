@@ -2,7 +2,7 @@
 
 namespace SPCS.ApiModels.Amostra
 {
-    public class AmostraResponseApiModel
+    public class AmostraResponseApiModel : AmostraApiModel
     {
         public PacienteResponseApiModel Paciente { get; set; }
     }
