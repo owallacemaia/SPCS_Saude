@@ -10,6 +10,7 @@ namespace SPCS.Saude.API.AutoMapper
         {
             CreateMap<AmostraApiModel, Amostra>().ReverseMap();
             CreateMap<AmostraResponseApiModel, Amostra>().ReverseMap();
+            CreateMap<PacienteAmostraResponseApiModel, Amostra>().ReverseMap();
         }
     }
 }

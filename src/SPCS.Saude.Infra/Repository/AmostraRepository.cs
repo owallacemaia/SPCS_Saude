@@ -27,14 +27,14 @@ namespace SPCS.Saude.Infra.Repository
             _context.Amostras.Add(amostra);
         }
 
-        public async Task<IEnumerable<Amostra>> Amostras()
+        public async Task<IEnumerable<Amostra>> ListarAsync()
         {
             return await _context.Amostras.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Amostra> ObterAmostra(Guid id)
+        public async Task<Amostra> ObterPorId(Guid id)
         {
-            return await _context.Amostras.FirstOrDefaultAsync(a => a.Id == id); 
+            return await _context.Amostras.FirstOrDefaultAsync(a => a.Id == id);
         }
 
         public void Dispose()
