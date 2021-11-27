@@ -68,8 +68,8 @@ namespace SPCS.Saude.API.Controllers
             {
                 case "Administrador":
                     {
-                        var tipoPermissao = "Administrador";
-                        var permissoes = "Administrador";
+                        var tipoPermissao = "Usuarios";
+                        var permissoes = "Criar Enfermeiro, Criar Paciente, Criar Medico, Visualizar, Alterar, Desativar";
 
                         await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
 
@@ -83,8 +83,8 @@ namespace SPCS.Saude.API.Controllers
 
                         await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
 
-                        tipoPermissao = "Usuarios";
-                        permissoes = "Criar Enfermeiro, Criar Paciente, Criar Medico, Visualizar, Alterar, Desativar";
+                        tipoPermissao = "Administrador";
+                        permissoes = "Administrador";
 
                         await _accessManager.UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
                         break;
