@@ -5,6 +5,7 @@ using SPCS.Saude.Business.Models;
 using SPCS.Saude.Infra.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SPCS.Saude.Infra.Repository
@@ -38,7 +39,7 @@ namespace SPCS.Saude.Infra.Repository
 
         public async Task<IEnumerable<Ficha>> ListarAsync()
         {
-            return await _context.Fichas.AsNoTracking().ToListAsync();
+            return await _context.Fichas.AsNoTracking().OrderBy(a => a.DataCadastro).ToListAsync();
         }
 
         public void Dispose()

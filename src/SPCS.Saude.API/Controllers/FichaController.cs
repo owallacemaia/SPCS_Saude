@@ -24,10 +24,12 @@ namespace SPCS.Saude.API.Controllers
         private readonly IPacienteRepository _pacienteRepository;
         private readonly IAgrotoxicoRepository _agrotoxicoRepository;
         private readonly IAmostraRepository _amostraRepository;
+        private readonly IAmostraService _amostraService;
 
-        public FichaController(IMapper mapper, IFichaService fichaService, IFichaRepository fichaRepository,
-                               IPacienteRepository pacienteRepository, IAgrotoxicoRepository agrotoxicoRepository,
-                               IAmostraRepository amostraRepository)
+        public FichaController(IMapper mapper, IFichaService fichaService, 
+                               IFichaRepository fichaRepository, IPacienteRepository pacienteRepository, 
+                               IAgrotoxicoRepository agrotoxicoRepository, IAmostraRepository amostraRepository, 
+                               IAmostraService amostraService)
         {
             _mapper = mapper;
             _fichaService = fichaService;
@@ -35,6 +37,7 @@ namespace SPCS.Saude.API.Controllers
             _pacienteRepository = pacienteRepository;
             _agrotoxicoRepository = agrotoxicoRepository;
             _amostraRepository = amostraRepository;
+            _amostraService = amostraService;
         }
 
         [HttpGet("listar")]
@@ -104,7 +107,6 @@ namespace SPCS.Saude.API.Controllers
             int ultimoContato = Convert.ToInt32(model.UltimoContatoPraguicida);
             int qtdAdoeceu = Convert.ToInt32(model.QtdVezesAdoeceu);
             int numInternado = Convert.ToInt32(model.QtdVezesInternado);
-            int QInternado = Convert.ToInt32(model.QuandoInterndo);
             double chT = Convert.ToDouble(model.Ch_t);
             double chE = Convert.ToDouble(model.Ch_e);
             double chP = Convert.ToDouble(model.Ch_p);
@@ -118,7 +120,7 @@ namespace SPCS.Saude.API.Controllers
 
             var response = new AmostraApiModel
             {
-
+                PacienteId = model.PacienteId,
                 Sexo = paciente.Sexo,
                 Gestante = model.Gestante,
                 IdadeDiscretizado = (idade > 0) && (idade <= 12) ? "Criança" : (idade > 12) && (idade <= 17) ? "Jovem" :
@@ -147,7 +149,7 @@ namespace SPCS.Saude.API.Controllers
                 NVezesAdoeceu = (qtdAdoeceu == 0) ? "Nenhuma Vez" : (qtdAdoeceu == 1) ? "Uma Única Vez" : (qtdAdoeceu > 1) ? "Mais De Uma Vez" : null,
                 Internado = model.Internado,
                 NvezesInternado = (numInternado == 0) ? "Nenhuma Vez" : (numInternado == 1) ? "Uma Única Vez" : (numInternado > 1) ? "Mais De Uma Vez" : null,
-                QuandoInternado = (QInternado == 0) ? "Nenhuma Vez" : (QInternado < 10) ? "Há Menos de 10 Anos" : (QInternado > 10) ? "Há Mais de 10 Anos" : null,
+                QuandoInternado = model.QuandoInterndo,
                 TipoContato = model.TipoContato,
                 EquipamentoProtecao = model.EquipamentoProtecao,
                 RoupaProtecao = model.RoupaProtecao,
@@ -229,11 +231,10 @@ namespace SPCS.Saude.API.Controllers
                 RemedioMicose = model.RemedioMicose,
                 NomeRemedio = model.NomeRemedio,
                 SiglaDiagnostico = null,
-
             };
 
             var amostra = _mapper.Map<Amostra>(response);
-            _amostraRepository.Adicionar(amostra);
+            await _amostraService.Adicionar(amostra);
             return true;
         }
     }

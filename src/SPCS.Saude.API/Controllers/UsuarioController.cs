@@ -282,6 +282,11 @@ namespace SPCS.Saude.API.Controllers
                         permissoes = "Criar, Visualizar, Alterar";
 
                         await UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
+
+                        tipoPermissao = "Medico";
+                        permissoes = "Medico";
+
+                        await UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
                         break;
                     }
                 case "Enfermeiro":
@@ -298,6 +303,11 @@ namespace SPCS.Saude.API.Controllers
 
                         tipoPermissao = "Fichas";
                         permissoes = "Criar, Visualizar, Alterar";
+
+                        await UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
+
+                        tipoPermissao = "Enfermeiro";
+                        permissoes = "Enfermeiro";
 
                         await UserManager.AddClaimAsync(user, new Claim(tipoPermissao, permissoes));
                         break;
