@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SPCS.Saude.Infra.Migrations
 {
-    public partial class initialDb : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,8 @@ namespace SPCS.Saude.Infra.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(250)", nullable: false),
                     Tipo = table.Column<string>(type: "varchar(250)", nullable: false),
-                    PrincipioAtivo = table.Column<string>(type: "varchar(250)", nullable: false)
+                    PrincipioAtivo = table.Column<string>(type: "varchar(250)", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,10 +45,11 @@ namespace SPCS.Saude.Infra.Migrations
                     TempoContatoPraguicida = table.Column<string>(type: "varchar(100)", nullable: true),
                     FrequenciaContatoPraguicida = table.Column<string>(type: "varchar(100)", nullable: true),
                     UltimoContatoPraguicida = table.Column<string>(type: "varchar(100)", nullable: true),
-                    ClasseProduto1 = table.Column<string>(type: "varchar(100)", nullable: true),
-                    ClasseProduto2 = table.Column<string>(type: "varchar(100)", nullable: true),
-                    ClasseProduto3 = table.Column<string>(type: "varchar(100)", nullable: true),
+                    PrincipioAtivo1 = table.Column<string>(type: "varchar(100)", nullable: true),
                     FormaAplicacao = table.Column<string>(type: "varchar(100)", nullable: true),
+                    NomeComercial = table.Column<string>(type: "varchar(100)", nullable: true),
+                    PrincipioAtivo2 = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Cultura = table.Column<string>(type: "varchar(100)", nullable: true),
                     ViaExposicao = table.Column<string>(type: "varchar(100)", nullable: true),
                     Adoeceu = table.Column<string>(type: "varchar(100)", nullable: true),
                     NVezesAdoeceu = table.Column<string>(type: "varchar(100)", nullable: true),
@@ -142,6 +144,24 @@ namespace SPCS.Saude.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pacientes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(250)", nullable: false),
+                    Cpf = table.Column<string>(type: "varchar(11)", nullable: false),
+                    Imagem = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Sexo = table.Column<string>(type: "varchar(9)", nullable: false),
+                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Telefone = table.Column<string>(type: "varchar(11)", nullable: false),
+                    Escolaridade = table.Column<string>(type: "varchar(100)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pacientes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RefreshTokens",
                 columns: table => new
                 {
@@ -166,108 +186,6 @@ namespace SPCS.Saude.Infra.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TiposUsuario", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Enfermeiros",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "varchar(250)", nullable: false),
-                    Email = table.Column<string>(type: "varchar(250)", nullable: false),
-                    Cpf = table.Column<string>(type: "varchar(14)", nullable: false),
-                    Imagem = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Sexo = table.Column<string>(type: "varchar(9)", nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Telefone = table.Column<string>(type: "varchar(11)", nullable: false),
-                    Coren = table.Column<string>(type: "varchar(250)", nullable: false),
-                    TipoUsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Enfermeiros", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Enfermeiros_TiposUsuario_TipoUsuarioId",
-                        column: x => x.TipoUsuarioId,
-                        principalTable: "TiposUsuario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Medicos",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "varchar(250)", nullable: false),
-                    Email = table.Column<string>(type: "varchar(250)", nullable: false),
-                    Cpf = table.Column<string>(type: "varchar(14)", nullable: false),
-                    Imagem = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Sexo = table.Column<string>(type: "varchar(9)", nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Telefone = table.Column<string>(type: "varchar(11)", nullable: false),
-                    Crm = table.Column<string>(type: "varchar(250)", nullable: false),
-                    TipoUsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Medicos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Medicos_TiposUsuario_TipoUsuarioId",
-                        column: x => x.TipoUsuarioId,
-                        principalTable: "TiposUsuario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pacientes",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "varchar(250)", nullable: false),
-                    Cpf = table.Column<string>(type: "varchar(11)", nullable: false),
-                    Imagem = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Sexo = table.Column<string>(type: "varchar(9)", nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Telefone = table.Column<string>(type: "varchar(11)", nullable: false),
-                    Escolaridade = table.Column<string>(type: "varchar(100)", nullable: false),
-                    TipoUsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pacientes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pacientes_TiposUsuario_TipoUsuarioId",
-                        column: x => x.TipoUsuarioId,
-                        principalTable: "TiposUsuario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Usuarios",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "varchar(250)", nullable: false),
-                    Email = table.Column<string>(type: "varchar(250)", nullable: true),
-                    Cpf = table.Column<string>(type: "varchar(14)", nullable: false),
-                    Imagem = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Sexo = table.Column<string>(type: "varchar(100)", nullable: true),
-                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Telefone = table.Column<string>(type: "varchar(100)", nullable: true),
-                    TipoUsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Usuarios", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Usuarios_TiposUsuario_TipoUsuarioId",
-                        column: x => x.TipoUsuarioId,
-                        principalTable: "TiposUsuario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -301,6 +219,7 @@ namespace SPCS.Saude.Infra.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PacienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AmostraId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MunicipioTrabalho = table.Column<string>(type: "varchar(100)", nullable: true),
                     Gestante = table.Column<string>(type: "varchar(100)", nullable: true),
@@ -318,7 +237,9 @@ namespace SPCS.Saude.Infra.Migrations
                     TempoContatoPraguicida = table.Column<string>(type: "varchar(100)", nullable: true),
                     FrequenciaContatoPraguicida = table.Column<string>(type: "varchar(100)", nullable: true),
                     UltimoContatoPraguicida = table.Column<string>(type: "varchar(100)", nullable: true),
+                    ProdutoContatoUltimaVez = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FormaAplicacao = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Cultura = table.Column<string>(type: "varchar(100)", nullable: true),
                     ViaExposicao = table.Column<string>(type: "varchar(100)", nullable: true),
                     Adoeceu = table.Column<string>(type: "varchar(100)", nullable: true),
                     QtdVezesAdoeceu = table.Column<string>(type: "varchar(100)", nullable: true),
@@ -411,9 +332,41 @@ namespace SPCS.Saude.Infra.Migrations
                 {
                     table.PrimaryKey("PK_Fichas", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Fichas_Amostras_AmostraId",
+                        column: x => x.AmostraId,
+                        principalTable: "Amostras",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Fichas_Pacientes_PacienteId",
                         column: x => x.PacienteId,
                         principalTable: "Pacientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(250)", nullable: false),
+                    Email = table.Column<string>(type: "varchar(250)", nullable: true),
+                    Cpf = table.Column<string>(type: "varchar(14)", nullable: false),
+                    Imagem = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Sexo = table.Column<string>(type: "varchar(100)", nullable: true),
+                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Telefone = table.Column<string>(type: "varchar(100)", nullable: true),
+                    TipoUsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_TiposUsuario_TipoUsuarioId",
+                        column: x => x.TipoUsuarioId,
+                        principalTable: "TiposUsuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -466,8 +419,7 @@ namespace SPCS.Saude.Infra.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Diagnosticos_FichaId",
                 table: "Diagnosticos",
-                column: "FichaId",
-                unique: true);
+                column: "FichaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Enderecos_PacienteId",
@@ -476,29 +428,20 @@ namespace SPCS.Saude.Infra.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enfermeiros_TipoUsuarioId",
-                table: "Enfermeiros",
-                column: "TipoUsuarioId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_FichaAgro_AgrotoxicoId",
                 table: "FichaAgro",
                 column: "AgrotoxicoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Fichas_AmostraId",
+                table: "Fichas",
+                column: "AmostraId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Fichas_PacienteId",
                 table: "Fichas",
                 column: "PacienteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Medicos_TipoUsuarioId",
-                table: "Medicos",
-                column: "TipoUsuarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pacientes_TipoUsuarioId",
-                table: "Pacientes",
-                column: "TipoUsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Usuarios_TipoUsuarioId",
@@ -509,22 +452,13 @@ namespace SPCS.Saude.Infra.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Amostras");
-
-            migrationBuilder.DropTable(
                 name: "Diagnosticos");
 
             migrationBuilder.DropTable(
                 name: "Enderecos");
 
             migrationBuilder.DropTable(
-                name: "Enfermeiros");
-
-            migrationBuilder.DropTable(
                 name: "FichaAgro");
-
-            migrationBuilder.DropTable(
-                name: "Medicos");
 
             migrationBuilder.DropTable(
                 name: "RefreshTokens");
@@ -539,10 +473,13 @@ namespace SPCS.Saude.Infra.Migrations
                 name: "Fichas");
 
             migrationBuilder.DropTable(
-                name: "Pacientes");
+                name: "TiposUsuario");
 
             migrationBuilder.DropTable(
-                name: "TiposUsuario");
+                name: "Amostras");
+
+            migrationBuilder.DropTable(
+                name: "Pacientes");
         }
     }
 }

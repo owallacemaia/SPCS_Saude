@@ -10,8 +10,8 @@ using SPCS.Saude.Infra.Context;
 namespace SPCS.Saude.Infra.Migrations
 {
     [DbContext(typeof(PrincipalDbContext))]
-    [Migration("20211119224857_configureRelations")]
-    partial class configureRelations
+    [Migration("20211127175621_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -451,52 +454,6 @@ namespace SPCS.Saude.Infra.Migrations
                     b.ToTable("Enderecos");
                 });
 
-            modelBuilder.Entity("SPCS.Saude.Business.Models.Enfermeiro", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Coren")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
-
-                    b.Property<string>("Cpf")
-                        .IsRequired()
-                        .HasColumnType("varchar(14)");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
-
-                    b.Property<string>("Imagem")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
-
-                    b.Property<string>("Sexo")
-                        .IsRequired()
-                        .HasColumnType("varchar(9)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("varchar(11)");
-
-                    b.Property<Guid?>("TipoUsuarioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TipoUsuarioId");
-
-                    b.ToTable("Enfermeiros");
-                });
-
             modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>
                 {
                     b.Property<Guid>("Id")
@@ -520,6 +477,9 @@ namespace SPCS.Saude.Infra.Migrations
 
                     b.Property<string>("Ambulatorio")
                         .HasColumnType("varchar(100)");
+
+                    b.Property<Guid>("AmostraId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AparelhoAuditivo")
                         .HasColumnType("varchar(100)");
@@ -829,6 +789,9 @@ namespace SPCS.Saude.Infra.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AmostraId")
+                        .IsUnique();
+
                     b.HasIndex("PacienteId");
 
                     b.ToTable("Fichas");
@@ -850,52 +813,6 @@ namespace SPCS.Saude.Infra.Migrations
                     b.HasIndex("AgrotoxicoId");
 
                     b.ToTable("FichaAgro");
-                });
-
-            modelBuilder.Entity("SPCS.Saude.Business.Models.Medico", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Cpf")
-                        .IsRequired()
-                        .HasColumnType("varchar(14)");
-
-                    b.Property<string>("Crm")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
-
-                    b.Property<string>("Imagem")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
-
-                    b.Property<string>("Sexo")
-                        .IsRequired()
-                        .HasColumnType("varchar(9)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("varchar(11)");
-
-                    b.Property<Guid?>("TipoUsuarioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TipoUsuarioId");
-
-                    b.ToTable("Medicos");
                 });
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Paciente", b =>
@@ -979,6 +896,9 @@ namespace SPCS.Saude.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Cpf")
                         .IsRequired()
                         .HasColumnType("varchar(14)");
@@ -1032,21 +952,19 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Navigation("Paciente");
                 });
 
-            modelBuilder.Entity("SPCS.Saude.Business.Models.Enfermeiro", b =>
-                {
-                    b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
-                        .WithMany()
-                        .HasForeignKey("TipoUsuarioId");
-
-                    b.Navigation("TipoUsuario");
-                });
-
             modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>
                 {
+                    b.HasOne("SPCS.Saude.Business.Models.Amostra", "Amostra")
+                        .WithOne("Ficha")
+                        .HasForeignKey("SPCS.Saude.Business.Models.Ficha", "AmostraId")
+                        .IsRequired();
+
                     b.HasOne("SPCS.Saude.Business.Models.Paciente", "Paciente")
                         .WithMany("Fichas")
                         .HasForeignKey("PacienteId")
                         .IsRequired();
+
+                    b.Navigation("Amostra");
 
                     b.Navigation("Paciente");
                 });
@@ -1068,15 +986,6 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Navigation("Ficha");
                 });
 
-            modelBuilder.Entity("SPCS.Saude.Business.Models.Medico", b =>
-                {
-                    b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
-                        .WithMany()
-                        .HasForeignKey("TipoUsuarioId");
-
-                    b.Navigation("TipoUsuario");
-                });
-
             modelBuilder.Entity("SPCS.Saude.Business.Models.Usuario", b =>
                 {
                     b.HasOne("SPCS.Saude.Business.Models.TipoUsuario", "TipoUsuario")
@@ -1089,6 +998,11 @@ namespace SPCS.Saude.Infra.Migrations
             modelBuilder.Entity("SPCS.Saude.Business.Models.Agrotoxico", b =>
                 {
                     b.Navigation("Fichas");
+                });
+
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Amostra", b =>
+                {
+                    b.Navigation("Ficha");
                 });
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>

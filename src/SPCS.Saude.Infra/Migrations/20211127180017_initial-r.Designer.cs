@@ -10,8 +10,8 @@ using SPCS.Saude.Infra.Context;
 namespace SPCS.Saude.Infra.Migrations
 {
     [DbContext(typeof(PrincipalDbContext))]
-    [Migration("20211123004703_deletetablesenfermeiromedicos")]
-    partial class deletetablesenfermeiromedicos
+    [Migration("20211127180017_initial-r")]
+    partial class initialr
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -230,10 +233,10 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("Internado")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("IrritacaoOcular")
+                    b.Property<string>("IrritacaoNasal")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("IrritaçaoNasal")
+                    b.Property<string>("IrritacaoOcular")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("LuvasProtecao")
@@ -475,6 +478,9 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("Ambulatorio")
                         .HasColumnType("varchar(100)");
 
+                    b.Property<Guid>("AmostraId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("AparelhoAuditivo")
                         .HasColumnType("varchar(100)");
 
@@ -637,10 +643,10 @@ namespace SPCS.Saude.Infra.Migrations
                     b.Property<string>("Internado")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("IrritacaoOcular")
+                    b.Property<string>("IrritacaoNasal")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("IrritaçaoNasal")
+                    b.Property<string>("IrritacaoOcular")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("LuvasProtecao")
@@ -782,6 +788,9 @@ namespace SPCS.Saude.Infra.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AmostraId")
+                        .IsUnique();
 
                     b.HasIndex("PacienteId");
 
@@ -945,10 +954,17 @@ namespace SPCS.Saude.Infra.Migrations
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>
                 {
+                    b.HasOne("SPCS.Saude.Business.Models.Amostra", "Amostra")
+                        .WithOne("Ficha")
+                        .HasForeignKey("SPCS.Saude.Business.Models.Ficha", "AmostraId")
+                        .IsRequired();
+
                     b.HasOne("SPCS.Saude.Business.Models.Paciente", "Paciente")
                         .WithMany("Fichas")
                         .HasForeignKey("PacienteId")
                         .IsRequired();
+
+                    b.Navigation("Amostra");
 
                     b.Navigation("Paciente");
                 });
@@ -982,6 +998,11 @@ namespace SPCS.Saude.Infra.Migrations
             modelBuilder.Entity("SPCS.Saude.Business.Models.Agrotoxico", b =>
                 {
                     b.Navigation("Fichas");
+                });
+
+            modelBuilder.Entity("SPCS.Saude.Business.Models.Amostra", b =>
+                {
+                    b.Navigation("Ficha");
                 });
 
             modelBuilder.Entity("SPCS.Saude.Business.Models.Ficha", b =>

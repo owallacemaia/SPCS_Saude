@@ -73,5 +73,23 @@ namespace SPCS.Saude.API.Controllers
 
             return response;
         }
+
+        [HttpGet("v2/amostras-paciente")]
+        public async Task<IEnumerable<PacienteAmostraResponseApiModel>> ObterAmostra2()
+        {
+            var pacientes = (await _pacienteRepository.ObterPacientesFichas()).Where(a => a.Fichas != null);
+            var amostras = await _amostraRepository.ListarAsync();
+
+            var response = amostras.Select(amostra =>
+            {
+                var amostramap = _mapper.Map<PacienteAmostraResponseApiModel>(amostra);
+                var paciente = pacientes?.FirstOrDefault(a => a?.Id == amostra?.PacienteId);
+                amostramap.Cpf = paciente.Cpf;
+                amostramap.Nome = paciente.Nome;
+                return amostramap;
+            });
+
+            return response;
+        }
     }
 }

@@ -71,14 +71,16 @@ namespace SPCS.Saude.API.Controllers
 
             var ficha = _mapper.Map<Ficha>(model);
 
+            var amostra = await GerarAmostra(ficha);
+
+            ficha.Amostra = amostra;
+
             await _fichaService.Adicionar(ficha);
 
             if (!OperacaoValida())
                 return CustomResponse();
 
             var response = _mapper.Map<FichaResponseApiModel>(ficha);
-
-            await GerarAmostra(response);
 
             return CustomResponse(response);
         }
@@ -89,7 +91,7 @@ namespace SPCS.Saude.API.Controllers
             return (_mapper.Map<IEnumerable<UsuarioFichaRequestApiModel>>(await _pacienteRepository.ObterPacientesFichas()));
         }
 
-        private async Task<bool> GerarAmostra(FichaResponseApiModel model)
+        private async Task<Amostra> GerarAmostra(Ficha model)
         {
             #region Conversão de Variaveis
             var paciente = await _pacienteRepository.ObterPorId(model.PacienteId);
@@ -98,7 +100,7 @@ namespace SPCS.Saude.API.Controllers
             if (agrotoxicoUltimoContato == null)
             {
                 AdicionarErroProcessamento("Não foi possível encontrar o Produto de ultimo contato!");
-                return false;
+                return null;
             }
 
             int idade = (DateTime.Now.Year - paciente.DataNascimento.Year);
@@ -180,7 +182,7 @@ namespace SPCS.Saude.API.Controllers
                 Diarreia = model.Diarreia,
                 AparelhoRespiratorio = model.AparelhoRespiratorio,
                 FaltaDeAr = model.FaltaDeAr,
-                IrritaçaoNasal = model.IrritaçaoNasal,
+                IrritaçaoNasal = model.IrritacaoNasal,
                 CatarroEscarro = model.CatarroEscarro,
                 Tosse = model.Tosse,
                 AparelhoAuditivo = model.AparelhoAuditivo,
@@ -233,9 +235,7 @@ namespace SPCS.Saude.API.Controllers
                 SiglaDiagnostico = null,
             };
 
-            var amostra = _mapper.Map<Amostra>(response);
-            await _amostraService.Adicionar(amostra);
-            return true;
+            return _mapper.Map<Amostra>(response);
         }
     }
 }
