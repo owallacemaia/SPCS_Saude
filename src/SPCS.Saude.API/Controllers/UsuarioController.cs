@@ -92,7 +92,7 @@ namespace SPCS.Saude.API.Controllers
             else if (tipoUsuarioId == TipoUsuario.Medico.Id)
                 return CustomResponse(_mapper.Map<IEnumerable<UsuarioResponseApiModel>>(await _usuarioRepository.ObterMedicos()));
             else
-                return CustomResponse(_mapper.Map<IEnumerable<PacienteResponseApiModel>>(await _pacienteRepository.ObterTodos()));
+                return CustomResponse(_mapper.Map<IEnumerable<PacienteResponseApiModel>>(await _pacienteRepository.ListarAsync()));
         }
 
         [ClaimsAuthorize(TipoAuthozire, Permissoes)]

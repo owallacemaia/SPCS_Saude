@@ -10,7 +10,7 @@ namespace SPCS.Saude.Business.Interfaces
     {
         void Adicionar(Paciente paciente);
         void Atualizar(Paciente paciente);
-        Task<IEnumerable<Paciente>> ObterTodos();
+        Task<IEnumerable<Paciente>> ListarAsync();
         Task<Paciente> ObterPorId(Guid id);
         Task<Paciente> ObterPorCpf(string cpf);
         Task<IEnumerable<Paciente>> ObterPacientesFichas();

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SPCS.ApiModels.Amostra;
 using SPCS.ApiModels.Usuario;
@@ -47,7 +46,7 @@ namespace SPCS.Saude.API.Controllers
         {
             var amostra = await _amostraRepository.ObterPorId(id);
 
-            if(amostra == null)
+            if (amostra == null)
             {
                 AdicionarErroProcessamento("Não foi possível encontrar a amostra com o ID informado!");
                 return CustomResponse(amostra);
@@ -58,24 +57,6 @@ namespace SPCS.Saude.API.Controllers
 
         [HttpGet("amostras-paciente")]
         public async Task<IEnumerable<PacienteAmostraResponseApiModel>> ObterAmostra()
-        {
-            var pacientes = (await _pacienteRepository.ObterPacientesFichas()).Where(a => a.Fichas != null);
-            var amostras = await _amostraRepository.ListarAsync();
-
-            var response = amostras.Select(amostra =>
-            {
-                var amostramap = _mapper.Map<PacienteAmostraResponseApiModel>(amostra);
-                var paciente = pacientes?.FirstOrDefault(a => a?.Id == amostra?.PacienteId);
-                amostramap.Cpf = paciente.Cpf;
-                amostramap.Nome = paciente.Nome;
-                return amostramap;  
-            });
-
-            return response;
-        }
-
-        [HttpGet("v2/amostras-paciente")]
-        public async Task<IEnumerable<PacienteAmostraResponseApiModel>> ObterAmostra2()
         {
             var pacientes = (await _pacienteRepository.ObterPacientesFichas()).Where(a => a.Fichas != null);
             var amostras = await _amostraRepository.ListarAsync();

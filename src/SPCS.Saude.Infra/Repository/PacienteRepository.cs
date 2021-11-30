@@ -44,7 +44,7 @@ namespace SPCS.Saude.Infra.Repository
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<Paciente>> ObterTodos()
+        public async Task<IEnumerable<Paciente>> ListarAsync()
         {
             return await _context.Pacientes.AsNoTracking()
                 .Include(a => a.Endereco)
