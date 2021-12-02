@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPCS.ApiModels.Amostra
 {
@@ -68,7 +64,7 @@ namespace SPCS.ApiModels.Amostra
         public string Diarreia { get; set; }
         public string AparelhoRespiratorio { get; set; }
         public string FaltaDeAr { get; set; }
-        public string IrritaçaoNasal { get; set; }
+        public string IrritacaoNasal { get; set; }
         public string CatarroEscarro { get; set; }
         public string Tosse { get; set; }
         public string AparelhoAuditivo { get; set; }

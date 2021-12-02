@@ -37,6 +37,13 @@ namespace SPCS.Saude.Infra.Repository
                 .FirstOrDefaultAsync(p => p.Cpf == cpf);
         }
 
+        public async Task<IEnumerable<Paciente>> ObterPacientesFichas()
+        {
+            return await _context.Pacientes.AsNoTracking()
+                .Include(a => a.Fichas)
+                .ToListAsync();
+        }
+
         public async Task<Paciente> ObterPorId(Guid id)
         {
             return await _context.Pacientes.AsNoTracking()
@@ -54,13 +61,6 @@ namespace SPCS.Saude.Infra.Repository
         public void Dispose()
         {
             _context?.Dispose();
-        }
-
-        public async Task<IEnumerable<Paciente>> ObterPacientesFichas()
-        {
-            return await _context.Pacientes.AsNoTracking()
-                .Include(a => a.Fichas)
-                .ToListAsync();
         }
     }
 }

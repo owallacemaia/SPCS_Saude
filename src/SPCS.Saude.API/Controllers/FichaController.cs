@@ -123,6 +123,13 @@ namespace SPCS.Saude.API.Controllers
             var response = new AmostraApiModel
             {
                 PacienteId = model.PacienteId,
+                RelacaoTrabalho = model.RelacaoTrabalho,
+                FrequenciaContatoPraguicida = model.FrequenciaContatoPraguicida,
+                FormaAplicacao = model.FormaAplicacao,
+                Cultura = model.Cultura,
+                TremorMuscular = model.TremorMuscular,
+                SncCancer = model.SncCancer,
+                EdaRegiao = model.EdaRegiao,
                 Sexo = paciente.Sexo,
                 Gestante = model.Gestante,
                 IdadeDiscretizado = (idade > 0) && (idade <= 12) ? "Criança" : (idade > 12) && (idade <= 17) ? "Jovem" :
@@ -182,7 +189,7 @@ namespace SPCS.Saude.API.Controllers
                 Diarreia = model.Diarreia,
                 AparelhoRespiratorio = model.AparelhoRespiratorio,
                 FaltaDeAr = model.FaltaDeAr,
-                IrritaçaoNasal = model.IrritacaoNasal,
+                IrritacaoNasal = model.IrritacaoNasal,
                 CatarroEscarro = model.CatarroEscarro,
                 Tosse = model.Tosse,
                 AparelhoAuditivo = model.AparelhoAuditivo,
