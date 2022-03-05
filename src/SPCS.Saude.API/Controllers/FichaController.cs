@@ -122,7 +122,7 @@ namespace SPCS.Saude.API.Controllers
                 Sexo = paciente.Sexo,
                 Gestante = model.Gestante,
                 IdadeDiscretizado = (idade > 0) && (idade <= 12) ? "Criança" : (idade > 12) && (idade <= 17) ? "Jovem" :
-                                    (idade > 18) && (idade <= 59) ? "Adulto" : (idade >= 60) ? "Idoso" : null,
+                                    (idade >= 18) && (idade <= 59) ? "Adulto" : (idade >= 60) ? "Idoso" : null,
                 Tabagismo = model.Tabagismo,
                 TabagismoAnterior = model.TabagismoAnterior,
                 TabagismoAtual = model.TabagismoAtual,
@@ -191,7 +191,6 @@ namespace SPCS.Saude.API.Controllers
                 AparelhoUrinario = model.AparelhoUrinario,
                 DiminuicaoUrina = model.DiminuicaoUrina,
                 UrinaescuraSangue = model.UrinaescuraSangue,
-                Outro = model.Outro,
                 ExposicaoRaiox = model.ExposicaoRaiox,
                 QuandodiasExposicao = model.QuandodiasExposicao,
                 TeveCancer = model.TeveCancer,
@@ -214,10 +213,8 @@ namespace SPCS.Saude.API.Controllers
                 Y_gt_discretizado = (ygt == 0) ? "Não Informado" : (ygt < 7) ? "Baixo" : (ygt >= 7) && (ygt <= 50) ? "Alterada" : null,
                 CreatininaDiscretizado = (paciente.Sexo == "Masculino") && (creatinina < 0.9) ? "Baixo" : (paciente.Sexo == "Masculino") && (creatinina >= 0.9) && (creatinina <= 1.3) ? "Alterada" :
                                          (paciente.Sexo == "Feminino") && (creatinina < 0.6) ? "Baixo" : (paciente.Sexo == "Feminino") && (creatinina >= 0.6) && (creatinina <= 1.1) ? "Alterada" : null,
-                Ambulatorio = model.Ambulatorio,
-                HabitoAlimentarDiscretizado = model.HabitoAlimentar,
-                ImcDiscretizado = (imc <= 18.5) ? "Baixo Peso" : (imc >= 18.5) && (imc <= 24.99) ? "Peso Normal" : (imc > 25.0) && (imc <= 29.99) ? "Sobrepeso" :
-                                  (imc > 30.0) && (imc <= 34.99) ? "Obeso I" : (imc >= 35.0) && (imc <= 39.99) ? "Obeso II" : (imc > 40) ? "Obeso III" : null,
+                ImcDiscretizado = (imc <= 18.5) ? "Baixo Peso" : (imc >= 18.5) && (imc <= 24.99) ? "Peso Normal" : (imc >= 25.0) && (imc <= 29.99) ? "Sobrepeso" :
+                                  (imc >= 30.0) && (imc <= 34.99) ? "Obeso I" : (imc >= 35.0) && (imc <= 39.99) ? "Obeso II" : (imc >= 40) ? "Obeso III" : null,
                 CircunferenciaAbdominalDiscretizado = (circ == 0) ? "Não Informado" : (paciente.Sexo == "Masculino") && (circ <= 101) ? "Adequada:" :
                                                       (paciente.Sexo == "Masculino") && (circ >= 102) ? "Inadequada" : (paciente.Sexo == "Feminino") && (circ <= 87) ? "Adequada" :
                                                       (paciente.Sexo == "Feminino") && (circ >= 88) ? "Inadequada" : null,
@@ -229,6 +226,17 @@ namespace SPCS.Saude.API.Controllers
                 RemedioMicose = model.RemedioMicose,
                 NomeRemedio = model.NomeRemedio,
                 SiglaDiagnostico = null,
+
+                RelacaoTrabalho = model.RelacaoTrabalho,
+                Cultura = model.Cultura,
+                TremorMuscular = model.TremorMuscular,
+                SncCancer = model.SncCancer,
+                SNCCancerFamilia = model.SNCCancerFamilia,
+                EdaRegiao= model.EdaRegiao,
+                FormaAplicacao = model.FormaAplicacao,
+                FrequenciaContatoPraguicida = model.FrequenciaContatoPraguicida,
+                PacienteId= model.PacienteId,
+
 
             };
 

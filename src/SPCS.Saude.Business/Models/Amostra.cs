@@ -78,7 +78,6 @@ namespace SPCS.Saude.Business.Models
         public string AparelhoUrinario { get; set; }
         public string DiminuicaoUrina { get; set; }
         public string UrinaescuraSangue { get; set; }
-        public string Outro { get; set; }
         public string ExposicaoRaiox { get; set; }
         public string QuandodiasExposicao { get; set; }
         public string TeveCancer { get; set; }
@@ -103,8 +102,6 @@ namespace SPCS.Saude.Business.Models
         public string Alt_discretizado { get; set; }
         public string Y_gt_discretizado { get; set; }
         public string CreatininaDiscretizado { get; set; }
-        public string Ambulatorio { get; set; }
-        public string HabitoAlimentarDiscretizado { get; set; }
         public string ImcDiscretizado { get; set; }
         public string CircunferenciaAbdominalDiscretizado { get; set; }
         public string DificuldadeEngravidar { get; set; }
@@ -118,7 +115,7 @@ namespace SPCS.Saude.Business.Models
 
         protected Amostra() { }
 
-        public Amostra(Guid pacienteId, string idadeDiscretizado, string sexo, string gestante, string tabagismo, string tabagismoAtual, string tabagismoAnterior, string etilismo, string etilismoAtual, string etilismoAnterior, string ingestaoCafe, string cafeMldiaDiscretizado, string relacaoTrabalho, string funcaoTrabalho, string contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string principioAtivo1, string formaAplicacao, string nomeComercial, string principioAtivo2, string cultura, string viaExposicao, string adoeceu, string nVezesAdoeceu, string internado, string nvezesInternado, string quandoInternado, string tipoContato, string equipamentoProtecao, string roupaProtecao, string botaProtecao, string luvasProtecao, string mascaraProtecao, string oculosProtecao, string protetorAuricular, string doencaCardioVascular, string hipertensaoArterial, string hipotensaoArterial, string arritmia, string alteracaoSNervoso, string dorCabeca, string fraquezaMuscular, string tremedeira, string tremorMuscular, string visaoTurvaEmbacada, string agitacaoIrritabilidade, string vertigensTonturas, string formigamento, string incoordenacaoMotora, string aparelhoDigestorio, string colicasDorBarriga, string dorEstomago, string aziaQueimacao, string nauseasEnjoo, string vomito, string diarreia, string aparelhoRespiratorio, string faltaDeAr, string irritaçaoNasal, string catarroEscarro, string tosse, string aparelhoAuditivo, string diminuicaoAudicao, string zumbido, string peleMucosa, string dcSensibilizante, string dcIrritativa, string irritacaoOcular, string aparelhoUrinario, string diminuicaoUrina, string urinaescuraSangue, string outro, string exposicaoRaiox, string quandodiasExposicao, string teveCancer, string sncCancer, string digestorioCancer, string respiratorioCancer, string reprodutorCancer, string glandularCancer, string peleOssoSangueCancer, string familiaCancer, string sNCCancerFamilia, string digestorioCancerfamilia, string respiratorioCancerfamilia, string reprodutorCancerfamilia, string glandularCancerfamilia, string peleOssoSangueCancerfamilia, string edaRegiao, string ch_t_discretizado, string ch_e_discretizado, string ch_p_discretizado, string ast_discretizado, string alt_discretizado, string y_gt_discretizado, string creatininaDiscretizado, string ambulatorio, string habitoAlimentarDiscretizado, string imcDiscretizado, string circunferenciaAbdominalDiscretizado, string dificuldadeEngravidar, string abortoEspontaneo, string temFilhos, string filhoMaFormacao, string medicamentoContinuo, string remedioMicose, string nomeRemedio, string siglaDiagnostico)
+        public Amostra(Guid pacienteId, string idadeDiscretizado, string sexo, string gestante, string tabagismo, string tabagismoAtual, string tabagismoAnterior, string etilismo, string etilismoAtual, string etilismoAnterior, string ingestaoCafe, string cafeMldiaDiscretizado, string relacaoTrabalho, string funcaoTrabalho, string contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, string ultimoContatoPraguicida, string principioAtivo1, string formaAplicacao, string nomeComercial, string principioAtivo2, string cultura, string viaExposicao, string adoeceu, string nVezesAdoeceu, string internado, string nvezesInternado, string quandoInternado, string tipoContato, string equipamentoProtecao, string roupaProtecao, string botaProtecao, string luvasProtecao, string mascaraProtecao, string oculosProtecao, string protetorAuricular, string doencaCardioVascular, string hipertensaoArterial, string hipotensaoArterial, string arritmia, string alteracaoSNervoso, string dorCabeca, string fraquezaMuscular, string tremedeira, string tremorMuscular, string visaoTurvaEmbacada, string agitacaoIrritabilidade, string vertigensTonturas, string formigamento, string incoordenacaoMotora, string aparelhoDigestorio, string colicasDorBarriga, string dorEstomago, string aziaQueimacao, string nauseasEnjoo, string vomito, string diarreia, string aparelhoRespiratorio, string faltaDeAr, string irritaçaoNasal, string catarroEscarro, string tosse, string aparelhoAuditivo, string diminuicaoAudicao, string zumbido, string peleMucosa, string dcSensibilizante, string dcIrritativa, string irritacaoOcular, string aparelhoUrinario, string diminuicaoUrina, string urinaescuraSangue, string exposicaoRaiox, string quandodiasExposicao, string teveCancer, string sncCancer, string digestorioCancer, string respiratorioCancer, string reprodutorCancer, string glandularCancer, string peleOssoSangueCancer, string familiaCancer, string sNCCancerFamilia, string digestorioCancerfamilia, string respiratorioCancerfamilia, string reprodutorCancerfamilia, string glandularCancerfamilia, string peleOssoSangueCancerfamilia, string edaRegiao, string ch_t_discretizado, string ch_e_discretizado, string ch_p_discretizado, string ast_discretizado, string alt_discretizado, string y_gt_discretizado, string creatininaDiscretizado, string imcDiscretizado, string circunferenciaAbdominalDiscretizado, string dificuldadeEngravidar, string abortoEspontaneo, string temFilhos, string filhoMaFormacao, string medicamentoContinuo, string remedioMicose, string nomeRemedio, string siglaDiagnostico)
         {
             PacienteId = pacienteId;
             IdadeDiscretizado = idadeDiscretizado;
@@ -193,7 +190,6 @@ namespace SPCS.Saude.Business.Models
             AparelhoUrinario = aparelhoUrinario;
             DiminuicaoUrina = diminuicaoUrina;
             UrinaescuraSangue = urinaescuraSangue;
-            Outro = outro;
             ExposicaoRaiox = exposicaoRaiox;
             QuandodiasExposicao = quandodiasExposicao;
             TeveCancer = teveCancer;
@@ -218,8 +214,6 @@ namespace SPCS.Saude.Business.Models
             Alt_discretizado = alt_discretizado;
             Y_gt_discretizado = y_gt_discretizado;
             CreatininaDiscretizado = creatininaDiscretizado;
-            Ambulatorio = ambulatorio;
-            HabitoAlimentarDiscretizado = habitoAlimentarDiscretizado;
             ImcDiscretizado = imcDiscretizado;
             CircunferenciaAbdominalDiscretizado = circunferenciaAbdominalDiscretizado;
             DificuldadeEngravidar = dificuldadeEngravidar;
