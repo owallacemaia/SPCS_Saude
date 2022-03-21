@@ -81,7 +81,6 @@ namespace SPCS.ApiModels.Amostra
         public string AparelhoUrinario { get; set; }
         public string DiminuicaoUrina { get; set; }
         public string UrinaescuraSangue { get; set; }
-        public string Outro { get; set; }
         public string ExposicaoRaiox { get; set; }
         public string QuandodiasExposicao { get; set; }
         public string TeveCancer { get; set; }
@@ -106,8 +105,6 @@ namespace SPCS.ApiModels.Amostra
         public string Alt_discretizado { get; set; }
         public string Y_gt_discretizado { get; set; }
         public string CreatininaDiscretizado { get; set; }
-        public string Ambulatorio { get; set; }
-        public string HabitoAlimentarDiscretizado { get; set; }
         public string ImcDiscretizado { get; set; }
         public string CircunferenciaAbdominalDiscretizado { get; set; }
         public string DificuldadeEngravidar { get; set; }

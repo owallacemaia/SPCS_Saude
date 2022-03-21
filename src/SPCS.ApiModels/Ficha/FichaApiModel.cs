@@ -30,9 +30,9 @@ namespace SPCS.ApiModels.Ficha
         public string ViaExposicao { get; set; }
         public string Adoeceu { get; set; }
         public string QtdVezesAdoeceu { get; set; }
-        public string stringernado { get; set; }
-        public string QtdVezesstringernado { get; set; }
-        public string Quandostringerndo { get; set; }
+        public string Internado { get; set; }
+        public string QtdVezesInternado { get; set; }
+        public string QuandoInterndoo { get; set; }
         public string TipoContato { get; set; }
         public string EquipamentoProtecao { get; set; }
         public string RoupaProtecao { get; set; }
@@ -50,7 +50,7 @@ namespace SPCS.ApiModels.Ficha
         public string FraquezaMuscular { get; set; }
         public string Tremedeira { get; set; }
         public string TremorMuscular { get; set; }
-        public string VisãoTurvaEmbacada { get; set; }
+        public string VisaoTurvaEmbacada { get; set; }
         public string AgitacaoIrritabilidade { get; set; }
         public string VertigensTonturas { get; set; }
         public string Formigamento { get; set; }
@@ -64,7 +64,7 @@ namespace SPCS.ApiModels.Ficha
         public string Diarreia { get; set; }
         public string AparelhoRespiratorio { get; set; }
         public string FaltaDeAr { get; set; }
-        public string IrritaçaoNasal { get; set; }
+        public string IrritacaoNasal { get; set; }
         public string CatarroEscarro { get; set; }
         public string Tosse { get; set; }
         public string AparelhoAuditivo { get; set; }
@@ -77,7 +77,6 @@ namespace SPCS.ApiModels.Ficha
         public string AparelhoUrinario { get; set; }
         public string DiminuicaoUrina { get; set; }
         public string UrinaescuraSangue { get; set; }
-        public string Outro { get; set; }
         public string ExposicaoRaiox { get; set; }
         public string QuandodiasExposicao { get; set; }
         public string TeveCancer { get; set; }
@@ -102,8 +101,6 @@ namespace SPCS.ApiModels.Ficha
         public string Alt { get; set; }
         public string Y_gt { get; set; }
         public string Creatinina { get; set; }
-        public String Ambulatorio { get; set; }
-        public string HabitoAlimentar { get; set; }
         public string Imc { get; set; }
         public string CircunferenciaAbdominal { get; set; }
         public string DificuldadeEngravidar { get; set; }

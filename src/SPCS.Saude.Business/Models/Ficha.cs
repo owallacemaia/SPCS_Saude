@@ -64,7 +64,7 @@ namespace SPCS.Saude.Business.Models
         public string Diarreia { get; set; }
         public string AparelhoRespiratorio { get; set; }
         public string FaltaDeAr { get; set; }
-        public string IrritaçaoNasal { get; set; }
+        public string IrritacaoNasal { get; set; }
         public string CatarroEscarro { get; set; }
         public string Tosse { get; set; }
         public string AparelhoAuditivo { get; set; }
@@ -77,7 +77,6 @@ namespace SPCS.Saude.Business.Models
         public string AparelhoUrinario { get; set; }
         public string DiminuicaoUrina { get; set; }
         public string UrinaescuraSangue { get; set; }
-        public string Outro { get; set; }
         public string ExposicaoRaiox { get; set; }
         public string QuandodiasExposicao { get; set; }
         public string TeveCancer { get; set; }
@@ -102,8 +101,6 @@ namespace SPCS.Saude.Business.Models
         public string Alt { get; set; }
         public string Y_gt { get; set; }
         public string Creatinina { get; set; }
-        public string Ambulatorio { get; set; }
-        public string HabitoAlimentar { get; set; }
         public string Imc { get; set; }
         public string CircunferenciaAbdominal { get; set; }
         public string DificuldadeEngravidar { get; set; }
@@ -120,7 +117,7 @@ namespace SPCS.Saude.Business.Models
 
         protected Ficha() { }
 
-        public Ficha(Guid pacienteId, DateTime dataCadastro, string municipioTrabalho, string gestante, string tabagismo, string tabagismoAtual, string tabagismoAnterior, string etilismo, string etilismoAtual, string etilismoAnterior, string ingestaoCafe, string cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, string contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, string ultimoContatoPraguicida, Guid produtoContatoUltimaVez, string formaAplicacao, string cultura, string viaExposicao, string adoeceu, string qtdVezesAdoeceu, string internado, string qtdVezesInternado, string quandoInterndo, string tipoContato, string equipamentoProtecao, string roupaProtecao, string botaProtecao, string luvasProtecao, string mascaraProtecao, string oculosProtecao, string protetorAuricular, string doencaCardioVascular, string hipertensaoArterial, string hipotensaoArterial, string arritmia, string alteracaoSNervoso, string dorCabeca, string fraquezaMuscular, string tremedeira, string tremorMuscular, string visaoTurvaEmbacada, string agitacaoIrritabilidade, string vertigensTonturas, string formigamento, string incoordenacaoMotora, string aparelhoDigestorio, string colicasDorBarriga, string dorEstomago, string aziaQueimacao, string nauseasEnjoo, string vomito, string diarreia, string aparelhoRespiratorio, string faltaDeAr, string irritaçaoNasal, string catarroEscarro, string tosse, string aparelhoAuditivo, string diminuicaoAudicao, string zumbido, string peleMucosa, string dcSensibilizante, string dcIrritativa, string irritacaoOcular, string aparelhoUrinario, string diminuicaoUrina, string urinaescuraSangue, string outro, string exposicaoRaiox, string quandodiasExposicao, string teveCancer, string sncCancer, string digestorioCancer, string respiratorioCancer, string reprodutorCancer, string glandularCancer, string peleOssoSangueCancer, string familiaCancer, string sNCCancerFamilia, string digestorioCancerfamilia, string respiratorioCancerfamilia, string reprodutorCancerfamilia, string glandularCancerfamilia, string peleOssoSangueCancerfamilia, string edaRegiao, string ch_t, string ch_e, string ch_p, string ast, string alt, string y_gt, string creatinina, string ambulatorio, string habitoAlimentar, string imc, string circunferenciaAbdominal, string dificuldadeEngravidar, string abortoEspontaneo, string temFilhos, string filhoMaFormacao, string medicamentoContinuo, string medicamento, string remedioMicose, string nomeRemedio, IEnumerable<FichaAgro> agrotoxicos)
+        public Ficha(Guid pacienteId, DateTime dataCadastro, string municipioTrabalho, string gestante, string tabagismo, string tabagismoAtual, string tabagismoAnterior, string etilismo, string etilismoAtual, string etilismoAnterior, string ingestaoCafe, string cafeMlDia, string relacaoTrabalho, string funcaoTrabalho, string contatoPraguicida, string tempoContatoPraguicida, string frequenciaContatoPraguicida, string ultimoContatoPraguicida, Guid produtoContatoUltimaVez, string formaAplicacao, string cultura, string viaExposicao, string adoeceu, string qtdVezesAdoeceu, string internado, string qtdVezesInternado, string quandoInterndo, string tipoContato, string equipamentoProtecao, string roupaProtecao, string botaProtecao, string luvasProtecao, string mascaraProtecao, string oculosProtecao, string protetorAuricular, string doencaCardioVascular, string hipertensaoArterial, string hipotensaoArterial, string arritmia, string alteracaoSNervoso, string dorCabeca, string fraquezaMuscular, string tremedeira, string tremorMuscular, string visaoTurvaEmbacada, string agitacaoIrritabilidade, string vertigensTonturas, string formigamento, string incoordenacaoMotora, string aparelhoDigestorio, string colicasDorBarriga, string dorEstomago, string aziaQueimacao, string nauseasEnjoo, string vomito, string diarreia, string aparelhoRespiratorio, string faltaDeAr, string irritacaoNasal, string catarroEscarro, string tosse, string aparelhoAuditivo, string diminuicaoAudicao, string zumbido, string peleMucosa, string dcSensibilizante, string dcIrritativa, string irritacaoOcular, string aparelhoUrinario, string diminuicaoUrina, string urinaescuraSangue, string exposicaoRaiox, string quandodiasExposicao, string teveCancer, string sncCancer, string digestorioCancer, string respiratorioCancer, string reprodutorCancer, string glandularCancer, string peleOssoSangueCancer, string familiaCancer, string sNCCancerFamilia, string digestorioCancerfamilia, string respiratorioCancerfamilia, string reprodutorCancerfamilia, string glandularCancerfamilia, string peleOssoSangueCancerfamilia, string edaRegiao, string ch_t, string ch_e, string ch_p, string ast, string alt, string y_gt, string creatinina, string imc, string circunferenciaAbdominal, string dificuldadeEngravidar, string abortoEspontaneo, string temFilhos, string filhoMaFormacao, string medicamentoContinuo, string medicamento, string remedioMicose, string nomeRemedio, IEnumerable<FichaAgro> agrotoxicos, IEnumerable<Diagnostico> diagnosticos, Paciente paciente)
         {
             PacienteId = pacienteId;
             DataCadastro = dataCadastro;
@@ -180,7 +177,7 @@ namespace SPCS.Saude.Business.Models
             Diarreia = diarreia;
             AparelhoRespiratorio = aparelhoRespiratorio;
             FaltaDeAr = faltaDeAr;
-            IrritaçaoNasal = irritaçaoNasal;
+            IrritacaoNasal = irritacaoNasal;
             CatarroEscarro = catarroEscarro;
             Tosse = tosse;
             AparelhoAuditivo = aparelhoAuditivo;
@@ -193,7 +190,6 @@ namespace SPCS.Saude.Business.Models
             AparelhoUrinario = aparelhoUrinario;
             DiminuicaoUrina = diminuicaoUrina;
             UrinaescuraSangue = urinaescuraSangue;
-            Outro = outro;
             ExposicaoRaiox = exposicaoRaiox;
             QuandodiasExposicao = quandodiasExposicao;
             TeveCancer = teveCancer;
@@ -218,8 +214,6 @@ namespace SPCS.Saude.Business.Models
             Alt = alt;
             Y_gt = y_gt;
             Creatinina = creatinina;
-            Ambulatorio = ambulatorio;
-            HabitoAlimentar = habitoAlimentar;
             Imc = imc;
             CircunferenciaAbdominal = circunferenciaAbdominal;
             DificuldadeEngravidar = dificuldadeEngravidar;
@@ -231,6 +225,8 @@ namespace SPCS.Saude.Business.Models
             RemedioMicose = remedioMicose;
             NomeRemedio = nomeRemedio;
             Agrotoxicos = agrotoxicos;
+            Diagnosticos = diagnosticos;
+            Paciente = paciente;
         }
 
         internal bool IsValid()
