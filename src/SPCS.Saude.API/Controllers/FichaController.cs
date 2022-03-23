@@ -235,10 +235,7 @@ namespace SPCS.Saude.API.Controllers
                 SNCCancerFamilia = model.SNCCancerFamilia,
                 EdaRegiao= model.EdaRegiao,
                 FormaAplicacao = model.FormaAplicacao,
-                FrequenciaContatoPraguicida = model.FrequenciaContatoPraguicida,
-                PacienteId= model.PacienteId,
-
-
+                FrequenciaContatoPraguicida = model.FrequenciaContatoPraguicida
             };
 
             var amostra = _mapper.Map<Amostra>(response);
